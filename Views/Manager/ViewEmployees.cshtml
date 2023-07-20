@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CruiseshipApp.Models.Employee>
+
+@{
+    ViewBag.Title = "ViewEmployees";
+    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
+}
+
+<h2>ViewEmployees</h2>
+
+<p>
+    @Html.ActionLink("Add New", "AddEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Login_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "DeleteEmployee", new { id=item.Employee_id })
+        </td>
+    </tr>
+}
+</table>

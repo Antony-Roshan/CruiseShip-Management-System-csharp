@@ -1,0 +1,67 @@
+﻿@model CruiseshipApp.Models.Movie_ticket
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie_ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Movie_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Movie_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Screen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Screen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Movie_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,67 @@
+﻿@model CruiseshipApp.Models.Party_hall
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Party/Party_LayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Party_hall</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hall_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hall_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occasion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occasion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.Image)" width="200" height="200" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Hall_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="252d13ef908a4680bc37975a829767b0" Name="Diagram1">
+        <EntityTypeShape EntityType="CruiseshipDbModel.Beauty_Saloon" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Booking_details" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Employee" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Feedback" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Fitness_centre" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Item" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Login" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Movie_ticket" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Order_details" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Order" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Party_hall" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Payment" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CruiseshipDbModel.Voyager" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="CruiseshipDbModel.Bookingdetailspayment" />
+        <AssociationConnector Association="CruiseshipDbModel.Vbookingdetailsid" />
+        <AssociationConnector Association="CruiseshipDbModel.Eloginid" />
+        <AssociationConnector Association="CruiseshipDbModel.Vfeedback" />
+        <AssociationConnector Association="CruiseshipDbModel.Itemorderdetailsid" />
+        <AssociationConnector Association="CruiseshipDbModel.Vloginid" />
+        <AssociationConnector Association="CruiseshipDbModel.Orderid" />
+        <AssociationConnector Association="CruiseshipDbModel.Ordervoyagerid" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

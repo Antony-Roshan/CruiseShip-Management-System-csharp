@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "EItems";
+    Layout = "~/Views/Employee/Empoyee_LayoutPage.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <center>
+        <h1>Welcome Employee</h1>
+
+        <div>
+            @Html.ActionLink("Manage Items", "Index", "Items", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        </div>
+    </center>
+</body>
+</html>
+

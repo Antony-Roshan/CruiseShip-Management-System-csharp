@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CruiseshipApp.Models.Movie_ticket>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Screen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Screen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Movie_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Movie_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Movie_id })
+        </td>
+    </tr>
+}
+
+</table>
