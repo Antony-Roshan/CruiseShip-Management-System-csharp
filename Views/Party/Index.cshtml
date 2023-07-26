@@ -5,10 +5,25 @@
     Layout = "~/Views/Party/Party_LayoutPage.cshtml";
 }
 
-<h2>Index</h2>
+<center>
+    <h1>Manage Party Hall</h1>
+
+    <div>
+        @Html.ActionLink("Home", "EParty", "Employee", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Manage Party Hall", "Index", "Party", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+</center>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Party Hall", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,46 +34,47 @@
             @Html.DisplayNameFor(model => model.Time)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Occasion)
+            @Html.DisplayNameFor(model => model.Image)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image)
+            @Html.DisplayNameFor(model => model.Occasion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
+        @*<th>
+               @Html.DisplayNameFor(model => model.Status)
+        </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hall_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Occasion)
-        </td>
-        <td>
-            <img src="~/Images/@Url" style="height:80px;width:80px" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Hall_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Hall_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Hall_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hall_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image)" width="120" height="80" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Occasion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+                @*</td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Hall_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Hall_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Hall_id })
+            </td>
+        </tr>
+    }
 
 </table>

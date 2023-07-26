@@ -72,7 +72,40 @@ namespace CruiseshipApp.Controllers
 
         public ActionResult AcceptPremiumVoyager()
         {
-            return View();
+            return View(db.Voyagers.Where(x => x.Status == "PremiumPending").ToList());
         }
+
+        public ActionResult Accept(int? id)
+        {
+            Voyager voyager = db.Voyagers.Find(id);
+            int Lid = voyager.Login_id;
+            voyager.Status = "Premium";
+            UpdateModel(voyager);
+            Login login = db.Logins.Find(Lid);
+            login.Usertype = "Premium";
+            UpdateModel(login);
+            db.SaveChanges();
+            TempData["AlertMessage"] = "Premium User accepted Successfully...!";
+            return RedirectToAction("AcceptPremiumVoyager");  
+        }
+
+        public ActionResult Reject(int? id)
+        {
+            Voyager voyager = db.Voyagers.Find(id);
+            int Lid = voyager.Login_id;
+            db.Voyagers.Remove(voyager);
+            db.SaveChanges();
+            Login login = db.Logins.Find(Lid);
+            db.Logins.Remove(login);
+            db.SaveChanges();
+            TempData["AlertMessage"] = "Premium User rejected Successfully...!";
+            return RedirectToAction("AcceptPremiumVoyager");
+        }
+
+        public ActionResult ViewPayments()
+        {
+            return View(db.Payments.ToList());
+        }
+
     }
 }

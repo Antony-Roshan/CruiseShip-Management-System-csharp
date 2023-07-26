@@ -1,0 +1,89 @@
+﻿@model CruiseshipApp.Models.Movie_ticket
+
+@{
+    ViewBag.Title = "book";
+    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
+}
+
+<h2>book</h2>
+
+<form method="Post" action="/Movie/Confirm">
+    <div>
+        <h4>Movie_ticket</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Movie_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Movie_id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Movie_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Movie_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Screen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Screen)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Genre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                Date
+            </dt>
+
+            <dd>
+                <label for="date">Select a Date:</label>
+                <input type="date" name="dt" min="2023-01-02" required>
+            </dd>
+
+            <dt>
+                Seat
+            </dt>
+
+            <dd>
+                <label for="st">Select number of seats:</label>
+                <input type="number" name="st" required/>
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <input type="submit" name="Confirm" value="Confirm" />
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</form>

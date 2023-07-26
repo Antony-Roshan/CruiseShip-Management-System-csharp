@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CruiseshipApp.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
+}
+
+<center>
+    <h1>Manage Items</h1>
+
+    <div>
+        @Html.ActionLink("Home", "EItems", "Employee", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Manage Items", "Index", "Items", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+</center>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+<p>
+    @Html.ActionLink("Add new Items", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Item_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item_name)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image)" width="120" height="80" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Item_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Item_id }) 
+            </td>
+        </tr>
+    }
+
+</table>

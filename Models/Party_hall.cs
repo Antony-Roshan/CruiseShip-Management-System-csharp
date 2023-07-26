@@ -12,18 +12,19 @@ namespace CruiseshipApp.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     using System.Web;
 
     public partial class Party_hall
     {
-        [Key]
         public int Hall_id { get; set; }
         public string Hall_name { get; set; }
+        public string Date { get; set; }
         public string Time { get; set; }
         public string Occasion { get; set; }
-        [DisplayName("Upload File")]
+
+        [DisplayName("Upload Image")]
         public string Image { get; set; }
+
         public HttpPostedFileBase ImageFile { get; set; }
         public string Price { get; set; }
         public string Status { get; set; }

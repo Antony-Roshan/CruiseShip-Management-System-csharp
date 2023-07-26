@@ -11,8 +11,9 @@
     <center>
         <h1>Welcome Manager</h1>
         <div>
-            @Html.ActionLink("Manage Employees", "AddEmployee", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Manage Premium Voyagers", "AddPremiumVoyager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Manage Employees", "ViewEmployees", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Manage Premium Voyagers", "AcceptPremiumVoyager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Feeedbacks", "ViewFeedback", "Manager", new { area = "" }, new { @class = "nav-link" }) |
             @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
         </div>
     </center>

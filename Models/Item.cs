@@ -11,7 +11,8 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel;
+    using System.Web;
 
     public partial class Item
     {
@@ -20,10 +21,14 @@ namespace CruiseshipApp.Models
         {
             this.Order_details = new HashSet<Order_details>();
         }
-        [Key]
+    
         public int Item_id { get; set; }
         public string Item_name { get; set; }
+
+        [DisplayName("Upload Image")]
         public string Image { get; set; }
+
+        public HttpPostedFileBase ImageFile{ get; set; }
         public string Price { get; set; }
         public string Type { get; set; }
     

@@ -8,22 +8,30 @@
 </head>
 <body>
     <center>
-        <h1>LOGIN</h1>
-        <form method="post">
-            <table>
-                <tr>
-                    <th>USERNAME</th>
-                    <td><input type="text" name="un" value="" /></td>
-                </tr>
-                <tr>
-                    <th>PASSWORD</th>
-                    <td><input type="password" name="pwd" value="" /></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" name="sub" value="" /></td>
-                </tr>
-            </table>
-        </form>
+
+            <h1 id="title">CRUISESHIP MANAGEMENT SYSTEM</h1>
+            <div>
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) |
+                @Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" }) |
+                @Html.ActionLink("Registration", "Voyager", "Home", new { area = "" }, new { @class = "nav-link" }) |
+                @Html.ActionLink("Premium Registration", "Premium", "Home", new { area = "" }, new { @class = "nav-link" })
+            </div>
+            <h1>LOGIN</h1>
+            <form method="post">
+                <table>
+                    <tr>
+                        <th>USERNAME</th>
+                        <td><input type="text" name="un" value="" /></td>
+                    </tr>
+                    <tr>
+                        <th>PASSWORD</th>
+                        <td><input type="password" name="pwd" value="" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" name="sub" value="submit" /></td>
+                    </tr>
+                </table>
+            </form>
     </center>
 
 </body>

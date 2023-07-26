@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace CruiseshipApp.Controllers
 {
@@ -55,9 +56,10 @@ namespace CruiseshipApp.Controllers
             {
                 db.Party_hall_Table.Add(party_Hall);
                 db.SaveChanges();
+                TempData["AlertMessage"] = "Party Hall Added Successfully...!";
             }
             ModelState.Clear();
-            return View();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int? id)
@@ -76,7 +78,7 @@ namespace CruiseshipApp.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
-            Party_hall party_Hall = db.Party_hall_Table.Find(id);
+            /*Party_hall party_Hall = db.Party_hall_Table.Find(id);
             string fileName = Path.GetFileNameWithoutExtension(party_Hall.ImageFile.FileName);
             string extension = Path.GetExtension(party_Hall.ImageFile.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
@@ -89,7 +91,13 @@ namespace CruiseshipApp.Controllers
                 db.SaveChanges();
             }
             ModelState.Clear();
-            return View();
+            return View();*/
+            Party_hall party_Hall = db.Party_hall_Table.Find(id);
+            UpdateModel(party_Hall);
+            db.SaveChanges();
+            TempData["AlertMessage"] = "Party Hall Updated Successfully...!";
+            return RedirectToAction("Index");
+
         }
         public ActionResult Delete(int? id)
         {
@@ -110,12 +118,61 @@ namespace CruiseshipApp.Controllers
             Party_hall party_Hall = db.Party_hall_Table.Find(id);
             db.Party_hall_Table.Remove(party_Hall);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Party Hall Deleted Successfully...!";
             return RedirectToAction("Index");
         }
 
         public ViewResult PartyHallBooking()
         {
             return View(db.Party_hall_Table.ToList());
+        }
+
+        public ActionResult Book(int? id)
+        {
+            Party_hall party_Hall = db.Party_hall_Table.Find(id);
+            Session["iid"] = id;
+            return View(party_Hall);
+        }
+        [HttpPost]
+        public ActionResult Confirm(string dt, string tm)
+        {
+            var iids = Session["iid"];
+            CruiseshipDbEntities db = new CruiseshipDbEntities();
+            Party_hall party_Hall = db.Party_hall_Table.Find(iids);
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            var sid = Convert.ToInt32(iids);
+
+            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Time == dt && x.Status == "Booked").ToList();
+            var newss2 = db.Booking_details_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Time == dt && x.Status == "Booked").FirstOrDefault();
+            int count1 = newss1.Count;
+
+            if (newss2 != null)
+            {
+                TempData["AlertMessage"] = "Party Hall is already booked...!";
+            }
+            else
+            {
+                if (count1 >= 1)
+                {
+                    TempData["AlertMessage"] = "Party Hall is not Available. select a different Date...!";
+                }
+                else
+                {
+                    Booking_details details = new Booking_details();
+                    details.Booking_type = "Party_hall";
+                    details.Booking_for_id = party_Hall.Hall_id;
+                    details.Voyager_id = newss.Voyager_id;
+                    details.Date = dt;
+                    details.Time = tm;
+                    details.Status = "Booked";
+                    db.Booking_details_Table.Add(details);
+                    db.SaveChanges();
+
+                    TempData["AlertMessage"] = "Party Hall Booked Successfully...!";
+                }
+            }
+            return RedirectToAction("PartyHallBooking");
         }
     }
 }

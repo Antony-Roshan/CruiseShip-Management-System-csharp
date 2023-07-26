@@ -24,6 +24,7 @@
           <Property Name="Booking_type" Type="nvarchar" MaxLength="50" />
           <Property Name="Booking_for_id" Type="int" Nullable="false" />
           <Property Name="Voyager_id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
           <Property Name="Time" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -44,7 +45,7 @@
           <Property Name="Feedback_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Voyager_id" Type="int" Nullable="false" />
           <Property Name="Date" Type="nvarchar" MaxLength="50" />
-          <Property Name="Feedback" Type="nvarchar" MaxLength="50" />
+          <Property Name="Feedback" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Fitness_centre">
           <Key>
@@ -76,6 +77,18 @@
           <Property Name="Username" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Usertype" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Movie_bookings">
+          <Key>
+            <PropertyRef Name="Movie_bookings_id" />
+          </Key>
+          <Property Name="Movie_bookings_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Voyager_id" Type="int" Nullable="false" />
+          <Property Name="Movie_id" Type="int" Nullable="false" />
+          <Property Name="seat" Type="int" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Total" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Movie_ticket">
           <Key>
@@ -115,6 +128,7 @@
           </Key>
           <Property Name="Hall_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hall_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
           <Property Name="Time" Type="nvarchar" MaxLength="50" />
           <Property Name="Occasion" Type="nvarchar" MaxLength="50" />
           <Property Name="Image" Type="nvarchar" MaxLength="1000" />
@@ -131,6 +145,17 @@
           <Property Name="Amount" Type="nvarchar" MaxLength="50" />
           <Property Name="Date" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Saloon_booking">
+          <Key>
+            <PropertyRef Name="Saloon_booking_id" />
+          </Key>
+          <Property Name="Saloon_booking_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Voyager_id" Type="int" Nullable="false" />
+          <Property Name="Saloon_id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Voyager">
           <Key>
             <PropertyRef Name="Voyager_id" />
@@ -145,18 +170,6 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="Bookingdetailspayment">
-          <End Role="Booking_details" Type="Self.Booking_details" Multiplicity="0..1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Booking_details">
-              <PropertyRef Name="Booking_details_id" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="Booking_details_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Eloginid">
           <End Role="Login" Type="Self.Login" Multiplicity="1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
@@ -166,6 +179,54 @@
             </Principal>
             <Dependent Role="Employee">
               <PropertyRef Name="Login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieId_bookings">
+          <End Role="Movie_ticket" Type="Self.Movie_ticket" Multiplicity="1" />
+          <End Role="Movie_bookings" Type="Self.Movie_bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie_ticket">
+              <PropertyRef Name="Movie_id" />
+            </Principal>
+            <Dependent Role="Movie_bookings">
+              <PropertyRef Name="Movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Saloonid_booking">
+          <End Role="Beauty_Saloon" Type="Self.Beauty_Saloon" Multiplicity="1" />
+          <End Role="Saloon_booking" Type="Self.Saloon_booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beauty_Saloon">
+              <PropertyRef Name="Saloon_id" />
+            </Principal>
+            <Dependent Role="Saloon_booking">
+              <PropertyRef Name="Saloon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voyager_Movie_bookings">
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Movie_bookings" Type="Self.Movie_bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voyager">
+              <PropertyRef Name="Voyager_id" />
+            </Principal>
+            <Dependent Role="Movie_bookings">
+              <PropertyRef Name="Voyager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voyager_saloon_booking">
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Saloon_booking" Type="Self.Saloon_booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voyager">
+              <PropertyRef Name="Voyager_id" />
+            </Principal>
+            <Dependent Role="Saloon_booking">
+              <PropertyRef Name="Voyager_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -249,19 +310,33 @@
           <EntitySet Name="Fitness_centre" EntityType="Self.Fitness_centre" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movie_bookings" EntityType="Self.Movie_bookings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movie_ticket" EntityType="Self.Movie_ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_details" EntityType="Self.Order_details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Party_hall" EntityType="Self.Party_hall" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saloon_booking" EntityType="Self.Saloon_booking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voyager" EntityType="Self.Voyager" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="Bookingdetailspayment" Association="Self.Bookingdetailspayment">
-            <End Role="Booking_details" EntitySet="Booking_details" />
-            <End Role="Payment" EntitySet="Payment" />
-          </AssociationSet>
           <AssociationSet Name="Eloginid" Association="Self.Eloginid">
             <End Role="Login" EntitySet="Login" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieId_bookings" Association="Self.FK_MovieId_bookings">
+            <End Role="Movie_ticket" EntitySet="Movie_ticket" />
+            <End Role="Movie_bookings" EntitySet="Movie_bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Saloonid_booking" Association="Self.FK_Saloonid_booking">
+            <End Role="Beauty_Saloon" EntitySet="Beauty_Saloon" />
+            <End Role="Saloon_booking" EntitySet="Saloon_booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voyager_Movie_bookings" Association="Self.FK_Voyager_Movie_bookings">
+            <End Role="Voyager" EntitySet="Voyager" />
+            <End Role="Movie_bookings" EntitySet="Movie_bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voyager_saloon_booking" Association="Self.FK_Voyager_saloon_booking">
+            <End Role="Voyager" EntitySet="Voyager" />
+            <End Role="Saloon_booking" EntitySet="Saloon_booking" />
           </AssociationSet>
           <AssociationSet Name="Itemorderdetailsid" Association="Self.Itemorderdetailsid">
             <End Role="Items" EntitySet="Items" />
@@ -302,6 +377,7 @@
           <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Saloon_booking" Relationship="Self.FK_Saloonid_booking" FromRole="Beauty_Saloon" ToRole="Saloon_booking" />
         </EntityType>
         <EntityType Name="Booking_details">
           <Key>
@@ -311,10 +387,11 @@
           <Property Name="Booking_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Booking_for_id" Type="Int32" Nullable="false" />
           <Property Name="Voyager_id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="CruiseshipDbModel.Bookingdetailspayment" FromRole="Booking_details" ToRole="Payment" />
-          <NavigationProperty Name="Voyager" Relationship="CruiseshipDbModel.Vbookingdetailsid" FromRole="Booking_details" ToRole="Voyager" />
+          <NavigationProperty Name="Payments" Relationship="Self.Bookingdetailspayment" FromRole="Booking_details" ToRole="Payment" />
+          <NavigationProperty Name="Voyager" Relationship="Self.Vbookingdetailsid" FromRole="Booking_details" ToRole="Voyager" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -325,7 +402,7 @@
           <Property Name="Employee_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Login" Relationship="CruiseshipDbModel.Eloginid" FromRole="Employee" ToRole="Login" />
+          <NavigationProperty Name="Login" Relationship="Self.Eloginid" FromRole="Employee" ToRole="Login" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -334,8 +411,8 @@
           <Property Name="Feedback_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Voyager_id" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Feedback1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Voyager" Relationship="CruiseshipDbModel.Vfeedback" FromRole="Feedback" ToRole="Voyager" />
+          <Property Name="Feedback1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Voyager" Relationship="Self.Vfeedback" FromRole="Feedback" ToRole="Voyager" />
         </EntityType>
         <EntityType Name="Fitness_centre">
           <Key>
@@ -358,7 +435,7 @@
           <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order_details" Relationship="CruiseshipDbModel.Itemorderdetailsid" FromRole="Item" ToRole="Order_details" />
+          <NavigationProperty Name="Order_details" Relationship="Self.Itemorderdetailsid" FromRole="Items" ToRole="Order_details" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -368,8 +445,22 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Usertype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="CruiseshipDbModel.Eloginid" FromRole="Login" ToRole="Employee" />
-          <NavigationProperty Name="Voyagers" Relationship="CruiseshipDbModel.Vloginid" FromRole="Login" ToRole="Voyager" />
+          <NavigationProperty Name="Employees" Relationship="Self.Eloginid" FromRole="Login" ToRole="Employee" />
+          <NavigationProperty Name="Voyagers" Relationship="Self.Vloginid" FromRole="Login" ToRole="Voyager" />
+        </EntityType>
+        <EntityType Name="Movie_bookings">
+          <Key>
+            <PropertyRef Name="Movie_bookings_id" />
+          </Key>
+          <Property Name="Movie_bookings_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Voyager_id" Type="Int32" Nullable="false" />
+          <Property Name="Movie_id" Type="Int32" Nullable="false" />
+          <Property Name="seat" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Movie_ticket" Relationship="Self.FK_MovieId_bookings" FromRole="Movie_bookings" ToRole="Movie_ticket" />
+          <NavigationProperty Name="Voyager" Relationship="Self.FK_Voyager_Movie_bookings" FromRole="Movie_bookings" ToRole="Voyager" />
         </EntityType>
         <EntityType Name="Movie_ticket">
           <Key>
@@ -382,6 +473,7 @@
           <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Movie_bookings" Relationship="Self.FK_MovieId_bookings" FromRole="Movie_ticket" ToRole="Movie_bookings" />
         </EntityType>
         <EntityType Name="Order_details">
           <Key>
@@ -392,8 +484,8 @@
           <Property Name="Item_id" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Item" Relationship="CruiseshipDbModel.Itemorderdetailsid" FromRole="Order_details" ToRole="Item" />
-          <NavigationProperty Name="Order" Relationship="CruiseshipDbModel.Orderid" FromRole="Order_details" ToRole="Order" />
+          <NavigationProperty Name="Item" Relationship="Self.Itemorderdetailsid" FromRole="Order_details" ToRole="Items" />
+          <NavigationProperty Name="Order" Relationship="Self.Orderid" FromRole="Order_details" ToRole="Orders" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -404,8 +496,8 @@
           <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order_details" Relationship="CruiseshipDbModel.Orderid" FromRole="Order" ToRole="Order_details" />
-          <NavigationProperty Name="Voyager" Relationship="CruiseshipDbModel.Ordervoyagerid" FromRole="Order" ToRole="Voyager" />
+          <NavigationProperty Name="Order_details" Relationship="Self.Orderid" FromRole="Orders" ToRole="Order_details" />
+          <NavigationProperty Name="Voyager" Relationship="Self.Ordervoyagerid" FromRole="Orders" ToRole="Voyager" />
         </EntityType>
         <EntityType Name="Party_hall">
           <Key>
@@ -413,6 +505,7 @@
           </Key>
           <Property Name="Hall_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Hall_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Occasion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
@@ -428,7 +521,20 @@
           <Property Name="Booking_for" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Booking_details" Relationship="CruiseshipDbModel.Bookingdetailspayment" FromRole="Payment" ToRole="Booking_details" />
+          <NavigationProperty Name="Booking_details" Relationship="Self.Bookingdetailspayment" FromRole="Payment" ToRole="Booking_details" />
+        </EntityType>
+        <EntityType Name="Saloon_booking">
+          <Key>
+            <PropertyRef Name="Saloon_booking_id" />
+          </Key>
+          <Property Name="Saloon_booking_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Voyager_id" Type="Int32" Nullable="false" />
+          <Property Name="Saloon_id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Beauty_Saloon" Relationship="Self.FK_Saloonid_booking" FromRole="Saloon_booking" ToRole="Beauty_Saloon" />
+          <NavigationProperty Name="Voyager" Relationship="Self.FK_Voyager_saloon_booking" FromRole="Saloon_booking" ToRole="Voyager" />
         </EntityType>
         <EntityType Name="Voyager">
           <Key>
@@ -443,61 +549,28 @@
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Booking_details" Relationship="CruiseshipDbModel.Vbookingdetailsid" FromRole="Voyager" ToRole="Booking_details" />
-          <NavigationProperty Name="Feedbacks" Relationship="CruiseshipDbModel.Vfeedback" FromRole="Voyager" ToRole="Feedback" />
-          <NavigationProperty Name="Login" Relationship="CruiseshipDbModel.Vloginid" FromRole="Voyager" ToRole="Login" />
-          <NavigationProperty Name="Orders" Relationship="CruiseshipDbModel.Ordervoyagerid" FromRole="Voyager" ToRole="Order" />
+          <NavigationProperty Name="Booking_details" Relationship="Self.Vbookingdetailsid" FromRole="Voyager" ToRole="Booking_details" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.Vfeedback" FromRole="Voyager" ToRole="Feedback" />
+          <NavigationProperty Name="Login" Relationship="Self.Vloginid" FromRole="Voyager" ToRole="Login" />
+          <NavigationProperty Name="Movie_bookings" Relationship="Self.FK_Voyager_Movie_bookings" FromRole="Voyager" ToRole="Movie_bookings" />
+          <NavigationProperty Name="Orders" Relationship="Self.Ordervoyagerid" FromRole="Voyager" ToRole="Orders" />
+          <NavigationProperty Name="Saloon_booking" Relationship="Self.FK_Voyager_saloon_booking" FromRole="Voyager" ToRole="Saloon_booking" />
         </EntityType>
-        <EntityContainer Name="CruiseshipDbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Beauty_Saloon" EntityType="Self.Beauty_Saloon" />
-          <EntitySet Name="Booking_details" EntityType="Self.Booking_details" />
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
-          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
-          <EntitySet Name="Fitness_centre" EntityType="Self.Fitness_centre" />
-          <EntitySet Name="Items" EntityType="Self.Item" />
-          <EntitySet Name="Logins" EntityType="Self.Login" />
-          <EntitySet Name="Movie_ticket" EntityType="Self.Movie_ticket" />
-          <EntitySet Name="Order_details" EntityType="Self.Order_details" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
-          <EntitySet Name="Party_hall" EntityType="Self.Party_hall" />
-          <EntitySet Name="Payments" EntityType="Self.Payment" />
-          <EntitySet Name="Voyagers" EntityType="Self.Voyager" />
-          <AssociationSet Name="Bookingdetailspayment" Association="CruiseshipDbModel.Bookingdetailspayment">
-            <End Role="Booking_details" EntitySet="Booking_details" />
-            <End Role="Payment" EntitySet="Payments" />
-          </AssociationSet>
-          <AssociationSet Name="Vbookingdetailsid" Association="CruiseshipDbModel.Vbookingdetailsid">
-            <End Role="Voyager" EntitySet="Voyagers" />
-            <End Role="Booking_details" EntitySet="Booking_details" />
-          </AssociationSet>
-          <AssociationSet Name="Eloginid" Association="CruiseshipDbModel.Eloginid">
-            <End Role="Login" EntitySet="Logins" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="Vfeedback" Association="CruiseshipDbModel.Vfeedback">
-            <End Role="Voyager" EntitySet="Voyagers" />
-            <End Role="Feedback" EntitySet="Feedbacks" />
-          </AssociationSet>
-          <AssociationSet Name="Itemorderdetailsid" Association="CruiseshipDbModel.Itemorderdetailsid">
-            <End Role="Item" EntitySet="Items" />
-            <End Role="Order_details" EntitySet="Order_details" />
-          </AssociationSet>
-          <AssociationSet Name="Vloginid" Association="CruiseshipDbModel.Vloginid">
-            <End Role="Login" EntitySet="Logins" />
-            <End Role="Voyager" EntitySet="Voyagers" />
-          </AssociationSet>
-          <AssociationSet Name="Orderid" Association="CruiseshipDbModel.Orderid">
-            <End Role="Order" EntitySet="Orders" />
-            <End Role="Order_details" EntitySet="Order_details" />
-          </AssociationSet>
-          <AssociationSet Name="Ordervoyagerid" Association="CruiseshipDbModel.Ordervoyagerid">
-            <End Role="Voyager" EntitySet="Voyagers" />
-            <End Role="Order" EntitySet="Orders" />
-          </AssociationSet>
-        </EntityContainer>
+        <Association Name="FK_Saloonid_booking">
+          <End Role="Beauty_Saloon" Type="Self.Beauty_Saloon" Multiplicity="1" />
+          <End Role="Saloon_booking" Type="Self.Saloon_booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beauty_Saloon">
+              <PropertyRef Name="Saloon_id" />
+            </Principal>
+            <Dependent Role="Saloon_booking">
+              <PropertyRef Name="Saloon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Bookingdetailspayment">
-          <End Type="CruiseshipDbModel.Booking_details" Role="Booking_details" Multiplicity="0..1" />
-          <End Type="CruiseshipDbModel.Payment" Role="Payment" Multiplicity="*" />
+          <End Role="Booking_details" Type="Self.Booking_details" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Booking_details">
               <PropertyRef Name="Booking_details_id" />
@@ -508,8 +581,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Vbookingdetailsid">
-          <End Type="CruiseshipDbModel.Voyager" Role="Voyager" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Booking_details" Role="Booking_details" Multiplicity="*" />
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Booking_details" Type="Self.Booking_details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Voyager">
               <PropertyRef Name="Voyager_id" />
@@ -520,8 +593,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Eloginid">
-          <End Type="CruiseshipDbModel.Login" Role="Login" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Login">
               <PropertyRef Name="Login_id" />
@@ -532,8 +605,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Vfeedback">
-          <End Type="CruiseshipDbModel.Voyager" Role="Voyager" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Feedback" Role="Feedback" Multiplicity="*" />
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Voyager">
               <PropertyRef Name="Voyager_id" />
@@ -544,10 +617,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Itemorderdetailsid">
-          <End Type="CruiseshipDbModel.Item" Role="Item" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Order_details" Role="Order_details" Multiplicity="*" />
+          <End Role="Items" Type="Self.Item" Multiplicity="1" />
+          <End Role="Order_details" Type="Self.Order_details" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Item">
+            <Principal Role="Items">
               <PropertyRef Name="Item_id" />
             </Principal>
             <Dependent Role="Order_details">
@@ -556,8 +629,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Vloginid">
-          <End Type="CruiseshipDbModel.Login" Role="Login" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Voyager" Role="Voyager" Multiplicity="*" />
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Login">
               <PropertyRef Name="Login_id" />
@@ -567,11 +640,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Orderid">
-          <End Type="CruiseshipDbModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Order_details" Role="Order_details" Multiplicity="*" />
+        <Association Name="FK_MovieId_bookings">
+          <End Role="Movie_ticket" Type="Self.Movie_ticket" Multiplicity="1" />
+          <End Role="Movie_bookings" Type="Self.Movie_bookings" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Order">
+            <Principal Role="Movie_ticket">
+              <PropertyRef Name="Movie_id" />
+            </Principal>
+            <Dependent Role="Movie_bookings">
+              <PropertyRef Name="Movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voyager_Movie_bookings">
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Movie_bookings" Type="Self.Movie_bookings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voyager">
+              <PropertyRef Name="Voyager_id" />
+            </Principal>
+            <Dependent Role="Movie_bookings">
+              <PropertyRef Name="Voyager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Orderid">
+          <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order_details" Type="Self.Order_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
               <PropertyRef Name="Order_id" />
             </Principal>
             <Dependent Role="Order_details">
@@ -580,17 +677,94 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Ordervoyagerid">
-          <End Type="CruiseshipDbModel.Voyager" Role="Voyager" Multiplicity="1" />
-          <End Type="CruiseshipDbModel.Order" Role="Order" Multiplicity="*" />
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Voyager">
               <PropertyRef Name="Voyager_id" />
             </Principal>
-            <Dependent Role="Order">
+            <Dependent Role="Orders">
               <PropertyRef Name="Voyager_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Voyager_saloon_booking">
+          <End Role="Voyager" Type="Self.Voyager" Multiplicity="1" />
+          <End Role="Saloon_booking" Type="Self.Saloon_booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voyager">
+              <PropertyRef Name="Voyager_id" />
+            </Principal>
+            <Dependent Role="Saloon_booking">
+              <PropertyRef Name="Voyager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CruiseshipDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Beauty_Saloon" EntityType="Self.Beauty_Saloon" />
+          <EntitySet Name="Booking_details" EntityType="Self.Booking_details" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Fitness_centre" EntityType="Self.Fitness_centre" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="Movie_bookings" EntityType="Self.Movie_bookings" />
+          <EntitySet Name="Movie_ticket" EntityType="Self.Movie_ticket" />
+          <EntitySet Name="Order_details" EntityType="Self.Order_details" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Party_hall" EntityType="Self.Party_hall" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="Saloon_booking" EntityType="Self.Saloon_booking" />
+          <EntitySet Name="Voyagers" EntityType="Self.Voyager" />
+          <AssociationSet Name="FK_Saloonid_booking" Association="Self.FK_Saloonid_booking">
+            <End Role="Beauty_Saloon" EntitySet="Beauty_Saloon" />
+            <End Role="Saloon_booking" EntitySet="Saloon_booking" />
+          </AssociationSet>
+          <AssociationSet Name="Bookingdetailspayment" Association="Self.Bookingdetailspayment">
+            <End Role="Booking_details" EntitySet="Booking_details" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="Vbookingdetailsid" Association="Self.Vbookingdetailsid">
+            <End Role="Voyager" EntitySet="Voyagers" />
+            <End Role="Booking_details" EntitySet="Booking_details" />
+          </AssociationSet>
+          <AssociationSet Name="Eloginid" Association="Self.Eloginid">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="Vfeedback" Association="Self.Vfeedback">
+            <End Role="Voyager" EntitySet="Voyagers" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="Itemorderdetailsid" Association="Self.Itemorderdetailsid">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Order_details" EntitySet="Order_details" />
+          </AssociationSet>
+          <AssociationSet Name="Vloginid" Association="Self.Vloginid">
+            <End Role="Login" EntitySet="Logins" />
+            <End Role="Voyager" EntitySet="Voyagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieId_bookings" Association="Self.FK_MovieId_bookings">
+            <End Role="Movie_ticket" EntitySet="Movie_ticket" />
+            <End Role="Movie_bookings" EntitySet="Movie_bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voyager_Movie_bookings" Association="Self.FK_Voyager_Movie_bookings">
+            <End Role="Voyager" EntitySet="Voyagers" />
+            <End Role="Movie_bookings" EntitySet="Movie_bookings" />
+          </AssociationSet>
+          <AssociationSet Name="Orderid" Association="Self.Orderid">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Order_details" EntitySet="Order_details" />
+          </AssociationSet>
+          <AssociationSet Name="Ordervoyagerid" Association="Self.Ordervoyagerid">
+            <End Role="Voyager" EntitySet="Voyagers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voyager_saloon_booking" Association="Self.FK_Voyager_saloon_booking">
+            <End Role="Voyager" EntitySet="Voyagers" />
+            <End Role="Saloon_booking" EntitySet="Saloon_booking" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -616,6 +790,7 @@
                 <ScalarProperty Name="Booking_type" ColumnName="Booking_type" />
                 <ScalarProperty Name="Booking_for_id" ColumnName="Booking_for_id" />
                 <ScalarProperty Name="Voyager_id" ColumnName="Voyager_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
@@ -676,6 +851,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Movie_bookings">
+            <EntityTypeMapping TypeName="CruiseshipDbModel.Movie_bookings">
+              <MappingFragment StoreEntitySet="Movie_bookings">
+                <ScalarProperty Name="Movie_bookings_id" ColumnName="Movie_bookings_id" />
+                <ScalarProperty Name="Voyager_id" ColumnName="Voyager_id" />
+                <ScalarProperty Name="Movie_id" ColumnName="Movie_id" />
+                <ScalarProperty Name="seat" ColumnName="seat" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Movie_ticket">
             <EntityTypeMapping TypeName="CruiseshipDbModel.Movie_ticket">
               <MappingFragment StoreEntitySet="Movie_ticket">
@@ -716,6 +904,7 @@
               <MappingFragment StoreEntitySet="Party_hall">
                 <ScalarProperty Name="Hall_id" ColumnName="Hall_id" />
                 <ScalarProperty Name="Hall_name" ColumnName="Hall_name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Occasion" ColumnName="Occasion" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
@@ -732,6 +921,18 @@
                 <ScalarProperty Name="Booking_for" ColumnName="Booking_for" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saloon_booking">
+            <EntityTypeMapping TypeName="CruiseshipDbModel.Saloon_booking">
+              <MappingFragment StoreEntitySet="Saloon_booking">
+                <ScalarProperty Name="Saloon_booking_id" ColumnName="Saloon_booking_id" />
+                <ScalarProperty Name="Voyager_id" ColumnName="Voyager_id" />
+                <ScalarProperty Name="Saloon_id" ColumnName="Saloon_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

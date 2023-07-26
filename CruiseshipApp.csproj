@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FitnessController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -136,7 +137,6 @@
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\PartyController.cs" />
     <Compile Include="Controllers\SaloonController.cs" />
-    <Compile Include="Controllers\VoyagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,14 +167,18 @@
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MovieBookingDetails.cs" />
+    <Compile Include="Models\Movie_bookings.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Movie_ticket.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -189,6 +193,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Saloon_booking.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Voyager.cs">
@@ -221,10 +228,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
     <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -236,9 +246,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -267,14 +274,11 @@
     <Content Include="Views\Home\Home_LayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Voyager.cshtml" />
     <Content Include="Views\Fitness\Fitness_LayoutPage.cshtml" />
     <Content Include="Views\Items\Items_LayoutPage.cshtml" />
     <Content Include="Views\Movie\Movie_LayoutPage.cshtml" />
     <Content Include="Views\Party\Party_LayoutPage.cshtml" />
     <Content Include="Views\Saloon\Saloon_LayoutPage.cshtml" />
-    <Content Include="Views\Voyager\Voyager_LayoutPage.cshtml" />
-    <Content Include="Views\Voyager\Voyager.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
@@ -295,16 +299,40 @@
     <Content Include="Views\Employee\EFitness.cshtml" />
     <Content Include="Views\Employee\ESaloon.cshtml" />
     <Content Include="Views\Employee\EItems.cshtml" />
-    <Content Include="Views\Voyager\Premium.cshtml" />
     <Content Include="Views\Party\Create.cshtml" />
     <Content Include="Views\Party\Index.cshtml" />
     <Content Include="Views\Party\Delete.cshtml" />
     <Content Include="Views\Party\Details.cshtml" />
     <Content Include="Views\Party\Edit.cshtml" />
     <Content Include="Views\Manager\AddEmployee.cshtml" />
-    <Content Include="Views\Manager\AddPremiumVoyager.cshtml" />
     <Content Include="Views\Manager\ViewEmployees.cshtml" />
     <Content Include="Views\Home\Premium.cshtml" />
+    <Content Include="Views\Manager\AcceptPremiumVoyager.cshtml" />
+    <Content Include="Views\Items\Index.cshtml" />
+    <Content Include="Views\Home\Voyager.cshtml" />
+    <Content Include="Views\Movie\MovieTicketBooking.cshtml" />
+    <Content Include="Views\Party\PartyHallBooking.cshtml" />
+    <Content Include="Views\Feedback\Feedback_LayoutPage.cshtml" />
+    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\Feedback\Create.cshtml" />
+    <Content Include="Views\Feedback\Edit.cshtml" />
+    <Content Include="Views\Feedback\Delete.cshtml" />
+    <Content Include="Views\Feedback\ViewFeedback.cshtml" />
+    <Content Include="Views\Items\Create.cshtml" />
+    <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Items\Delete.cshtml" />
+    <Content Include="Views\Items\ItemOrdereing.cshtml" />
+    <Content Include="Views\Fitness\FitnessCentreBooking.cshtml" />
+    <Content Include="Views\Fitness\Book.cshtml" />
+    <Content Include="Views\Items\Cart.cshtml" />
+    <Content Include="Views\Saloon\BeautySaloonBooking.cshtml" />
+    <Content Include="Views\Saloon\Book.cshtml" />
+    <Content Include="Views\Home\VoyagerHome.cshtml" />
+    <Content Include="Views\Party\Book.cshtml" />
+    <Content Include="Views\Movie\book.cshtml" />
+    <Content Include="Views\Movie\MoviePayment.cshtml" />
+    <Content Include="Views\Saloon\SaloonPayment.cshtml" />
+    <Content Include="Views\Movie\ViewBookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

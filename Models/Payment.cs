@@ -11,11 +11,9 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Payment
     {
-        [Key]
         public int Payment_id { get; set; }
         public Nullable<int> Booking_details_id { get; set; }
         public string Booking_for { get; set; }

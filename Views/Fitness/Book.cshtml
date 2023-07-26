@@ -1,0 +1,100 @@
+﻿@model CruiseshipApp.Models.Fitness_centre
+
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
+}
+
+<h2>Book</h2>
+<form method="Post" action="/Fitness/Confirm">
+    <div>
+        <h4>Fitness_centre</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @*        <dt>
+            @Html.DisplayNameFor(model => model.Fitness_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fitness_id)
+        </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Fitness_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Fitness_name)
+            </dd>
+
+            <dt>
+                Date
+            </dt>
+
+            <dd>
+                <label for="date">Select a Date:</label>
+                <input type="date" name="dt" min="2023-01-02" required>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+
+            <dd>
+                <label for="tm">Select a time:</label>
+                <select name="tm">
+                    <option value="7:00">7:00 AM</option>
+                    <option value="11:00">8:00 AM</option>
+                    <option value="12:00">9:00 AM</option>
+                    <option value="13:00">10:00 AM</option>
+                    <option value="14:00">11:00 AM</option>
+                    <option value="15:00">12:00 PM</option>
+                    <option value="16:00">1:00 PM</option>
+                    <option value="17:00">2:00 PM</option>
+                    <option value="17:00">3:00 PM</option>
+                    <option value="17:00">4:00 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                    <option value="17:00">6:00 PM</option>
+                </select>
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Place)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Place)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            @*        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Back to List", "FitnessCentreBooking")
+        <input type="submit" name="Confirm" value="Confirm" />
+        @*@Html.ActionLink("Confirm", "Confirm", new { id = Model.Fitness_id })*@
+    </p>
+</form>

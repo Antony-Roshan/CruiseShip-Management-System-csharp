@@ -11,11 +11,9 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Fitness_centre
     {
-        [Key]
         public int Fitness_id { get; set; }
         public string Fitness_name { get; set; }
         public string Time { get; set; }

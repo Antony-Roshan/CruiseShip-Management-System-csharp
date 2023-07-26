@@ -23,7 +23,7 @@ namespace CruiseshipApp.Controllers
         {
             return View();
         }
-        public ActionResult EItems()
+        public ActionResult  EItems()
         {
             return View();
         }

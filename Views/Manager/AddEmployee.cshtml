@@ -10,7 +10,9 @@
 </head>
 <body>
     <center>
+
         <h1>EMPLOYEE REGISTRATION</h1>
+
         <form method="post">
             <table>
                 <tr>
@@ -35,8 +37,18 @@
                     <td><input type="text" name="pwd" value="" /></td>
                 </tr>
                 <tr>
-                    <th>SECTION </th>
-                    <td><input type="text" name="ut" value="" /></td>
+                    <th>EMPLOYEE DEPARTMENT </th>
+                    <td>
+                        <select name="ut">
+                            <option value="EMovie">EMovie</option>
+                            <option value="EParty">EParty</option>
+                            <option value="EFitness">EFitness</option>
+                            <option value="ESaloon">ESaloon</option>
+                            <option value="EItems">EItems</option>
+                        </select>
+                    </td>
+
+                    @* <td><input type="text" name="ut" value="" /></td>*@
                 </tr>
                 <tr>
                     <td></td>

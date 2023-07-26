@@ -5,10 +5,24 @@
     Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
 }
 
-<h2>Index</h2>
+<center>
+    <h1>Manage Fitness Centre</h1>
 
+    <div>
+        @Html.ActionLink("Home", "EFitness", "Employee", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Manage Fitness Centre", "Index", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+</center>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Fitness Centre", "Create")
 </p>
 <table class="table">
     <tr>
@@ -21,7 +35,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Place)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Phone)
         </th>
         <th>
@@ -29,36 +43,37 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fitness_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Place)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Fitness_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Fitness_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Fitness_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fitness_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Fitness_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Fitness_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Fitness_id })
+            </td>
+        </tr>
+    }
 
 </table>

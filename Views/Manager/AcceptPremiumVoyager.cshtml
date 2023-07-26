@@ -1,0 +1,87 @@
+﻿@model IEnumerable<CruiseshipApp.Models.Voyager>
+
+@{
+    ViewBag.Title = "AcceptPremiumVoyager";
+    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
+}
+
+<center>
+    <h2>Accept Premium Voyager</h2>
+    <div>
+        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Manage Employees", "ViewEmployees", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+</center>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table">
+    <tr>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Login_id)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.First_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*        <td>
+                    @Html.DisplayFor(modelItem => item.Login_id)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.First_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @*        <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>*@
+            <td>
+                @Html.ActionLink("Accept", "Accept", new { id = item.Voyager_id }) |
+                @Html.ActionLink("Reject", "Reject", new { id = item.Voyager_id })
+            </td>
+        </tr>
+    }
+
+</table>

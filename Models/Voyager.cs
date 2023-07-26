@@ -11,8 +11,7 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Voyager
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,9 +19,11 @@ namespace CruiseshipApp.Models
         {
             this.Booking_details = new HashSet<Booking_details>();
             this.Feedbacks = new HashSet<Feedback>();
+            this.Movie_bookings = new HashSet<Movie_bookings>();
             this.Orders = new HashSet<Order>();
+            this.Saloon_booking = new HashSet<Saloon_booking>();
         }
-        [Key]
+    
         public int Voyager_id { get; set; }
         public int Login_id { get; set; }
         public string First_name { get; set; }
@@ -39,6 +40,10 @@ namespace CruiseshipApp.Models
         public virtual ICollection<Feedback> Feedbacks { get; set; }
         public virtual Login Login { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Movie_bookings> Movie_bookings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Saloon_booking> Saloon_booking { get; set; }
     }
 }

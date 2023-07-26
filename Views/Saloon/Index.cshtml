@@ -5,10 +5,25 @@
     Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
 }
 
-<h2>Index</h2>
+<center>
+    <h1>Manage Beauty Saloon</h1>
+
+    <div>
+        @Html.ActionLink("Home", "ESaloon", "Employee", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Manage Beauty Saloon", "Index", "Saloon", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+</center>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Beauty Saloon", "Create")
 </p>
 <table class="table">
     <tr>
@@ -21,38 +36,39 @@
         <th>
             @Html.DisplayNameFor(model => model.Time)
         </th>
-        <th>
+@*        <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Status)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Saloon_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.saloon_service)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Time)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Saloon_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Saloon_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Saloon_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saloon_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.saloon_service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+@*            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Saloon_id }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.Saloon_id }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.Saloon_id })
+            </td>
+        </tr>
+    }
 
 </table>

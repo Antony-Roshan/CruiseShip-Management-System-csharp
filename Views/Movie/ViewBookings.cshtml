@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CruiseshipApp.Models.MovieBookingDetails>
+
+@{
+    ViewBag.Title = "ViewBookings";
+    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
+}
+
+<h2>ViewBookings</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table">
+    <tr>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Movie_bookings_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voyager_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.seat)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.movie)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*        <td>
+                    @Html.DisplayFor(modelItem => item.Movie_bookings_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voyager_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.seat)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            @*        <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.movie)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Make Payment", "MoviePayment", new { id = item.Movie_bookings_id })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to List", "MovieTicketBooking"@*, new { id = item.Movie_bookings_id }*@)

@@ -37,13 +37,13 @@ namespace CruiseshipApp.Controllers
                     {
                         if (Ldetails.Usertype == "Voyager")
                         {
-                            return RedirectToAction("Voyager", "Voyager");
+                            return RedirectToAction("VoyagerHome", "Home");
                         }
                         else
                         {
                             if (Ldetails.Usertype == "Premium")
                             {
-                                return RedirectToAction("Premium", "Voyager");
+                                return RedirectToAction("VoyagerHome", "Home");
                             }
                             else
                             {
@@ -131,7 +131,7 @@ namespace CruiseshipApp.Controllers
                 Login l = new Login();
                 l.Username = un;
                 l.Password = pwd;
-                l.Usertype = "Premium";
+                l.Usertype = "Pending";
                 db.Logins.Add(l);
                 db.SaveChanges();
 
@@ -144,10 +144,16 @@ namespace CruiseshipApp.Controllers
                 v.Gender = gn;
                 v.Phone = ph;
                 v.Email = em;
+                v.Status = "PremiumPending";
                 db.Voyagers.Add(v);
                 db.SaveChanges();
             }
             return RedirectToAction("Login", "Home");
+        }
+
+        public ActionResult VoyagerHome()
+        {
+            return View();
         }
     }
 }

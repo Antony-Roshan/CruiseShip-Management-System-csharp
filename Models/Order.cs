@@ -11,8 +11,7 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +19,7 @@ namespace CruiseshipApp.Models
         {
             this.Order_details = new HashSet<Order_details>();
         }
-        [Key]
+    
         public int Order_id { get; set; }
         public int Voyager_id { get; set; }
         public string Total { get; set; }

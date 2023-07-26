@@ -11,11 +11,9 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Employee
     {
-        [Key]
         public int Employee_id { get; set; }
         public int Login_id { get; set; }
         public string Employee_name { get; set; }

@@ -11,11 +11,9 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Feedback
     {
-        [Key]
         public int Feedback_id { get; set; }
         public int Voyager_id { get; set; }
         public string Date { get; set; }

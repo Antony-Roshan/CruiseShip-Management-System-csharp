@@ -1,0 +1,100 @@
+﻿@model CruiseshipApp.Models.Beauty_Saloon
+
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
+}
+
+<h2>Book</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<form method="post" action="/Saloon/Confirm">
+    <div>
+        <h4>Beauty_Saloon</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Saloon_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Saloon_id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Saloon_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Saloon_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.saloon_service)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.saloon_service)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                Date
+            </dt>
+
+            <dd>
+                <label for="date">Select a Date:</label>
+                <input type="date" name="dt" min="2023-01-02" required> 
+            </dd>
+
+            <dt>
+                Time
+            </dt>
+
+            <dd>
+                <label for="tm">Select a time:</label>
+                <select name="tm">
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="13:00">1:00 PM</option>
+                    <option value="14:00">2:00 PM</option>
+                    <option value="15:00">3:00 PM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="17:00">5:00 PM</option>
+                </select>
+            </dd>
+
+
+        </dl>
+    </div>
+    <p>
+        <input type="submit" name="Confirm" value="Confirm" />
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        @Html.ActionLink("Back to List", "BeautySaloonBooking")
+
+
+    </p>
+
+</form>

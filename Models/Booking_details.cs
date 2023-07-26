@@ -11,8 +11,7 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Booking_details
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,11 +19,12 @@ namespace CruiseshipApp.Models
         {
             this.Payments = new HashSet<Payment>();
         }
-        [Key]
+    
         public int Booking_details_id { get; set; }
         public string Booking_type { get; set; }
         public int Booking_for_id { get; set; }
         public int Voyager_id { get; set; }
+        public string Date { get; set; }
         public string Time { get; set; }
         public string Status { get; set; }
     

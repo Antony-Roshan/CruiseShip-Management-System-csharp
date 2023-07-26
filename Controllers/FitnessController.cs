@@ -1,9 +1,8 @@
 ﻿using CruiseshipApp.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Security.Cryptography;
 using System.Web.Mvc;
 
 namespace CruiseshipApp.Controllers
@@ -38,6 +37,7 @@ namespace CruiseshipApp.Controllers
         {
             db.Fitness_centre_Table.Add(fitness_Centre);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Fitness Centre Added Successfully...!";
             return RedirectToAction("Index");
         }
 
@@ -60,6 +60,7 @@ namespace CruiseshipApp.Controllers
             Fitness_centre fitness_Centre = db.Fitness_centre_Table.Find(id);
             UpdateModel(fitness_Centre);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Fitness Centre Updated Successfully...!";
             return RedirectToAction("Index");
         }
         public ActionResult Delete(int? id)
@@ -81,6 +82,7 @@ namespace CruiseshipApp.Controllers
             Fitness_centre fitness_Centre = db.Fitness_centre_Table.Find(id);
             db.Fitness_centre_Table.Remove(fitness_Centre);
             db.SaveChanges();
+            TempData["AlertMessage"] = "Fitness Centre Deleted Successfully...!";
             return RedirectToAction("Index");
         }
 
@@ -88,5 +90,64 @@ namespace CruiseshipApp.Controllers
         {
             return View(db.Fitness_centre_Table.ToList());
         }
+
+        public ActionResult Book(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Fitness Centre Id Required");
+            }
+            Fitness_centre fitness_Centre = db.Fitness_centre_Table.Find(id);
+            if (fitness_Centre == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Fitness Centre Not Found");
+            }
+            Session["iid"] = id;
+            return View(fitness_Centre);
+        }
+
+        [HttpPost]
+        public ActionResult Confirm(string booktime, string dt)
+        {
+            var iids = Session["iid"];
+            CruiseshipDbEntities db = new CruiseshipDbEntities();
+            Fitness_centre fitness_Centre = db.Fitness_centre_Table.Find(iids);
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            var sid = Convert.ToInt32(iids);
+
+            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Time == booktime && x.Status == "Booked").ToList();
+            var newss2 = db.Booking_details_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Time == booktime && x.Status == "Booked").FirstOrDefault();
+            int count1 = newss1.Count;
+
+            if (newss2 != null)
+            {
+                TempData["AlertMessage"] = "Fitness centre is already booked...!"; 
+            }
+            else
+            {
+                if (count1 >= 50)
+                {
+                    TempData["AlertMessage"] = "Fitness centre is full. select a different timing...!";
+                }
+                else
+                {
+                    Booking_details details = new Booking_details();
+                    details.Booking_type = "Fitness_Centre";
+                    details.Booking_for_id = fitness_Centre.Fitness_id;
+                    details.Voyager_id = newss.Voyager_id;
+                    details.Date = dt;
+                    details.Time = booktime;
+                    details.Status = "Booked";
+                    /*fitness_Centre.Status = "Booked";*/
+                    db.Booking_details_Table.Add(details);
+                    db.SaveChanges();
+
+                    TempData["AlertMessage"] = "Fitness Centre Booked Successfully...!";
+                }
+            }
+            return RedirectToAction("FitnessCentreBooking");
+        }
+
     }
 }

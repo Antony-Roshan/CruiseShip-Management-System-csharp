@@ -11,11 +11,9 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Order_details
     {
-        [Key]
         public int Orderdetails_id { get; set; }
         public int Order_id { get; set; }
         public int Item_id { get; set; }

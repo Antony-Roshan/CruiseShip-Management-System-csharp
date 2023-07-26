@@ -13,7 +13,8 @@
         <h1>Welcome Employee</h1>
 
         <div>
-            @Html.ActionLink("Manage Fitness Centre", "Index", "Fitness", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Home", "EFitness", "Employee", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Manage Fitness Centre", "Index", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
             @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
         </div>
     </center>

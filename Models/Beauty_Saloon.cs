@@ -11,16 +11,23 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Beauty_Saloon
     {
-        [Key]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Beauty_Saloon()
+        {
+            this.Saloon_booking = new HashSet<Saloon_booking>();
+        }
+    
         public int Saloon_id { get; set; }
         public string Saloon_name { get; set; }
         public string saloon_service { get; set; }
         public string Time { get; set; }
         public string Price { get; set; }
         public string Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Saloon_booking> Saloon_booking { get; set; }
     }
 }

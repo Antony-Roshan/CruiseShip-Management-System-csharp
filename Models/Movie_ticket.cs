@@ -11,11 +11,15 @@ namespace CruiseshipApp.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Movie_ticket
     {
-        [Key]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Movie_ticket()
+        {
+            this.Movie_bookings = new HashSet<Movie_bookings>();
+        }
+    
         public int Movie_id { get; set; }
         public string Movie_name { get; set; }
         public string Screen { get; set; }
@@ -23,5 +27,8 @@ namespace CruiseshipApp.Models
         public string Time { get; set; }
         public string Price { get; set; }
         public string Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Movie_bookings> Movie_bookings { get; set; }
     }
 }

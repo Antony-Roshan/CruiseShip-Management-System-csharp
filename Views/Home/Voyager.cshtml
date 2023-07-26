@@ -1,6 +1,9 @@
-﻿@{
+﻿
+@{
+    ViewBag.Title = "Voyager";
     Layout = "~/Views/Home/Home_LayoutPage.cshtml";
 }
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,45 +11,52 @@
 </head>
 <body>
     <center>
-        <h1>Voyager REGISTRATION</h1>
+        <h1 id="title">CRUISESHIP MANAGEMENT SYSTEM</h1>
+        <div>
+            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Registration", "Voyager", "Home", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Premium Registration", "Premium", "Home", new { area = "" }, new { @class = "nav-link" })
+        </div>
+        <h1>VOYAGER REGISTRATION</h1>
         <form method="post">
             <table>
                 <tr>
                     <th>FIRST NAME </th>
-                    <td><input type="text" name="fn" value="" /></td>
+                    <td><input type="text" name="fn" value="" required/></td>
                 </tr>
                 <tr>
                     <th>LAST NAME </th>
-                    <td><input type="text" name="ln" value="" /></td>
+                    <td><input type="text" name="ln" value="" required/></td>
                 </tr>
                 <tr>
                     <th>PLACE </th>
-                    <td><input type="text" name="pl" value="" /></td>
+                    <td><input type="text" name="pl" value="" required/></td>
                 </tr>
                 <tr>
                     <th>GENDER </th>
                     <td>
-                        <input type="radio" name="gn" value="Male" />
+                        <input type="radio" name="gn" value="Male" required/>
                         Male <br />
-                        <input type="radio" name="gn" value="Female" />
+                        <input type="radio" name="gn" value="Female" required/>
                         Female
                     </td>
                 </tr>
                 <tr>
                     <th>PHONE </th>
-                    <td><input type="text" name="ph" value="" /></td>
+                    <td><input type="tel" name="ph" value="" pattern="[0-9]{10}" required/></td>
                 </tr>
                 <tr>
                     <th>EMAIL </th>
-                    <td><input type="text" name="em" value="" /></td>
+                    <td><input type="email" name="em" value="" required/></td>
                 </tr>
                 <tr>
                     <th>USER NAME </th>
-                    <td><input type="text" name="un" value="" /></td>
+                    <td><input type="text" name="un" value="" required/></td>
                 </tr>
                 <tr>
                     <th>PASSWORD </th>
-                    <td><input type="text" name="pwd" value="" /></td>
+                    <td><input type="password" name="pwd" value="" required/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -58,3 +68,4 @@
 
 </body>
 </html>
+

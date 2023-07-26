@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CruiseshipApp.Models.Fitness_centre>
+
+@{
+    ViewBag.Title = "FitnessCentreBooking";
+    Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
+}
+
+<h2>Fitness Centre Booking</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fitness_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fitness_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fitness_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fitness_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.Fitness_id }) 
+            </td>
+        </tr>
+    }
+
+</table>

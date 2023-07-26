@@ -1,0 +1,70 @@
+﻿@model CruiseshipApp.Models.Item
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
+}
+
+<h2>Cart</h2>
+
+<form method="post" action="/Items/Done">
+    <div>
+        <h4>Item</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Item_id)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item_id)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Item_name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Item_name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Image)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt>
+                Quantity
+            </dt>
+
+            <dd>
+                <input type="text" name="qn" />
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        <input type="submit" name="Done" value="Done" />
+@*        @Html.ActionLink("Done", "Done", new { /* id = Model.PrimaryKey */ })*@
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</form>
