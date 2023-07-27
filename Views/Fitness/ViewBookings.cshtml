@@ -1,0 +1,95 @@
+﻿@model IEnumerable<CruiseshipApp.Models.FitnessBookingDetails>
+
+@{
+    ViewBag.Title = "ViewBookings";
+    Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
+}
+
+<h2>ViewBookings</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table">
+    <tr>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Booking_details_id)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Booking_type)
+        </th>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Booking_for_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voyager_id)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.fitname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.place)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*            <td>
+                    @Html.DisplayFor(modelItem => item.Booking_details_id)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Booking_type)
+            </td>
+            @*            <td>
+                    @Html.DisplayFor(modelItem => item.Booking_for_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voyager_id)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            @*            <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            @*            <td>
+                    @Html.DisplayFor(modelItem => item.fitname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.place)
+                </td>*@
+            <td>
+                @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                @Html.ActionLink("Make Payment", "FitnessPayment", new { id = item.Booking_details_id })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to List", "FitnessCentreBooking"@*, new { id = item.Movie_bookings_id }*@)

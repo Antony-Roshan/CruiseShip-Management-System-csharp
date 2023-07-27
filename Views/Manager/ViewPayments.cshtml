@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CruiseshipApp.Models.ViewPaymentDetails>
+
+@{
+    ViewBag.Title = "ViewPayments";
+    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
+}
+
+<h2>ViewPayments</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Booking Type
+        </th>
+        <th>
+            Voyager
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Date
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.BookingType
+            </td>
+            <td>
+                @item.VoyagerID
+            </td>
+            <td>
+                @item.Amnt
+            </td>
+            <td>
+                @item.Dat
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            </td>
+        </tr>
+    }
+
+</table>
+

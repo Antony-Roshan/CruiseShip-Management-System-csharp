@@ -164,5 +164,120 @@ namespace CruiseshipApp.Controllers
 
             return RedirectToAction("ItemOrdereing");
         }
+
+        public ActionResult ViewOrders()
+        {
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
+            /*CruiseshipDbEntities dd = new CruiseshipDbEntities();
+            Order order = dd.Orders_Table.Find(newss.Voyager_id);*/
+
+
+            return View(db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status == "Pending").ToList());
+            
+            /*using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                var result = (from or in dd.Orders_Table
+                              join it in dd.Items_Table
+                              on od.Item_id equals it.Item_id
+                              select new OrderBookingDetails
+                              {
+                                  Order_id = od.Order_id,
+                                  Date = or.Date,
+                                  Total = or.Total
+                              }).ToList();
+                return View(result);
+            }*/
+        }
+
+        public ActionResult SingleItemsDetails(int? id)
+        {
+
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
+            using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                var result = (from od in dd.Order_details
+                              join it in dd.Items_Table
+                              on od.Item_id equals it.Item_id
+                              where od.Order_id == id
+                              select new OrderBookingDetails
+                              {
+                                  Name = it.Item_name,
+                                  Price = it.Price,
+                                  Quantity = od.Quantity,
+                                  Amount = od.Amount,
+                              }).ToList();
+                return View(result);
+            }
+        }
+
+        public ActionResult OrderPayment(int? id)
+        {
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
+            var check1 = db.Logins.Where(y => y.Usertype == "Premium").FirstOrDefault();
+            if(check1 != null)
+            {
+                TempData["AlertMessage"] = "Premium users need not make payment...!";
+                return RedirectToAction("ViewOrders");
+            }
+            else
+            {
+                Session["bid"] = id;
+                var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
+                if (check != null)
+                {
+                    /*return RedirectToAction("ConfirmPayment");*/
+                    TempData["AlertMessage"] = "Payment already done...!";
+                    return RedirectToAction("ViewOrders");
+                }
+                else
+                {
+
+                }
+            }
+
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmPayment()
+        {
+            CruiseshipDbEntities db = new CruiseshipDbEntities();
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            var iids = Session["iid"];
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+            Item item= db.Items_Table.Find(iids);
+            int biid = Convert.ToInt32(Session["bid"]);
+
+            /*int biid = Convert.ToInt32(Session["bid"]);*/
+
+            var ids = db.Orders_Table.Where(y => y.Order_id == biid).FirstOrDefault();
+            
+
+            var amtid = Session["amts"];
+            Payment payment = new Payment();
+            payment.Booking_details_id = biid;
+            payment.Booking_for = "Movie Ticket";
+            payment.Amount = ids.Total;
+            payment.Date = currentDate1;
+            db.Payments.Add(payment);
+            db.SaveChanges();
+
+            TempData["AlertMessage"] = "Payment Succesfully...!";
+
+            ids.Status = "Paid";
+            db.Entry(ids).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("ViewOrders");
+
+        }
     }
 }

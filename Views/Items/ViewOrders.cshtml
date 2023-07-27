@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CruiseshipApp.Models.Order>
+
+@{
+    ViewBag.Title = "ViewOrders";
+    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
+}
+
+<h2>ViewOrders</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Order_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voyager_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voyager_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Items Details", "SingleItemsDetails", new { id = item.Order_id })
+                @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Back to List", "ItemOrdereing", new { /* id=item.PrimaryKey */ })

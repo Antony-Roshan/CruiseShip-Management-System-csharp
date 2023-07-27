@@ -152,6 +152,7 @@
     <Compile Include="Models\Feedback.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FitnessBookingDetails.cs" />
     <Compile Include="Models\Fitness_centre.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -186,18 +187,22 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderBookingDetails.cs" />
     <Compile Include="Models\Order_details.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartyBookingDetails.cs" />
     <Compile Include="Models\Party_hall.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Payment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SaloonBookingDetails.cs" />
     <Compile Include="Models\Saloon_booking.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewPaymentDetails.cs" />
     <Compile Include="Models\Voyager.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -333,6 +338,15 @@
     <Content Include="Views\Movie\MoviePayment.cshtml" />
     <Content Include="Views\Saloon\SaloonPayment.cshtml" />
     <Content Include="Views\Movie\ViewBookings.cshtml" />
+    <Content Include="Views\Saloon\ViewBookings.cshtml" />
+    <Content Include="Views\Manager\ViewPayments.cshtml" />
+    <Content Include="Views\Fitness\ViewBookings.cshtml" />
+    <Content Include="Views\Fitness\FitnessPayment.cshtml" />
+    <Content Include="Views\Party\ViewBookings.cshtml" />
+    <Content Include="Views\Party\PartyPayment.cshtml" />
+    <Content Include="Views\Items\ViewOrders.cshtml" />
+    <Content Include="Views\Items\OrderPayment.cshtml" />
+    <Content Include="Views\Items\SingleItemsDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

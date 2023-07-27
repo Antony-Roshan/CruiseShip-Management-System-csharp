@@ -122,6 +122,8 @@ namespace CruiseshipApp.Controllers
             return RedirectToAction("Index");
         }
 
+
+
         public ViewResult PartyHallBooking()
         {
             return View(db.Party_hall_Table.ToList());
@@ -173,6 +175,73 @@ namespace CruiseshipApp.Controllers
                 }
             }
             return RedirectToAction("PartyHallBooking");
+        }
+
+        public ActionResult ViewBookings()
+        {
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                List<Booking_details> slist = dd.Booking_details_Table.ToList();
+                List<PartyBookingDetails> addsend = slist.Select(x => new PartyBookingDetails
+                {
+                    Booking_details_id = Convert.ToInt32(x.Booking_details_id),
+                    Voyager_id = Convert.ToInt32(x.Voyager_id),
+                    name = x.Voyager.First_name + ' ' + x.Voyager.Last_name,
+                    Booking_type = x.Booking_type,
+                    Date = x.Date,
+                    Time = x.Time
+                }).Where(x => x.Voyager_id == newss.Voyager_id).ToList();
+                return View(addsend);
+            }
+        }
+
+        public ActionResult PartyPayment(int? id)
+        {
+            Session["bid"] = id;
+            var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
+            if (check != null)
+            {
+                /*return RedirectToAction("ConfirmPayment");*/
+                TempData["AlertMessage"] = "Payment already done...!";
+                return RedirectToAction("ViewBookings");
+            }
+            else
+            {
+
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmPayment()
+        {
+            CruiseshipDbEntities db = new CruiseshipDbEntities();
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            var iids = Session["iid"];
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+            Party_hall party_Hall= db.Party_hall_Table.Find(iids);
+            int biid = Convert.ToInt32(Session["bid"]);
+
+            /*int biid = Convert.ToInt32(Session["bid"]);*/
+
+            var ids = db.Booking_details_Table.Where(y => y.Booking_details_id == biid).FirstOrDefault();
+
+
+            var amtid = Session["amts"];
+            Payment payment = new Payment();
+            payment.Booking_details_id = biid;
+            payment.Booking_for = "Fitness Centre";
+            payment.Amount = party_Hall.Price;
+            payment.Date = currentDate1;
+            db.Payments.Add(payment);
+            db.SaveChanges();
+
+            TempData["AlertMessage"] = "Payment Succesfully...!";
+            return RedirectToAction("ViewBookings");
+
         }
     }
 }

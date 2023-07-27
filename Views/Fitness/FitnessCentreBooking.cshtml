@@ -64,9 +64,10 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Book", "Book", new { id = item.Fitness_id }) 
+                @Html.ActionLink("Book", "Book", new { id = item.Fitness_id })
             </td>
         </tr>
     }
 
 </table>
+@Html.ActionLink("View Bookings", "ViewBookings"@*, new { id = item.Movie_id }*@)

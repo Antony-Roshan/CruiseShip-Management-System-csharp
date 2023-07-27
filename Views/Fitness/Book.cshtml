@@ -32,7 +32,7 @@
             </dt>
 
             <dd>
-                <label for="date">Select a Date:</label>
+                <label for="dt">Select a Date:</label>
                 <input type="date" name="dt" min="2023-01-02" required>
             </dd>
 
@@ -44,17 +44,17 @@
                 <label for="tm">Select a time:</label>
                 <select name="tm">
                     <option value="7:00">7:00 AM</option>
-                    <option value="11:00">8:00 AM</option>
-                    <option value="12:00">9:00 AM</option>
-                    <option value="13:00">10:00 AM</option>
-                    <option value="14:00">11:00 AM</option>
-                    <option value="15:00">12:00 PM</option>
-                    <option value="16:00">1:00 PM</option>
-                    <option value="17:00">2:00 PM</option>
-                    <option value="17:00">3:00 PM</option>
-                    <option value="17:00">4:00 PM</option>
-                    <option value="17:00">5:00 PM</option>
-                    <option value="17:00">6:00 PM</option>
+                    <option value="8:00">8:00 AM</option>
+                    <option value="9:00">9:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <option value="1:00">1:00 PM</option>
+                    <option value="2:00">2:00 PM</option>
+                    <option value="3:00">3:00 PM</option>
+                    <option value="4:00">4:00 PM</option>
+                    <option value="5:00">5:00 PM</option>
+                    <option value="6:00">6:00 PM</option>
                 </select>
             </dd>
 
@@ -93,8 +93,9 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Back to List", "FitnessCentreBooking")
+
         <input type="submit" name="Confirm" value="Confirm" />
+        @Html.ActionLink("Back to List", "FitnessCentreBooking")
         @*@Html.ActionLink("Confirm", "Confirm", new { id = Model.Fitness_id })*@
     </p>
 </form>

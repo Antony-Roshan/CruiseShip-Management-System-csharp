@@ -2,6 +2,14 @@
     Layout = "~/Views/Home/Home_LayoutPage.cshtml";
 }
 
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert-success">
+        <strong>Success !</strong> @TempData["AlertMessage"]
+    </div>
+}
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>

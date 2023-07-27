@@ -58,13 +58,15 @@
             @*        <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>*@
-        <td>
-            @Html.ActionLink("Book", "Book", new { id = item.Saloon_id }) |
-            @*@Html.ActionLink("Make Payment", "SaloonPayment")*@
-        </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.Saloon_id })
+                @*@Html.ActionLink("Make Payment", "SaloonPayment")*@
+            </td>
         </tr>
     }
 
 </table>
+
+@Html.ActionLink("View Bookings", "ViewBookings"@*, new { id = item.Movie_id }*@)
 
 
