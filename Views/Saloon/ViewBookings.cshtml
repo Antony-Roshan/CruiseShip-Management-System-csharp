@@ -17,14 +17,17 @@
 <table class="table">
     <tr>
         @*        <th>
-                @Html.DisplayNameFor(model => model.Saloon_booking_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Voyager_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Saloon_id)
-            </th>*@
+            @Html.DisplayNameFor(model => model.Saloon_booking_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voyager_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Saloon_id)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.saloon)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
@@ -32,14 +35,12 @@
             @Html.DisplayNameFor(model => model.Time)
         </th>
         @*        <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>*@
-        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>*@
+        @*        <th>
             @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.saloon)
-        </th>
+        </th>*@
+
         <th>
             @Html.DisplayNameFor(model => model.amount)
         </th>
@@ -50,14 +51,17 @@
     {
         <tr>
             @*        <td>
-                    @Html.DisplayFor(modelItem => item.Saloon_booking_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Voyager_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Saloon_id)
-                </td>*@
+            @Html.DisplayFor(modelItem => item.Saloon_booking_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voyager_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Saloon_id)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.saloon)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
@@ -65,20 +69,18 @@
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
             @*        <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.saloon)
-            </td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>*@
+            @*<td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>*@
+
             <td>
                 @Html.DisplayFor(modelItem => item.amount)
             </td>
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
                 @Html.ActionLink("Payment", "SaloonPayment", new { id = item.Saloon_booking_id })
             </td>
         </tr>

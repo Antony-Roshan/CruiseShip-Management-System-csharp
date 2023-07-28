@@ -6,7 +6,22 @@
 }
 
 <center>
+
+    <h1>Welcome Voyager</h1>
+    <div>
+        @Html.ActionLink("Home", "VoyagerHome", "Home", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Movie Tickets", "MovieTicketBooking", "Movie", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Party Hall", "PartyHallBooking", "Party", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Fitness Centre", "FitnessCentreBooking", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Beauty Saloon", "BeautySaloonBooking", "Saloon", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Order Items", "ItemOrdereing", "Items", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+
     <h2>Party Hall Booking</h2>
+
+
 </center>
 
 @if (TempData["AlertMessage"] != null)
@@ -20,7 +35,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Hall_name)
+            Hall Name
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Time)
@@ -29,14 +44,14 @@
             @Html.DisplayNameFor(model => model.Occasion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Image)
+            Image
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-        <th>
+      @*  <th>
             @Html.DisplayNameFor(model => model.Status)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
@@ -58,9 +73,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-            <td>
+         @*   <td>
                 @Html.DisplayFor(modelItem => item.Status)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Book", "Book", new { id = item.Hall_id })
             </td>

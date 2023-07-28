@@ -5,7 +5,23 @@
     Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
 }
 
-<h2>Fitness Centre Booking</h2>
+<center>
+
+    <h1>Welcome Voyager</h1>
+    <div>
+        @Html.ActionLink("Home", "VoyagerHome", "Home", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Movie Tickets", "MovieTicketBooking", "Movie", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Party Hall", "PartyHallBooking", "Party", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Fitness Centre", "FitnessCentreBooking", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Book Beauty Saloon", "BeautySaloonBooking", "Saloon", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Order Items", "ItemOrdereing", "Items", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+
+    <h2>Fitness Centre Booking</h2>
+
+</center>
 
 @if (TempData["AlertMessage"] != null)
 {
@@ -15,11 +31,11 @@
 }
 <table class="table">
     <tr>
-        <th>
+@*        <th>
             @Html.DisplayNameFor(model => model.Fitness_id)
-        </th>
+        </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Fitness_name)
+            Fitness
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Time)
@@ -33,18 +49,18 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
+@*        <th>
             @Html.DisplayNameFor(model => model.Status)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Fitness_id)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Fitness_name)
             </td>
@@ -60,9 +76,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
+@*            <td>
                 @Html.DisplayFor(modelItem => item.Status)
-            </td>
+            </td>*@
             <td>
                 @Html.ActionLink("Book", "Book", new { id = item.Fitness_id })
             </td>

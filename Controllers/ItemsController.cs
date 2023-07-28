@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.EnterpriseServices;
 
 namespace CruiseshipApp.Controllers
 {
@@ -101,6 +102,12 @@ namespace CruiseshipApp.Controllers
             return RedirectToAction("Index");
         }
 
+
+
+/*=============================================      VOYAGER BOOKING SECTION      =============================================*/
+
+
+
         public ViewResult ItemOrdereing()
         {
             return View(db.Items_Table.ToList());
@@ -170,25 +177,8 @@ namespace CruiseshipApp.Controllers
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
-            /*CruiseshipDbEntities dd = new CruiseshipDbEntities();
-            Order order = dd.Orders_Table.Find(newss.Voyager_id);*/
-
-
             return View(db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status == "Pending").ToList());
             
-            /*using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
-            {
-                var result = (from or in dd.Orders_Table
-                              join it in dd.Items_Table
-                              on od.Item_id equals it.Item_id
-                              select new OrderBookingDetails
-                              {
-                                  Order_id = od.Order_id,
-                                  Date = or.Date,
-                                  Total = or.Total
-                              }).ToList();
-                return View(result);
-            }*/
         }
 
         public ActionResult SingleItemsDetails(int? id)
@@ -216,32 +206,36 @@ namespace CruiseshipApp.Controllers
 
         public ActionResult OrderPayment(int? id)
         {
+
+            Session["bid"] = id;
+
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
-            var check1 = db.Logins.Where(y => y.Usertype == "Premium").FirstOrDefault();
+            var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium" ).FirstOrDefault();
             if(check1 != null)
             {
+                int biid = Convert.ToInt32(Session["bid"]);
+                var ids = db.Orders_Table.Where(y => y.Order_id == biid).FirstOrDefault();
+                ids.Status = "Paid";
+                db.Entry(ids).State = EntityState.Modified;
+                db.SaveChanges();
+
                 TempData["AlertMessage"] = "Premium users need not make payment...!";
+                return RedirectToAction("ViewOrders");
+            }
+
+            var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
+            if (check != null)
+            {
+                /*return RedirectToAction("ConfirmPayment");*/
+                TempData["AlertMessage"] = "Payment already done...!";
                 return RedirectToAction("ViewOrders");
             }
             else
             {
-                Session["bid"] = id;
-                var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
-                if (check != null)
-                {
-                    /*return RedirectToAction("ConfirmPayment");*/
-                    TempData["AlertMessage"] = "Payment already done...!";
-                    return RedirectToAction("ViewOrders");
-                }
-                else
-                {
 
-                }
             }
-
-            
             return View();
         }
 
@@ -251,9 +245,12 @@ namespace CruiseshipApp.Controllers
             CruiseshipDbEntities db = new CruiseshipDbEntities();
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
-            var iids = Session["iid"];
+
+
+            /*var iids = Session["iid"];
+            Item item = db.Items_Table.Find(iids);*/
+
             string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
-            Item item= db.Items_Table.Find(iids);
             int biid = Convert.ToInt32(Session["bid"]);
 
             /*int biid = Convert.ToInt32(Session["bid"]);*/
@@ -261,10 +258,10 @@ namespace CruiseshipApp.Controllers
             var ids = db.Orders_Table.Where(y => y.Order_id == biid).FirstOrDefault();
             
 
-            var amtid = Session["amts"];
+            /*var amtid = Session["amts"];*/
             Payment payment = new Payment();
             payment.Booking_details_id = biid;
-            payment.Booking_for = "Movie Ticket";
+            payment.Booking_for = "Items";
             payment.Amount = ids.Total;
             payment.Date = currentDate1;
             db.Payments.Add(payment);

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<CruiseshipApp.Models.ViewSaloonBookingDetails>
+
+@{
+    ViewBag.Title = "ViewSaloonBookingDetails";
+    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
+}
+
+
+<center>
+
+    <h2>Saloon Booking Details</h2>
+
+    <div>
+        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Movie Booking Details", "ViewMovieBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Party Hall Booking Details", "ViewPartyBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Fitness Centre Details", "ViewFitnessBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Beauty Saloon Details", "ViewSaloonBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+    
+
+</center>
+
+<table class="table">
+    <tr>
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Saloon_booking_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voyager_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Saloon_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SaloonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*        <td>
+                    @Html.DisplayFor(modelItem => item.Saloon_booking_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voyager_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Saloon_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaloonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            @*        <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Back to List", "ViewBookings", "Manager", new { area = "" }, new { @class = "nav-link" }) 

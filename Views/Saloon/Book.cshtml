@@ -19,16 +19,16 @@
         <h4>Beauty_Saloon</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Saloon_id)
-            </dt>
+            @*            <dt>
+            @Html.DisplayNameFor(model => model.Saloon_id)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Saloon_id)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Saloon_id)
+        </dd>*@
 
             <dt>
-                @Html.DisplayNameFor(model => model.Saloon_name)
+                Saloom
             </dt>
 
             <dd>
@@ -36,20 +36,14 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.saloon_service)
+                Service
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.saloon_service)
             </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Time)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Time)
-            </dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.Price)
@@ -59,13 +53,21 @@
                 @Html.DisplayFor(model => model.Price)
             </dd>
 
+           @* <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>*@
+
             <dt>
                 Date
             </dt>
 
             <dd>
                 <label for="date">Select a Date:</label>
-                <input type="date" name="dt" min="2023-01-02" required> 
+                <input type="date" name="dt" min="2023-01-02" required>
             </dd>
 
             <dt>

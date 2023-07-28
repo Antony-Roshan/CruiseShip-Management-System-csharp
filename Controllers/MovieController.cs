@@ -97,6 +97,11 @@ namespace CruiseshipApp.Controllers
             return RedirectToAction("Index");
         }
 
+
+/*=============================================      VOYAGER BOOKING SECTION      =============================================*/
+
+
+
         public ViewResult MovieTicketBooking()
         {
             return View(db.Movie_ticket_Table.ToList());
@@ -170,6 +175,17 @@ namespace CruiseshipApp.Controllers
         public ActionResult MoviePayment(int? id)
         {
             Session["bid"] = id;
+
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
+            var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+            if (check1 != null)
+            {
+                TempData["AlertMessage"] = "Premium users need not make payment...!";
+                return RedirectToAction("ViewBookings");
+            }
+
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {

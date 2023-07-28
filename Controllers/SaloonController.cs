@@ -87,6 +87,10 @@ namespace CruiseshipApp.Controllers
 
 
 
+/*=============================================      VOYAGER BOOKING SECTION      =============================================*/
+
+
+
         public ViewResult BeautySaloonBooking()
         {
             return View(db.Beauty_Saloon_Table.ToList());
@@ -110,7 +114,7 @@ namespace CruiseshipApp.Controllers
             var sid = Convert.ToInt32(iids);
 
             var newss1 = db.Saloon_bookings.Where(x => x.Saloon_id == sid && x.Date == dt && x.Time == tm && x.Status == "Booked").ToList();
-            var newss2 = db.Saloon_bookings.Where(x => x.Voyager_id == newss.Voyager_id && x.Date == dt && x.Time == tm && x.Status == "Booked").FirstOrDefault();
+            var newss2 = db.Saloon_bookings.Where(x => x.Voyager_id == newss.Voyager_id && x.Saloon_id == sid && x.Date == dt && x.Time == tm && x.Status == "Booked").FirstOrDefault();
             int count1 = newss1.Count;
             
             if(count1 >= 3)
@@ -163,6 +167,17 @@ namespace CruiseshipApp.Controllers
         public ActionResult SaloonPayment(int? id)
         {
             Session["bid"] = id;
+
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
+            var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+            if (check1 != null)
+            {
+                TempData["AlertMessage"] = "Premium users need not make payment...!";
+                return RedirectToAction("ViewBookings");
+            }
+
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {

@@ -88,6 +88,9 @@ namespace CruiseshipApp.Controllers
         }
 
 
+/*=============================================      VOYAGER BOOKING SECTION      =============================================*/
+
+
 
         public ViewResult FitnessCentreBooking()
         {
@@ -119,8 +122,8 @@ namespace CruiseshipApp.Controllers
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
             var sid = Convert.ToInt32(iids);
 
-            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Time == tm && x.Status == "Booked").ToList();
-            var newss2 = db.Booking_details_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Time == tm && x.Status == "Booked").FirstOrDefault();
+            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Time == tm && x.Date == dt && x.Status == "Booked").ToList();
+            var newss2 = db.Booking_details_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Time == tm && x.Date == dt && x.Status == "Booked").FirstOrDefault();
             int count1 = newss1.Count;
 
             if (newss2 != null)
@@ -157,25 +160,40 @@ namespace CruiseshipApp.Controllers
         {
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
             using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
             {
-                List<Booking_details> slist = dd.Booking_details_Table.ToList();
-                List<FitnessBookingDetails> addsend = slist.Select(x => new FitnessBookingDetails
-                {
-                    Booking_details_id = Convert.ToInt32(x.Booking_details_id),
-                    Voyager_id = Convert.ToInt32(x.Voyager_id),
-                    name = x.Voyager.First_name + ' ' + x.Voyager.Last_name,
-                    Booking_type = x.Booking_type,
-                    Date = x.Date,
-                    Time = x.Time
-                }).Where(x => x.Voyager_id == newss.Voyager_id).ToList();
-                return View(addsend);
+                var result = (from bd in dd.Booking_details_Table
+                              join ft in dd.Fitness_centre_Table
+                              on bd.Booking_for_id equals ft.Fitness_id
+                              where bd.Voyager_id == newss.Voyager_id
+                              select new FitnessBookingDetails
+                              {
+                                  Booking_details_id = bd.Booking_details_id,
+                                  Name = bd.Voyager.First_name + " " + bd.Voyager.Last_name,
+                                  Fitname = ft.Fitness_name,
+                                  Place = ft.Place,
+                                  Date = bd.Date,
+                                  Time = bd.Time
+                              }).ToList();
+                return View(result);
             }
         }
 
         public ActionResult FitnessPayment(int? id)
         {
             Session["bid"] = id;
+
+            int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+
+            var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+            if (check1 != null)
+            {
+                TempData["AlertMessage"] = "Premium users need not make payment...!";
+                return RedirectToAction("ViewBookings");
+            }
+
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {

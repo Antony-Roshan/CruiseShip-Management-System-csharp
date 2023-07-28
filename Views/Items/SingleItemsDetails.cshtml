@@ -7,12 +7,12 @@
 
 <h2>SingleItemsDetails</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
-                <th>
+           @*     <th>
                 @Html.DisplayNameFor(model => model.Orderdetails_id)
             </th>
             <th>
@@ -20,9 +20,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Item_id)
-            </th>
+            </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Item
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
@@ -39,7 +39,7 @@
     @foreach (var item in Model)
     {
         <tr>
-                    <td>
+        @*            <td>
                     @Html.DisplayFor(modelItem => item.Orderdetails_id)
                 </td>
                 <td>
@@ -47,7 +47,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Item_id)
-                </td>
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

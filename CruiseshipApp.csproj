@@ -202,7 +202,11 @@
     <Compile Include="Models\Saloon_booking.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewFitnessBookingDetails.cs" />
+    <Compile Include="Models\ViewMovieBookingDetails.cs" />
+    <Compile Include="Models\ViewPartyBookingDetails.cs" />
     <Compile Include="Models\ViewPaymentDetails.cs" />
+    <Compile Include="Models\ViewSaloonBookingDetails.cs" />
     <Compile Include="Models\Voyager.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -347,6 +351,11 @@
     <Content Include="Views\Items\ViewOrders.cshtml" />
     <Content Include="Views\Items\OrderPayment.cshtml" />
     <Content Include="Views\Items\SingleItemsDetails.cshtml" />
+    <Content Include="Views\Manager\ViewMovieBookingDetails.cshtml" />
+    <Content Include="Views\Manager\ViewSaloonBookingDetails.cshtml" />
+    <Content Include="Views\Manager\ViewFitnessBookingDetails.cshtml" />
+    <Content Include="Views\Manager\ViewPartyBookingDetails.cshtml" />
+    <Content Include="Views\Manager\ViewBookings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

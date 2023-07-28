@@ -16,42 +16,45 @@
 
 <table class="table">
     <tr>
-        <th>
+        @*        <th>
             @Html.DisplayNameFor(model => model.Order_id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Voyager_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            @Html.DisplayNameFor(model => model.Total)
         </th>
+
+ @*       <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Order_id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Voyager_id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.Total)
             </td>
+
+
             <td>
                 @Html.ActionLink("Items Details", "SingleItemsDetails", new { id = item.Order_id })
                 @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })

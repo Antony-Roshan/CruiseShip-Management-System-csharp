@@ -9,19 +9,19 @@
 
 <form method="Post" action="/Movie/Confirm">
     <div>
-        <h4>Movie_ticket</h4>
+        <h4>Movie Ticket</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
+@*            <dt>
                 @Html.DisplayNameFor(model => model.Movie_id)
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.Movie_id)
-            </dd>
+            </dd>*@
 
             <dt>
-                @Html.DisplayNameFor(model => model.Movie_name)
+                Movie
             </dt>
 
             <dd>
@@ -83,7 +83,7 @@
     <p>
         <input type="submit" name="Confirm" value="Confirm" />
         @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "MovieTicketBooking")
     </p>
 
 </form>

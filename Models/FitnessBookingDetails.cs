@@ -14,8 +14,8 @@ namespace CruiseshipApp.Models
         public string Date { get; set; }
         public string Time { get; set; }
         public string Status { get; set; }
-        public string name { get; set; }
-        public string fitname { get; set; }
-        public string place { get; set; }
+        public string Name { get; set; }
+        public string Fitname { get; set; }
+        public string Place { get; set; }
     }
 }

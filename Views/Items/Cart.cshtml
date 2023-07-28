@@ -12,16 +12,16 @@
         <h4>Item</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
+           @* <dt>
                 @Html.DisplayNameFor(model => model.Item_id)
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.Item_id)
-            </dd>
+            </dd>*@
 
             <dt>
-                @Html.DisplayNameFor(model => model.Item_name)
+                Item
             </dt>
 
             <dd>
@@ -29,12 +29,11 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Image)
+                Image
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Image)
-            </dd>
+                <img src="@Url.Content(Model.Image)" width="200" height="150" />            </dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.Price)
@@ -64,7 +63,7 @@
     <p>
         <input type="submit" name="Done" value="Done" />
 @*        @Html.ActionLink("Done", "Done", new { /* id = Model.PrimaryKey */ })*@
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "ItemOrdereing")
     </p>
 
 </form>
