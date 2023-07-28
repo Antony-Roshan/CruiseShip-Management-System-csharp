@@ -5,67 +5,65 @@
 }
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
-    <center>
-        <h1 id="title">CRUISESHIP MANAGEMENT SYSTEM</h1>
-        <div>
-            @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Registration", "Voyager", "Home", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Premium Registration", "Premium", "Home", new { area = "" }, new { @class = "nav-link" })
-        </div>
-        <h1>VOYAGER REGISTRATION</h1>
-        <form method="post">
-            <table>
-                <tr>
-                    <th>FIRST NAME </th>
-                    <td><input type="text" name="fn" value="" required/></td>
-                </tr>
-                <tr>
-                    <th>LAST NAME </th>
-                    <td><input type="text" name="ln" value="" required/></td>
-                </tr>
-                <tr>
-                    <th>PLACE </th>
-                    <td><input type="text" name="pl" value="" required/></td>
-                </tr>
-                <tr>
-                    <th>GENDER </th>
-                    <td>
-                        <input type="radio" name="gn" value="Male" required/>
-                        Male <br />
-                        <input type="radio" name="gn" value="Female" required/>
-                        Female
-                    </td>
-                </tr>
-                <tr>
-                    <th>PHONE </th>
-                    <td><input type="tel" name="ph" value="" pattern="[0-9]{10}" required/></td>
-                </tr>
-                <tr>
-                    <th>EMAIL </th>
-                    <td><input type="email" name="em" value="" required/></td>
-                </tr>
-                <tr>
-                    <th>USER NAME </th>
-                    <td><input type="text" name="un" value="" required/></td>
-                </tr>
-                <tr>
-                    <th>PASSWORD </th>
-                    <td><input type="password" name="pwd" value="" required/></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" name="sub" value="REGISTER" /></td>
-                </tr>
-            </table>
-        </form>
-    </center>
+<center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+ 
 
-</body>
-</html>
+    <h1>VOYAGER REGISTRATION</h1><br />
+    <form method="post">
+        <table>
+            <tr>
+                <th>FIRST NAME </th>
+                <td><input type="text" name="fn" class="form-control" value="" required /><br /></td>
+            </tr>
+            <tr>
+                <th>LAST NAME </th>
+                <td><input type="text" name="ln" class="form-control" value="" required /><br /></td>
+            </tr>
+            <tr>
+                <th>PLACE </th>
+                <td><input type="text" name="pl" class="form-control" value="" required /><br /></td>
+            </tr>
+            <tr>
+                <th>GENDER </th>
+                <td>
+                    Male
+                   <input type="radio" name="gn" class="form-control" value="Male" required />
+                    Female
+                    <input type="radio" name="gn" class="form-control" value="Female" required /><br />
+                </td>
+            </tr>
+            <tr>
+                <th>PHONE </th>
+                <td><input type="tel" name="ph" class="form-control" value="" pattern="[0-9]{10}" required /><br /></td>
+            </tr>
+            <tr>
+                <th>EMAIL </th>
+                <td><input type="email" name="em" class="form-control" value="" required /><br /></td>
+            </tr>
+            <tr>
+                <th>USER NAME </th>
+                <td><input type="text" name="un" class="form-control" value="" required /><br /></td>
+            </tr>
+            <tr>
+                <th>PASSWORD </th>
+                <td><input type="password" name="pwd" class="form-control" value="" required /><br /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="sub" class="btn btn-success" value="REGISTER" /></td>
+            </tr>
+        </table>
+    </form>
+</center>
+
 
