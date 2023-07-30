@@ -131,8 +131,7 @@ namespace CruiseshipApp.Controllers
             Item item = db.Items_Table.Find(iids);
             var amt = Convert.ToInt32(qn) * Convert.ToInt32(item.Price);
 
-
-            var newss1 = db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status=="Pending").FirstOrDefault();
+            var newss1 = db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status== "Payment Pending" || x.Status == "Premium Paid").FirstOrDefault();
             var idss= "";
             if (newss1 != null)
             {
@@ -149,7 +148,18 @@ namespace CruiseshipApp.Controllers
                 order.Total = order.Total + amt;
 
                 order.Date = currentDate1;
-                order.Status = "Pending";
+                
+
+                var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+                if (check1 != null)
+                {
+                    order.Status = "Premium Paid";
+                }
+                else
+                {
+                    order.Status = "Payment Pending";
+                }
+
                 db.Orders_Table.Add(order);
                 db.SaveChanges();
                 var ss=db.Orders_Table.OrderByDescending(y => y.Order_id).FirstOrDefault();
@@ -177,7 +187,17 @@ namespace CruiseshipApp.Controllers
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
-            return View(db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status == "Pending").ToList());
+            var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+            if (check1 != null)
+            {
+                return View(db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status == "Premium Paid").ToList());
+            }
+            else
+            {
+                return View(db.Orders_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Status == "Payment Pending" || x.Status == "Paid").ToList());
+            }
+
+            
             
         }
 
@@ -246,19 +266,11 @@ namespace CruiseshipApp.Controllers
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
-
-            /*var iids = Session["iid"];
-            Item item = db.Items_Table.Find(iids);*/
-
             string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
             int biid = Convert.ToInt32(Session["bid"]);
 
-            /*int biid = Convert.ToInt32(Session["bid"]);*/
-
             var ids = db.Orders_Table.Where(y => y.Order_id == biid).FirstOrDefault();
             
-
-            /*var amtid = Session["amts"];*/
             Payment payment = new Payment();
             payment.Booking_details_id = biid;
             payment.Booking_for = "Items";

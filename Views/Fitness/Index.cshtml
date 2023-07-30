@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Fitness_centre>
 
-@{
+@*@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
-}
+}*@
 
 <center>
     <h1>Manage Fitness Centre</h1>
 
     <div>
-        @Html.ActionLink("Home", "EFitness", "Employee", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Manage Fitness Centre", "Index", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        @Html.ActionLink("Home", "EFitness", "Employee", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Manage Fitness Centre", "Index", "Fitness", new { area = "" }, new { @class = "nav-link" }) 
+        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
     </div>
 </center>
 

@@ -1,4 +1,6 @@
 ﻿using CruiseshipApp.Models;
+using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -26,6 +28,48 @@ namespace CruiseshipApp.Controllers
         public ActionResult  EItems()
         {
             return View();
+        }
+
+        CruiseshipDbEntities db = new CruiseshipDbEntities();
+        public ActionResult ViewOrders()
+        {
+            return View(db.Orders_Table.Where(x => x.Status == "Paid").ToList());
+        }
+
+        public ActionResult ItemOrderDetails(int? id)
+        {
+
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+*/
+            using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                var result = (from od in dd.Order_details
+                              join it in dd.Items_Table
+                              on od.Item_id equals it.Item_id
+                              where od.Order_id == id
+                              select new OrderBookingDetails
+                              {
+                                  Name = it.Item_name,
+                                  Price = it.Price,
+                                  Quantity = od.Quantity,
+                                  Amount = od.Amount,
+                              }).ToList();
+                return View(result);
+            }
+        }
+
+        public ActionResult Deliver(int? id)
+        {
+            var ids = db.Orders_Table.Where(y => y.Order_id == id).FirstOrDefault();
+
+            TempData["AlertMessage"] = "Delivered Succesfully...!";
+
+            ids.Status = "Delivered";
+            db.Entry(ids).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("ViewOrders");
         }
     }
 }

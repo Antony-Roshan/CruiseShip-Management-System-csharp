@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Feedback>
 
-@{
+@*@{
     ViewBag.Title = "ViewFeedback";
     Layout = "~/Views/Feedback/Feedback_LayoutPage.cshtml";
-}
+}*@
 
 
 
 <center>
     <h2>Feedbacks</h2>
     <div>
-        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) 
+        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
     </div>
 </center>
 

@@ -1,6 +1,8 @@
 ﻿using CruiseshipApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
@@ -120,11 +122,13 @@ namespace CruiseshipApp.Controllers
             Fitness_centre fitness_Centre = db.Fitness_centre_Table.Find(iids);
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
             var sid = Convert.ToInt32(iids);
 
-            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Time == tm && x.Date == dt && x.Status == "Booked").ToList();
-            var newss2 = db.Booking_details_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Time == tm && x.Date == dt && x.Status == "Booked").FirstOrDefault();
+            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Time == tm && x.Date == dt).ToList();
+            var newss2 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Voyager_id == newss.Voyager_id && x.Time == tm && x.Date == dt).FirstOrDefault();
             int count1 = newss1.Count;
+
 
             if (newss2 != null)
             {
@@ -139,14 +143,34 @@ namespace CruiseshipApp.Controllers
                 else
                 {
                     Booking_details details = new Booking_details();
-                    details.Booking_type = "Fitness_Centre";
+                    details.Booking_type = "Fitness Centre";
                     details.Booking_for_id = fitness_Centre.Fitness_id;
                     details.Voyager_id = newss.Voyager_id;
                     details.Date = dt;
                     details.Time = tm;
-                    details.Status = "Booked";
-                    /*fitness_Centre.Status = "Booked";*/
-                    db.Booking_details_Table.Add(details);
+
+                    var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+                    if (check1 != null)
+                    {
+                        details.Status = "Premium Paid";
+                        db.Booking_details_Table.Add(details);
+                        db.SaveChanges();
+
+                    }
+                    else
+                    {
+                        details.Status = "Payment Pending";
+
+                        db.Booking_details_Table.Add(details);
+                        db.SaveChanges();
+                    }
+
+                    Payment payment = new Payment();
+                    payment.Booking_details_id = details.Booking_details_id;
+                    payment.Booking_for = "Fitness Centre";
+                    payment.Amount = "300";
+                    payment.Date = currentDate1;
+                    db.Payments.Add(payment);
                     db.SaveChanges();
 
                     TempData["AlertMessage"] = "Fitness Centre Booked Successfully...!";
@@ -174,7 +198,8 @@ namespace CruiseshipApp.Controllers
                                   Fitname = ft.Fitness_name,
                                   Place = ft.Place,
                                   Date = bd.Date,
-                                  Time = bd.Time
+                                  Time = bd.Time,
+                                  Status = bd.Status,
                               }).ToList();
                 return View(result);
             }
@@ -184,7 +209,7 @@ namespace CruiseshipApp.Controllers
         {
             Session["bid"] = id;
 
-            int ssid = Convert.ToInt32(Session["login_id"]);
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
             var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
@@ -197,14 +222,14 @@ namespace CruiseshipApp.Controllers
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {
-                /*return RedirectToAction("ConfirmPayment");*/
+                *//*return RedirectToAction("ConfirmPayment");*//*
                 TempData["AlertMessage"] = "Payment already done...!";
                 return RedirectToAction("ViewBookings");
             }
             else
             {
 
-            }
+            }*/
             return View();
         }
 
@@ -212,28 +237,29 @@ namespace CruiseshipApp.Controllers
         public ActionResult ConfirmPayment()
         {
             CruiseshipDbEntities db = new CruiseshipDbEntities();
-            int ssid = Convert.ToInt32(Session["login_id"]);
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
             var iids = Session["iid"];
-            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
-            Fitness_centre fitness= db.Fitness_centre_Table.Find(iids);
+            
+            Fitness_centre fitness= db.Fitness_centre_Table.Find(iids);*/
             int biid = Convert.ToInt32(Session["bid"]);
-
-            /*int biid = Convert.ToInt32(Session["bid"]);*/
 
             var ids = db.Booking_details_Table.Where(y => y.Booking_details_id == biid).FirstOrDefault();
 
-
-            var amtid = Session["amts"];
+            /*var amtid = Session["amts"];
             Payment payment = new Payment();
             payment.Booking_details_id = biid;
             payment.Booking_for = "Fitness Centre";
             payment.Amount = "300";
             payment.Date = currentDate1;
-            db.Payments.Add(payment);
-            db.SaveChanges();
+            db.Payments.Add(payment);*/
 
             TempData["AlertMessage"] = "Payment Succesfully...!";
+
+            ids.Status = "Paid";
+            db.Entry(ids).State = EntityState.Modified;
+            db.SaveChanges();
+
             return RedirectToAction("ViewBookings");
 
         }

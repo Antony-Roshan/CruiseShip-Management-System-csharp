@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.SaloonBookingDetails>
 
-@{
+@*@{
     ViewBag.Title = "ViewBookings";
     Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
-}
+}*@
 
 <h2>ViewBookings</h2>
 
@@ -34,9 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Time)
         </th>
-        @*        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
+
         @*        <th>
             @Html.DisplayNameFor(model => model.name)
         </th>*@
@@ -44,7 +42,10 @@
         <th>
             @Html.DisplayNameFor(model => model.amount)
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+
     </tr>
 
     @foreach (var item in Model)
@@ -68,9 +69,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
-            @*        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>*@
+
             @*<td>
             @Html.DisplayFor(modelItem => item.name)
         </td>*@
@@ -79,10 +78,20 @@
                 @Html.DisplayFor(modelItem => item.amount)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Payment", "SaloonPayment", new { id = item.Saloon_booking_id })
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
+   
+            @if (item.Status == "Payment Pending")
+            {
+                <td>
+                    @Html.ActionLink("Make Payment", "SaloonPayment", new { id = item.Saloon_booking_id })
+                </td>
+            }
+            else /*if (item.Status == "PremiumPaid")*/
+            {
+
+            }
+
         </tr>
     }
 

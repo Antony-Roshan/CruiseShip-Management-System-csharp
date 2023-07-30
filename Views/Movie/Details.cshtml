@@ -1,9 +1,9 @@
 ﻿@model CruiseshipApp.Models.Movie_ticket
 
-@{
+@*@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}
+}*@
 
 <h2>Details</h2>
 
@@ -62,6 +62,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Movie_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Movie_id }) 
     @Html.ActionLink("Back to List", "Index")
 </p>

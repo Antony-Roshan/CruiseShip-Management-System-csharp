@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Item>
-
+@*
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Items/Items_LayoutPage.cshtml";
-}
+}*@
 
 <center>
     <h1>Manage Items</h1>
 
     <div>
-        @Html.ActionLink("Home", "EItems", "Employee", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Manage Items", "Index", "Items", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        @Html.ActionLink("Home", "EItems", "Employee", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Manage Items", "Index", "Items", new { area = "" }, new { @class = "nav-link" }) 
+        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
     </div>
 </center>
 

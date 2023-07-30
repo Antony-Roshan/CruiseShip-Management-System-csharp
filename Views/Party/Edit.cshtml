@@ -1,9 +1,9 @@
 ﻿@model CruiseshipApp.Models.Party_hall
 
-@{
+@*@{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Party/Party_LayoutPage.cshtml";
-}
+}*@
 
 <h2>Edit</h2>
 
@@ -42,12 +42,12 @@
             </div>
         </div>
 
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="ImageFile" required />
             </div>
-        </div>*@
+        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })

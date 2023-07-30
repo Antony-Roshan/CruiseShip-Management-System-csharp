@@ -1,22 +1,22 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Movie_ticket>
 
-@{
+@*@{
     ViewBag.Title = "MovieTicketBooking";
     Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}
+}*@
 
 <center>
 
-    <h1>Welcome Voyager</h1>
-    <div>
-        @Html.ActionLink("Home", "VoyagerHome", "Home", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Movie Tickets", "MovieTicketBooking", "Movie", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Party Hall", "PartyHallBooking", "Party", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Fitness Centre", "FitnessCentreBooking", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Beauty Saloon", "BeautySaloonBooking", "Saloon", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Order Items", "ItemOrdereing", "Items", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+@*    <h1>Welcome Voyager</h1>
+*@    <div>
+        @Html.ActionLink("Home", "VoyagerHome", "Home", new { area = "" }, new { @class = "nav-link" }) 
+       @* @Html.ActionLink("Book Movie Tickets", "MovieTicketBooking", "Movie", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Book Party Hall", "PartyHallBooking", "Party", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Book Fitness Centre", "FitnessCentreBooking", "Fitness", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Book Beauty Saloon", "BeautySaloonBooking", "Saloon", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Order Items", "ItemOrdereing", "Items", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "nav-link" }) *@
+        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
     </div>
 
     <h2>Movie Ticket Booking</h2>

@@ -1,8 +1,10 @@
 ﻿using CruiseshipApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
+using System.EnterpriseServices;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -78,20 +80,21 @@ namespace CruiseshipApp.Controllers
         [HttpPost]
         public ActionResult Edit(int id)
         {
-            /*Party_hall party_Hall = db.Party_hall_Table.Find(id);
-            string fileName = Path.GetFileNameWithoutExtension(party_Hall.ImageFile.FileName);
-            string extension = Path.GetExtension(party_Hall.ImageFile.FileName);
+            /*Party_hall party = db.Party_hall_Table.Find(id);
+            string fileName = Path.GetFileNameWithoutExtension(party.ImageFile?.FileName);
+            string extension = Path.GetExtension(party.ImageFile?.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            party_Hall.Image = "~/Image/" + fileName;
+            party.Image = "~/Image/" + fileName;
             fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
-            party_Hall.ImageFile.SaveAs(fileName);
+            party.ImageFile?.SaveAs(fileName);
             using (CruiseshipDbEntities db = new CruiseshipDbEntities())
             {
-                db.Party_hall_Table.AddOrUpdate(party_Hall);
+                db.Party_hall_Table.AddOrUpdate(party);
                 db.SaveChanges();
             }
             ModelState.Clear();
             return View();*/
+
             Party_hall party_Hall = db.Party_hall_Table.Find(id);
             UpdateModel(party_Hall);
             db.SaveChanges();
@@ -145,13 +148,14 @@ namespace CruiseshipApp.Controllers
         {
             var iids = Session["iid"];
             CruiseshipDbEntities db = new CruiseshipDbEntities();
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
             Party_hall party_Hall = db.Party_hall_Table.Find(iids);
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
             var sid = Convert.ToInt32(iids);
 
-            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Date == dt && x.Time == tm && x.Status == "Booked").ToList();
-            var newss2 = db.Booking_details_Table.Where(x => x.Voyager_id == newss.Voyager_id && x.Date == dt && x.Time == tm && x.Status == "Booked").FirstOrDefault();
+            var newss1 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Date == dt && x.Time == tm).ToList();
+            var newss2 = db.Booking_details_Table.Where(x => x.Booking_for_id == sid && x.Voyager_id == newss.Voyager_id && x.Date == dt && x.Time == tm).FirstOrDefault();
             int count1 = newss1.Count;
 
             if (newss2 != null)
@@ -167,13 +171,32 @@ namespace CruiseshipApp.Controllers
                 else
                 {
                     Booking_details details = new Booking_details();
-                    details.Booking_type = "Party_hall";
+                    details.Booking_type = "Party hall";
                     details.Booking_for_id = party_Hall.Hall_id;
                     details.Voyager_id = newss.Voyager_id;
                     details.Date = dt;
                     details.Time = tm;
-                    details.Status = "Booked";
-                    db.Booking_details_Table.Add(details);
+
+                    var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+                    if (check1 != null)
+                    {
+                        details.Status = "Premium Paid";
+                        db.Booking_details_Table.Add(details);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        details.Status = "Payment Pending";
+                        db.Booking_details_Table.Add(details);
+                        db.SaveChanges();
+                    }
+
+                    Payment payment = new Payment();
+                    payment.Booking_details_id = details.Booking_details_id;
+                    payment.Booking_for = "Party Hall";
+                    payment.Amount = party_Hall.Price;
+                    payment.Date = currentDate1;
+                    db.Payments.Add(payment);
                     db.SaveChanges();
 
                     TempData["AlertMessage"] = "Party Hall Booked Successfully...!";
@@ -200,7 +223,8 @@ namespace CruiseshipApp.Controllers
                                   Occasion = pt.Occasion,
                                   Date = bd.Date,
                                   Time = bd.Time,
-                                  Amount = pt.Price
+                                  Amount = pt.Price,
+                                  Status = bd.Status,
                               }).ToList();
                 return View(result);
             }
@@ -210,7 +234,7 @@ namespace CruiseshipApp.Controllers
         {
             Session["bid"] = id;
 
-            int ssid = Convert.ToInt32(Session["login_id"]);
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
             var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
@@ -223,14 +247,14 @@ namespace CruiseshipApp.Controllers
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {
-                /*return RedirectToAction("ConfirmPayment");*/
+                *//*return RedirectToAction("ConfirmPayment");*//*
                 TempData["AlertMessage"] = "Payment already done...!";
                 return RedirectToAction("ViewBookings");
             }
             else
             {
 
-            }
+            }*/
             return View();
         }
 
@@ -238,31 +262,32 @@ namespace CruiseshipApp.Controllers
         public ActionResult ConfirmPayment()
         {
             CruiseshipDbEntities db = new CruiseshipDbEntities();
-            int ssid = Convert.ToInt32(Session["login_id"]);
-            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
+            var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();*/
             /*var iids = Session["iid"];*/
-            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+            
             
             int biid = Convert.ToInt32(Session["bid"]);
 
-            /*int biid = Convert.ToInt32(Session["bid"]);*/
-
-
-
             var ids = db.Booking_details_Table.Where(y => y.Booking_details_id == biid).FirstOrDefault();
-            var pricefind = ids.Booking_for_id;
-            Party_hall party_Hall = db.Party_hall_Table.Find(pricefind);
+            /*var pricefind = ids.Booking_for_id;
+            Party_hall party_Hall = db.Party_hall_Table.Find(pricefind);*/
 
-            var amtid = Session["amts"];
+            /*var amtid = Session["amts"];
             Payment payment = new Payment();
             payment.Booking_details_id = biid;
-            payment.Booking_for = "Fitness Centre";
+            payment.Booking_for = "Party Hall";
             payment.Amount = party_Hall.Price;
             payment.Date = currentDate1;
             db.Payments.Add(payment);
-            db.SaveChanges();
+            db.SaveChanges();*/
 
             TempData["AlertMessage"] = "Payment Succesfully...!";
+
+            ids.Status = "Paid";
+            db.Entry(ids).State = EntityState.Modified;
+            db.SaveChanges();
+
             return RedirectToAction("ViewBookings");
 
         }

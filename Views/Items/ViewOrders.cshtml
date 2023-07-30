@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Order>
 
-@{
+@*@{
     ViewBag.Title = "ViewOrders";
     Layout = "~/Views/Items/Items_LayoutPage.cshtml";
 }
-
+*@
 <h2>ViewOrders</h2>
 
 @if (TempData["AlertMessage"] != null)
@@ -29,9 +29,9 @@
             @Html.DisplayNameFor(model => model.Total)
         </th>
 
- @*       <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
+        <th>
+            Payment Status
+        </th>
         <th></th>
     </tr>
 
@@ -39,14 +39,12 @@
     {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Order_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Voyager_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.Order_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voyager_id)
+        </td>
+            *@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
@@ -54,11 +52,28 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
 
-
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
             <td>
                 @Html.ActionLink("Items Details", "SingleItemsDetails", new { id = item.Order_id })
-                @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })
+               @* @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })*@
             </td>
+
+
+
+            @if (item.Status == "Payment Pending")
+            {
+                <td>
+                    @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })
+                </td>
+            }
+            else
+            {
+
+            }
+
+           
         </tr>
     }
 

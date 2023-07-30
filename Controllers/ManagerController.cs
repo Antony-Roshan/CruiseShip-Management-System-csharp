@@ -15,9 +15,24 @@ namespace CruiseshipApp.Controllers
             return View();
         }
         CruiseshipDbEntities db = new CruiseshipDbEntities();
+
         public ViewResult ViewEmployees()
         {
-            return View(db.Employees.ToList());
+            using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                var result = (from xx in dd.Employees
+                              join yy in dd.Logins
+                              on xx.Login_id equals yy.Login_id
+
+                              select new ViewEmployeeDetails
+                              {
+                                  Name = xx.Employee_name,
+                                  Phone = xx.Phone,
+                                  Email = xx.Email,
+                                  UserType = yy.Usertype
+                              }).ToList();
+                return View(result);
+            }
         }
         public ActionResult AddEmployee()
         {
@@ -103,6 +118,26 @@ namespace CruiseshipApp.Controllers
             return RedirectToAction("AcceptPremiumVoyager");
         }
 
+        public ActionResult ViewVoyagers()
+        {
+            using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                var result = (from xx in dd.Voyagers
+                              join yy in dd.Logins
+                              on xx.Login_id equals yy.Login_id
+
+                              select new ViewVoyagers
+                              {
+                                  Name = xx.First_name + " " + xx.Last_name,
+                                  Place = xx.Place,
+                                  Gender = xx.Gender,
+                                  Phone = xx.Phone,
+                                  Email = xx.Email,
+                                  Status = yy.Usertype
+                              }).ToList();
+                return View(result);
+            }
+        }
 
         public ActionResult ViewBookings()
         {
@@ -121,18 +156,20 @@ namespace CruiseshipApp.Controllers
                               on xx.Movie_id equals zz.Movie_id
                               join uu in dd.Voyagers
                               on xx.Voyager_id equals uu.Voyager_id
-                              /*join vv in dd.Logins
-                              on uu.Login_id equals vv.Login_id */
+                              join vv in dd.Logins
+                              on uu.Login_id equals vv.Login_id
 
                               select new ViewMovieBookingDetails
                               {
                                   Name = uu.First_name + " " +uu.Last_name,
+                                  Usertype = vv.Usertype,
                                   MovieName = zz.Movie_name,
                                   Screen = zz.Screen,
                                   seat = xx.seat,
                                   Date = xx.Date,
                                   Time = zz.Time,
                                   Amount = yy.Amount,
+                                  Status = xx.Status
                               }).ToList();
                 return View(result);
             }
@@ -149,17 +186,20 @@ namespace CruiseshipApp.Controllers
                               on xx.Booking_for_id equals zz.Hall_id
                               join uu in dd.Voyagers
                               on xx.Voyager_id equals uu.Voyager_id
-                              /*join vv in dd.Logins
-                              on uu.Login_id equals vv.Login_id */
+                              join vv in dd.Logins
+                              on uu.Login_id equals vv.Login_id
 
                               select new ViewPartyBookingDetails
                               {
                                   Name = uu.First_name + " " + uu.Last_name,
+                                  Usertype = vv.Usertype,
                                   HallName = zz.Hall_name,
                                   Occasion = zz.Occasion,
                                   Date = xx.Date,
                                   Time = xx.Time,
                                   Amount = yy.Amount,
+                                  Status = xx.Status
+
                               }).ToList();
                 return View(result);
             }
@@ -176,17 +216,19 @@ namespace CruiseshipApp.Controllers
                               on xx.Booking_for_id equals zz.Fitness_id
                               join uu in dd.Voyagers
                               on xx.Voyager_id equals uu.Voyager_id
-                              /*join vv in dd.Logins
-                              on uu.Login_id equals vv.Login_id */
+                              join vv in dd.Logins
+                              on uu.Login_id equals vv.Login_id
 
                               select new ViewFitnessBookingDetails
                               {
                                   Name = uu.First_name + " " + uu.Last_name,
+                                  Usertype = vv.Usertype,
                                   FitName = zz.Fitness_name,
                                   Place = zz.Place,
                                   Date = xx.Date,
                                   Time = xx.Time,
                                   Amount = yy.Amount,
+                                  Status = xx.Status
                               }).ToList();
                 return View(result);
             }
@@ -203,17 +245,19 @@ namespace CruiseshipApp.Controllers
                               on xx.Saloon_id equals zz.Saloon_id
                               join uu in dd.Voyagers
                               on xx.Voyager_id equals uu.Voyager_id
-                              /*join vv in dd.Logins
-                              on uu.Login_id equals vv.Login_id */
+                              join vv in dd.Logins
+                              on uu.Login_id equals vv.Login_id
 
                               select new ViewSaloonBookingDetails
                               {
                                   Name = uu.First_name + " " + uu.Last_name,
+                                  Usertype = vv.Usertype,
                                   SaloonName = zz.Saloon_name,
                                   Service = zz.saloon_service,
                                   Date = xx.Date,
                                   Time = xx.Time,
                                   Amount = yy.Amount,
+                                  Status = xx.Status
                               }).ToList();
                 return View(result);
             }

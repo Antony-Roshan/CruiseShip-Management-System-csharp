@@ -124,6 +124,9 @@ namespace CruiseshipApp.Controllers
             Movie_ticket movie_Ticket = db.Movie_ticket_Table.Find(iids);
             var amt = st * Convert.ToInt32(movie_Ticket.Price);
 
+
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+
             int? sums = db.Movie_bookings.Where(x => x.Movie_id == iidds && x.Date == dt).Sum(x =>x.seat );
 
             var tot = sums + st;
@@ -140,13 +143,39 @@ namespace CruiseshipApp.Controllers
                 movie_Bookings.seat = st;
                 movie_Bookings.Total = movie_Bookings.Total + amt.ToString();
                 movie_Bookings.Date = dt;
-                movie_Bookings.Status = "Booked";
-                db.Movie_bookings.Add(movie_Bookings);
-                db.SaveChanges();
-                TempData["AlertMessage"] = "Movie booked successfull...!";
-                /*Session["bid"] = ids.Movie_bookings_id;
-                Session["amts"] = amt.ToString(); ;*/
+
+                var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+                if (check1 != null)
+                {
+                    movie_Bookings.Status = "Premium Paid";
+                    db.Movie_bookings.Add(movie_Bookings);
+                    db.SaveChanges();
+
+                    Payment payment = new Payment();
+                    payment.Booking_details_id = movie_Bookings.Movie_bookings_id;
+                    payment.Booking_for = "Movie Ticket";
+                    payment.Amount = movie_Bookings.Total;
+                    payment.Date = currentDate1;
+                    db.Payments.Add(payment);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    movie_Bookings.Status = "Payment Pending";
+                    db.Movie_bookings.Add(movie_Bookings);
+                    db.SaveChanges();
+
+                    Payment payment = new Payment();
+                    payment.Booking_details_id = movie_Bookings.Movie_bookings_id;
+                    payment.Booking_for = "Movie Ticket";
+                    payment.Amount = movie_Bookings.Total;
+                    payment.Date = currentDate1;
+                    db.Payments.Add(payment);
+                    db.SaveChanges();
+                }
+
                 
+                TempData["AlertMessage"] = "Movie booked successfull...!";
 
                 return RedirectToAction("MovieTicketBooking");
             }
@@ -166,7 +195,8 @@ namespace CruiseshipApp.Controllers
                     name = x.Voyager.First_name + ' ' + x.Voyager.Last_name,
                     movie = x.Movie_ticket.Movie_name,
                     Date = x.Date,
-                    Total = x.Total
+                    Total = x.Total,
+                    Status = x.Status
                 }).Where(x => x.Voyager_id == newss.Voyager_id).ToList();
                 return View(addsend);
             }
@@ -176,7 +206,7 @@ namespace CruiseshipApp.Controllers
         {
             Session["bid"] = id;
 
-            int ssid = Convert.ToInt32(Session["login_id"]);
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
             var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
@@ -189,14 +219,14 @@ namespace CruiseshipApp.Controllers
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {
-                /*return RedirectToAction("ConfirmPayment");*/
+                *//*return RedirectToAction("ConfirmPayment");*//*
                 TempData["AlertMessage"] = "Payment already done...!";
                 return RedirectToAction("ViewBookings");
             }
             else
             {
                 
-            }
+            }*/
             return View();
         }
 
@@ -204,30 +234,31 @@ namespace CruiseshipApp.Controllers
         public ActionResult ConfirmPayment()
         {
             CruiseshipDbEntities db = new CruiseshipDbEntities();
-            int ssid = Convert.ToInt32(Session["login_id"]);
+           /* int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
             var iids = Session["iid"];
             string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
-            Movie_ticket movie = db.Movie_ticket_Table.Find(iids);
+            Movie_ticket movie = db.Movie_ticket_Table.Find(iids);*/
             int biid = Convert.ToInt32(Session["bid"]);
-
-            /*int biid = Convert.ToInt32(Session["bid"]);*/
             
             var ids = db.Movie_bookings.Where(y => y.Movie_bookings_id == biid).FirstOrDefault();
 
-            
-                var amtid = Session["amts"];
-                Payment payment = new Payment();
-                payment.Booking_details_id = biid;
-                payment.Booking_for = "Movie Ticket";
-                payment.Amount = ids.Total;
-                payment.Date = currentDate1;
-                db.Payments.Add(payment);
-                db.SaveChanges();
+            /*var amtid = Session["amts"];
+            Payment payment = new Payment();
+            payment.Booking_details_id = biid;
+            payment.Booking_for = "Movie Ticket";
+            payment.Amount = ids.Total; 
+            payment.Date = currentDate1;
+            db.Payments.Add(payment);
+            db.SaveChanges();*/
 
-                TempData["AlertMessage"] = "Payment Succesfully...!";
-                return RedirectToAction("ViewBookings");
-            
+            TempData["AlertMessage"] = "Payment Succesfully...!";
+
+            ids.Status = "Paid";
+            db.Entry(ids).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("ViewBookings");
         }
     }
 }

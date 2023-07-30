@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.FitnessBookingDetails>
 
-@{
+@*@{
     ViewBag.Title = "ViewBookings";
     Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
 }
-
+*@
 <h2>ViewBookings</h2>
 
 @if (TempData["AlertMessage"] != null)
@@ -40,10 +40,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Time)
         </th>
-        @*        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
         <th>
+            Payment Status
+        </th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Name)
         </th>*@
 
@@ -77,18 +77,23 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            @* <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>*@
 
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Make Payment", "FitnessPayment", new { id = item.Booking_details_id })
-            </td>
+            @if (item.Status == "Payment Pending")
+            {
+                <td>
+                    @Html.ActionLink("Make Payment", "FitnessPayment", new { id = item.Booking_details_id })
+                </td>
+            }
+            else /*if (item.Status == "PremiumPaid")*/
+            {
+
+            }
         </tr>
     }
 

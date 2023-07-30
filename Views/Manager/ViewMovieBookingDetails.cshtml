@@ -1,44 +1,49 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.ViewMovieBookingDetails>
 
-@{
+@*@{
     ViewBag.Title = "ViewMovieBookingDetails";
     Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
-}
+}*@
+
 
 
 
 <center>
+    @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" })
 
-    <h2>Movie Booking Details</h2>
+    <h2>View Movie Booking Details</h2>
+
 
     <div>
-        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Movie Booking Details", "ViewMovieBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Party Hall Booking Details", "ViewPartyBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Fitness Centre Details", "ViewFitnessBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Beauty Saloon Details", "ViewSaloonBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" })
+        @* @Html.ActionLink("Movie Booking Details", "ViewMovieBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Party Hall Booking Details", "ViewPartyBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Fitness Centre Details", "ViewFitnessBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Beauty Saloon Details", "ViewSaloonBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |*@
+        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
     </div>
-    
 
 </center>
 
 <table class="table">
     <tr>
-        @*        <th>
-                @Html.DisplayNameFor(model => model.Movie_bookings_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Voyager_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Movie_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>*@
+@*        <th>
+            @Html.DisplayNameFor(model => model.Movie_bookings_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Voyager_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movie_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seat)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            User Status
         </th>
         <th>
             @Html.DisplayNameFor(model => model.MovieName)
@@ -47,69 +52,60 @@
             @Html.DisplayNameFor(model => model.Screen)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.seat)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Time)
         </th>
-        @*        <th>
-                @Html.DisplayNameFor(model => model.Total)
-            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            Payment Status
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            @*        <td>
-                    @Html.DisplayFor(modelItem => item.Movie_bookings_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Voyager_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Movie_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MovieName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Screen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.seat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            @*        <td>
-                    @Html.DisplayFor(modelItem => item.Total)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            @*        <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>*@
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+@*        <td>
+            @Html.DisplayFor(modelItem => item.Movie_bookings_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voyager_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Movie_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.seat)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usertype)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MovieName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Screen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+
+    </tr>
+}
 
 </table>
-@Html.ActionLink("Back to List", "ViewBookings", "Manager", new { area = "" }, new { @class = "nav-link" }) 

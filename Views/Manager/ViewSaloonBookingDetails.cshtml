@@ -1,26 +1,16 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.ViewSaloonBookingDetails>
 
-@{
-    ViewBag.Title = "ViewSaloonBookingDetails";
-    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
-}
-
+@*@{
+        ViewBag.Title = "ViewSaloonBookingDetails";
+        Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
+    }*@
 
 <center>
-
-    <h2>Saloon Booking Details</h2>
-
-    <div>
-        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Movie Booking Details", "ViewMovieBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Party Hall Booking Details", "ViewPartyBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Fitness Centre Details", "ViewFitnessBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Beauty Saloon Details", "ViewSaloonBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-    </div>
-    
-
+    @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" })
+    <h2>ViewSaloonBookingDetails</h2>
 </center>
+
+
 
 <table class="table">
     <tr>
@@ -32,12 +22,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Saloon_id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
             </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            User Status
         </th>
         <th>
             @Html.DisplayNameFor(model => model.SaloonName)
@@ -54,6 +44,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Amount)
         </th>
+        <th>
+            Payment Status
+        </th>
         <th></th>
     </tr>
 
@@ -68,12 +61,12 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Saloon_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
                 </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usertype)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SaloonName)
@@ -90,14 +83,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
-            @*        <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
         </tr>
     }
 
 </table>
-
-@Html.ActionLink("Back to List", "ViewBookings", "Manager", new { area = "" }, new { @class = "nav-link" }) 

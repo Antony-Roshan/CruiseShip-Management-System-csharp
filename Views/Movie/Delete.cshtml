@@ -1,9 +1,9 @@
 ﻿@model CruiseshipApp.Models.Movie_ticket
 
-@{
+@*@{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}
+}*@
 
 <h2>Delete</h2>
 
@@ -66,7 +66,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> 
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

@@ -1,9 +1,9 @@
 ﻿@model CruiseshipApp.Models.Beauty_Saloon
 
-@{
+@*@{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
-}
+}*@
 
 <h2>Delete</h2>
 
@@ -58,7 +58,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> 
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

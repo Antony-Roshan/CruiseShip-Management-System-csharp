@@ -28,7 +28,7 @@ namespace CruiseshipApp.Models
         [DisplayName("Upload Image")]
         public string Image { get; set; }
 
-        public HttpPostedFileBase ImageFile{ get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
         public string Price { get; set; }
         public string Type { get; set; }
     

@@ -14,17 +14,25 @@
     <br />
     <br />
     <br />
-    <br />
-    <br />
- 
-   
+
+
+
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error!</strong> @ViewBag.Message
+        </div>
+    }
+
     <h1>LOGIN</h1>
     <br />
+    <br />
     <form method="post">
-        <table  style="width:500px">
+        <table style="width:500px">
             <tr>
                 <th>USERNAME</th>
-                <td ><input type="text" class="form-control" name="un" value=""  /><br /></td>
+                <td><input type="text" class="form-control" name="un" value="" /><br /></td>
             </tr>
             <tr>
                 <th>PASSWORD</th>

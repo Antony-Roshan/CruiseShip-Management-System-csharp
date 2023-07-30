@@ -1,17 +1,17 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Movie_ticket>
 
-@{
+@*@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}
+}*@
 
 
 <center>
     <h2>Manage Movie</h2>
     <div>
-        @Html.ActionLink("Home", "EMovie", "Employee", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Manage Movie", "Index", "Movie", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+        @Html.ActionLink("Home", "EMovie", "Employee", new { area = "" }, new { @class = "nav-link" }) 
+        @Html.ActionLink("Manage Movie", "Index", "Movie", new { area = "" }, new { @class = "nav-link" }) 
+        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
     </div>
 </center>
 
@@ -69,7 +69,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Movie_id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Movie_id }) 
                 @*@Html.ActionLink("Details", "Details", new { id = item.Movie_id }) |*@
                 @Html.ActionLink("Delete", "Delete", new { id = item.Movie_id })
             </td>

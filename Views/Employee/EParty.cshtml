@@ -1,8 +1,8 @@
-﻿
+﻿@*
 @{
     ViewBag.Title = "EParty";
     Layout = "~/Views/Employee/Empoyee_LayoutPage.cshtml";
-}
+}*@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,9 +13,9 @@
         <h1>Welcome Employee</h1>
 
         <div>
-            @Html.ActionLink("Home", "EParty", "Employee", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Manage Party Hall", "Index", "Party", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+            @Html.ActionLink("Home", "EParty", "Employee", new { area = "" }, new { @class = "nav-link" }) 
+            @Html.ActionLink("Manage Party Hall", "Index", "Party", new { area = "" }, new { @class = "nav-link" }) 
+            @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
         </div>
     </center>
 </body>

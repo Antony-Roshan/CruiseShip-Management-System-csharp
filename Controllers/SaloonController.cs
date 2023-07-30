@@ -1,6 +1,8 @@
 ﻿using CruiseshipApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.EnterpriseServices;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -108,13 +110,14 @@ namespace CruiseshipApp.Controllers
         {
             var iids = Session["iid"];
             CruiseshipDbEntities db = new CruiseshipDbEntities();
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
             Beauty_Saloon saloon = db.Beauty_Saloon_Table.Find(iids);
             int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
             var sid = Convert.ToInt32(iids);
 
-            var newss1 = db.Saloon_bookings.Where(x => x.Saloon_id == sid && x.Date == dt && x.Time == tm && x.Status == "Booked").ToList();
-            var newss2 = db.Saloon_bookings.Where(x => x.Voyager_id == newss.Voyager_id && x.Saloon_id == sid && x.Date == dt && x.Time == tm && x.Status == "Booked").FirstOrDefault();
+            var newss1 = db.Saloon_bookings.Where(x => x.Saloon_id == sid && x.Date == dt && x.Time == tm).ToList();
+            var newss2 = db.Saloon_bookings.Where(x => x.Voyager_id == newss.Voyager_id && x.Saloon_id == sid && x.Date == dt && x.Time == tm).FirstOrDefault();
             int count1 = newss1.Count;
             
             if(count1 >= 3)
@@ -134,9 +137,33 @@ namespace CruiseshipApp.Controllers
                     saloon_Booking.Saloon_id = saloon.Saloon_id;
                     saloon_Booking.Date = dt;
                     saloon_Booking.Time = tm;
-                    saloon_Booking.Status = "Booked";
-                    db.Saloon_bookings.Add(saloon_Booking);
+                  /*  saloon_Booking.Status = "Booked"*/;
+
+                    var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
+                    if (check1 != null)
+                    {
+                        saloon_Booking.Status = "Premium Paid";
+                        db.Saloon_bookings.Add(saloon_Booking);
+                        db.SaveChanges();
+
+                    }
+                    else
+                    {
+                        saloon_Booking.Status = "Payment Pending";
+                        db.Saloon_bookings.Add(saloon_Booking);
+                        db.SaveChanges();
+                    }
+
+                    var ids = db.Beauty_Saloon_Table.Where(y => y.Saloon_id == saloon_Booking.Saloon_id).FirstOrDefault();
+
+                    Payment payment = new Payment();
+                    payment.Booking_details_id = saloon_Booking.Saloon_booking_id;
+                    payment.Booking_for = "Beauty Saloon";
+                    payment.Amount = ids.Price;
+                    payment.Date = currentDate1;
+                    db.Payments.Add(payment);
                     db.SaveChanges();
+
                     TempData["AlertMessage"] = "Saloon Appointment Booked...!";
                 }
             }
@@ -158,7 +185,8 @@ namespace CruiseshipApp.Controllers
                     saloon = x.Beauty_Saloon.Saloon_name,
                     Date = x.Date,
                     Time = x.Time,
-                    amount = x.Beauty_Saloon.Price
+                    amount = x.Beauty_Saloon.Price,
+                    Status = x.Status
                 }).Where(x => x.Voyager_id == newss.Voyager_id).ToList();
                 return View(addsend);
             }
@@ -168,7 +196,7 @@ namespace CruiseshipApp.Controllers
         {
             Session["bid"] = id;
 
-            int ssid = Convert.ToInt32(Session["login_id"]);
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
 
             var check1 = db.Logins.Where(y => y.Login_id == ssid && y.Usertype == "Premium").FirstOrDefault();
@@ -181,14 +209,14 @@ namespace CruiseshipApp.Controllers
             var check = db.Payments.Where(y => y.Booking_details_id == id).FirstOrDefault();
             if (check != null)
             {
-                /*return RedirectToAction("ConfirmPayment");*/
-                TempData["AlertMessage"] = "Payment already done...!";
-                return RedirectToAction("ViewBookings");
+                return RedirectToAction("ConfirmPayment");
+                
             }
             else
             {
-
-            }
+                TempData["AlertMessage"] = "Payment already done...!";
+                return RedirectToAction("ViewBookings");
+            }*/
             return View();
         }
 
@@ -196,29 +224,33 @@ namespace CruiseshipApp.Controllers
         public ActionResult ConfirmPayment()
         {
             CruiseshipDbEntities db = new CruiseshipDbEntities();
-            int ssid = Convert.ToInt32(Session["login_id"]);
+            /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
-            var iids = Session["iid"];
-            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
-            Beauty_Saloon beauty_Saloon = db.Beauty_Saloon_Table.Find(iids);
+            var iids = Session["iid"];*/
+
+            /*Beauty_Saloon beauty_Saloon = db.Beauty_Saloon_Table.Find(iids);*/
+
+
+            /*var slb = db.Saloon_bookings.Find(biid);
+            var ids = db.Beauty_Saloon_Table.Where(y => y.Saloon_id == slb.Saloon_id).FirstOrDefault();*/
             int biid = Convert.ToInt32(Session["bid"]);
+            var sbids = db.Saloon_bookings.Where(y => y.Saloon_booking_id == biid).FirstOrDefault();
 
-            /*int biid = Convert.ToInt32(Session["bid"]);*/
-
-            var slb = db.Saloon_bookings.Find(biid);
-            var ids = db.Beauty_Saloon_Table.Where(y => y.Saloon_id == slb.Saloon_id).FirstOrDefault();
-
-
-            var amtid = Session["amts"];
+            /*var amtid = Session["amts"];
             Payment payment = new Payment();
             payment.Booking_details_id = biid;
             payment.Booking_for = "Beauty Saloon";
             payment.Amount = ids.Price;
             payment.Date = currentDate1;
             db.Payments.Add(payment);
-            db.SaveChanges();
+            db.SaveChanges();*/
 
             TempData["AlertMessage"] = "Payment Succesfully...!";
+
+            sbids.Status = "Paid";
+            db.Entry(sbids).State = EntityState.Modified;
+            db.SaveChanges();
+
             return RedirectToAction("ViewBookings");
 
         }

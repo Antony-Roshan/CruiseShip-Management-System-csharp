@@ -1,8 +1,8 @@
-﻿@{
+﻿@*@{
     Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
 }
 
-
+*@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -11,12 +11,12 @@
     <center>
         <h1>Welcome Manager</h1>
         <div>
-            @Html.ActionLink("Manage Employees", "ViewEmployees", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Manage Premium Voyagers", "AcceptPremiumVoyager", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("View Bookings", "ViewBookings", "Manager", new { area = "" }, new { @class = "nav-link" }) |
-            @Html.ActionLink("Feeedbacks", "ViewFeedback", "Feedback", new { area = "" }, new { @class = "nav-link" }) |
+            @Html.ActionLink("Manage Employees", "ViewEmployees", "Manager", new { area = "" }, new { @class = "nav-link" }) 
+            @Html.ActionLink("Manage Premium Voyagers", "AcceptPremiumVoyager", "Manager", new { area = "" }, new { @class = "nav-link" }) 
+            @Html.ActionLink("View Bookings", "ViewBookings", "Manager", new { area = "" }, new { @class = "nav-link" }) 
+            @Html.ActionLink("Feeedbacks", "ViewFeedback", "Feedback", new { area = "" }, new { @class = "nav-link" }) 
             @*@Html.ActionLink("View Payments", "ViewPayments", "Manager", new { area = "" }, new { @class = "nav-link" }) |*@
-            @Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+            @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
         </div>
     </center>
 </body>

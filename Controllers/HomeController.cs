@@ -97,6 +97,13 @@ namespace CruiseshipApp.Controllers
         {
             using (CruiseshipDbEntities db = new CruiseshipDbEntities())
             {
+
+                /*var Ldetails = db.Logins.Where(x => x.Username == un && x.Password == pwd).FirstOrDefault();
+
+                if (Ldetails == null)
+                {
+                    ViewBag.Message = "Invalid Username and Password";
+                }*/
                 Login l = new Login();
                 l.Username = un;
                 l.Password = pwd;

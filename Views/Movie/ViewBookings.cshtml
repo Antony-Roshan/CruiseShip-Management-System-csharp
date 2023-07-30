@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.MovieBookingDetails>
 
-@{
+@*@{
     ViewBag.Title = "ViewBookings";
     Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}
+}*@
 
 <h2>ViewBookings</h2>
 
@@ -63,9 +63,7 @@
             @Html.DisplayFor(modelItem => item.seat)
         </td>*@
 
-            @*        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>*@
+
             @*<td>
             @Html.DisplayFor(modelItem => item.name)
         </td>*@
@@ -79,10 +77,21 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Make Payment", "MoviePayment", new { id = item.Movie_bookings_id })
+                @Html.DisplayFor(modelItem => item.Status)
             </td>
+
+
+            @if (item.Status == "Payment Pending")
+            {
+                <td>
+                    @Html.ActionLink("Make Payment", "MoviePayment", new { id = item.Movie_bookings_id })
+                </td>
+            }
+            else /*if (item.Status == "PremiumPaid")*/
+            {
+
+            }
+
         </tr>
     }
 
