@@ -151,13 +151,6 @@ namespace CruiseshipApp.Controllers
                     db.Movie_bookings.Add(movie_Bookings);
                     db.SaveChanges();
 
-                    Payment payment = new Payment();
-                    payment.Booking_details_id = movie_Bookings.Movie_bookings_id;
-                    payment.Booking_for = "Movie Ticket";
-                    payment.Amount = movie_Bookings.Total;
-                    payment.Date = currentDate1;
-                    db.Payments.Add(payment);
-                    db.SaveChanges();
                 }
                 else
                 {
@@ -165,16 +158,17 @@ namespace CruiseshipApp.Controllers
                     db.Movie_bookings.Add(movie_Bookings);
                     db.SaveChanges();
 
-                    Payment payment = new Payment();
-                    payment.Booking_details_id = movie_Bookings.Movie_bookings_id;
-                    payment.Booking_for = "Movie Ticket";
-                    payment.Amount = movie_Bookings.Total;
-                    payment.Date = currentDate1;
-                    db.Payments.Add(payment);
-                    db.SaveChanges();
+                    
                 }
 
-                
+                Payment payment = new Payment();
+                payment.Booking_details_id = movie_Bookings.Movie_bookings_id;
+                payment.Booking_for = "Movie Ticket";
+                payment.Amount = movie_Bookings.Total;
+                payment.Date = currentDate1;
+                db.Payments.Add(payment);
+                db.SaveChanges();
+
                 TempData["AlertMessage"] = "Movie booked successfull...!";
 
                 return RedirectToAction("MovieTicketBooking");
@@ -237,10 +231,11 @@ namespace CruiseshipApp.Controllers
            /* int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();
             var iids = Session["iid"];
-            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+            
             Movie_ticket movie = db.Movie_ticket_Table.Find(iids);*/
             int biid = Convert.ToInt32(Session["bid"]);
-            
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+
             var ids = db.Movie_bookings.Where(y => y.Movie_bookings_id == biid).FirstOrDefault();
 
             /*var amtid = Session["amts"];
@@ -252,11 +247,12 @@ namespace CruiseshipApp.Controllers
             db.Payments.Add(payment);
             db.SaveChanges();*/
 
-            TempData["AlertMessage"] = "Payment Succesfully...!";
 
             ids.Status = "Paid";
             db.Entry(ids).State = EntityState.Modified;
             db.SaveChanges();
+
+            TempData["AlertMessage"] = "Payment Succesfully...!";
 
             return RedirectToAction("ViewBookings");
         }

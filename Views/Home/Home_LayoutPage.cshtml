@@ -1,6 +1,4 @@
-﻿
-
-<!--Author: W3layouts
+﻿<!--Author: W3layouts
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
@@ -14,8 +12,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="keywords" content="Cruise Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <!-- fonts -->
-    <link href="//fonts.googleapis.com/css?family=Cinzel:400,700,900" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="/web/fonts.googleapis.com/css?family=Cinzel:400,700,900" rel="stylesheet">
+    <link href="/web/fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <!-- /fonts -->
     <!-- css -->
     <link href="/web/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -34,22 +32,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="topbar-w3ls">
         <div class="container">
             <a href="index.html" class="logo">
-                <h1 style="color: cyan">
-                    <i @*style="color: cyan"*@ class="fa fa-ship" aria-hidden="true"></i>
-                    The Blue Horizon
-                    <i @*style="color: cyan"*@ class="fa fa-ship" aria-hidden="true"></i>
+                <h1>
+                    <i class="fa fa-ship" aria-hidden="true"></i>
+                    THE BLUE HORIZON
+                    <i class="fa fa-ship" aria-hidden="true"></i>
                 </h1>
             </a>
             <div class="top-agileits">
                 <div class="top-w3l1">
-                    <span @*style="color: cyan"*@ class="glyphicon glyphicon-phone-alt"></span>
-                    <p style="color: cyan" class="agile1">+91 99955 22112</p>
-                    <p style="color: cyan" class="agile2">+91 99955 22115</p>
+                    <span class="glyphicon glyphicon-phone-alt"></span>
+                    <p class="agile1">+1 515 151515</p>
+                    <p class="agile2">+1 010 101010</p>
                 </div>
                 <div class="top-w3l2">
-                    <span @*style="color: cyan"*@ class="glyphicon glyphicon-map-marker"></span>
-                    <p style="color: cyan" class="agileits1">Kochi</p>
-                    <p style="color: cyan" class="agileits2">Kerala, INDIA</p>
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                    <p class="agileits1">77 Jack Street</p>
+                    <p class="agileits2">Chicago, USA</p>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -72,10 +70,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav cl-effect-7">
-                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Registration", "Voyager", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Premium Registration", "Premium", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li class="active"><a href="/" class="page-scroll">Home</a></li>
+                            <li><a href="/Home/Login" class="page-scroll">Login</a></li>
+                            <li><a href="/Home/Voyager" class="page-scroll">Voyager</a></li>
+                            <li><a href="/Home/Premium" class="page-scroll">Premium</a></li>
                         </ul>
                     </div>
                 </div>
@@ -84,31 +82,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <!-- /navigation -->
     <!-- banner -->
-     <style>
-        h1 {
-            color: aliceblue;
-            /*align-content:center;*/
-        }
-         th {
-             color: aliceblue;
-             /*align-content:center;*/
-         }
-         td {
-             color: aliceblue;
-         }
-    </style>
+
+  
     <section class="banner-w3ls">
-        <div id="block" data-vide-bg="video/cruise" data-vide-options="position: 0% 50%">
+        <div id="block" data-vide-bg="/web/video/cruise.mp4" data-vide-options="position: 0% 50%" >
             <div class="overlay">
+                <style>
+                    h1 {
+                        color: orangered;
+                        /*align-content:center;*/
+                    }
 
+                    th {
+                        color: white;
+                        /*align-content:center;*/
+                    }
 
-                @*<h2>Enjoy Cruising</h2>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed bibendum felis. Curabitur dignissim, diam sed fermentum pulvinar, leo mi ultricies risus, vitae congue tellus mi sed augue. Etiam euismod rhoncus diam at tempor. Cras porta nec ipsum a finibus.Vestibulum pretium egestas nisi semper mattis. </p>
-                *@
+                    td {
+                        color: white;
+                    }
+                </style>
                 @RenderBody()
             </div>
-            </div>
+        </div>
     </section>
     <!-- /banner -->
     <!-- about -->
@@ -116,16 +112,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-lg-6 col-md-6 col-sm-12" data-aos="flip-right">
                 <h3 class="text-center">About Us</h3>
-                <p class="text-center">Welcome to The Blue Horizon, the ultimate destination for your next vacation. Whether you are looking for a relaxing getaway, a fun-filled adventure, or a romantic escape, we have something for everyone. Our cruiseship offers a variety of amenities and activities to suit your preferences and needs. You can enjoy a movie night at our onboard theater, book a party hall for your special occasion, work out at our fitness center, pamper yourself at our beauty salon, or order items from our online store. Whatever you choose, you will experience the best service and quality that The Blue Horizon is known for. Book your cruise today and discover the wonders of The Blue Horizon.</p>
+                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed bibendum felis. Curabitur dignissim, diam sed fermentum pulvinar, leo mi ultricies risus, vitae congue tellus mi sed augue. Etiam euismod rhoncus diam at tempor. Cras porta nec ipsum a finibus. Vestibulum pretium egestas nisi semper mattis. Etiam dui neque, sollicitudin in hendrerit nec, laoreet vitae tellus.</p>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12" data-aos="flip-left">
                 <ul class="grid cs-style-1">
                     <li>
                         <figure>
-                            
-                            <img src="/web/images/about-img2.jpg" alt="img01" class="img-responsive">
+                            <img src="images/about-img2.jpg" alt="img01" class="img-responsive">
                             <figcaption>
-                                <a href="/web/images/about-img.jpg" class="lightninBox" data-lb-group="1">View More</a>
+                                <a href="images/about-img.jpg" class="lightninBox" data-lb-group="1">View More</a>
                             </figcaption>
                         </figure>
                     </li>
@@ -148,22 +143,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <h3 class="text-center" data-aos="zoom-in">Our Services</h3>
             <div class="col-lg-3 col-md-3 col-sm-6" data-aos="flip-down">
-                <img src="/web/images/ship.png" alt="" class="img-responsive">
+                <img src="images/ship.png" alt="" class="img-responsive">
                 <h4 class="text-center">Lorem ipsum dolor</h4>
                 <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sem elit, finibus et egestas ut, condimentum ut neque.</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6" data-aos="flip-down">
-                <img src="/web/images/captain.png" alt="" class="img-responsive">
+                <img src="images/captain.png" alt="" class="img-responsive">
                 <h4 class="text-center">adipiscing elit</h4>
                 <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sem elit, finibus et egestas ut, condimentum ut neque.</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6" data-aos="flip-down">
-                <img src="/web/images/anchor.png" alt="" class="img-responsive">
+                <img src="images/anchor.png" alt="" class="img-responsive">
                 <h4 class="text-center">Aenean sem elit</h4>
                 <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sem elit, finibus et egestas ut, condimentum ut neque.</p>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6" data-aos="flip-down">
-                <img src="/web/images/baggage.png" alt="" class="img-responsive">
+                <img src="images/baggage.png" alt="" class="img-responsive">
                 <h4 class="text-center">condimentum ut</h4>
                 <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sem elit, finibus et egestas ut, condimentum ut neque.</p>
             </div>
@@ -176,14 +171,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <h3 class="text-center" data-aos="zoom-in">Our Gallery</h3>
             <ul class="clearfix demo">
-                <li data-aos="flip-down"><img src="/web/images/gallery-img1.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img2.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img3.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img4.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img5.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img6.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img7.jpg" alt="" class="img-responsive" /></li>
-                <li data-aos="flip-down"><img src="/web/images/gallery-img8.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img1.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img2.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img3.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img4.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img5.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img6.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img7.jpg" alt="" class="img-responsive" /></li>
+                <li data-aos="flip-down"><img src="images/gallery-img8.jpg" alt="" class="img-responsive" /></li>
             </ul>
         </div>
     </section>
@@ -193,7 +188,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <h3 class="text-center">Meet Our Team</h3>
             <div class="col-lg-3 col-md-3 col-sm-6 team-w3l1" data-aos="flip-right">
-                <img src="/web/images/team-img1.jpg" alt="" class="img-responsive">
+                <img src="images/team-img1.jpg" alt="" class="img-responsive">
                 <h4>Johnny Blaze</h4>
                 <ul class="social-icons1">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -203,7 +198,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 team-w3l1" data-aos="flip-left">
-                <img src="/web/images/team-img2.jpg" alt="" class="img-responsive">
+                <img src="images/team-img2.jpg" alt="" class="img-responsive">
                 <h4>Elizabeth</h4>
                 <ul class="social-icons1">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -213,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 team-w3l2" data-aos="flip-right">
-                <img src="/web/images/team-img3.jpg" alt="img06" class="img-responsive">
+                <img src="images/team-img3.jpg" alt="img06" class="img-responsive">
                 <h4>Max Payne</h4>
                 <ul class="social-icons1">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -223,7 +218,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 team-w3l2" data-aos="flip-left">
-                <img src="/web/images/team-img4.jpg" alt="img06" class="img-responsive">
+                <img src="images/team-img4.jpg" alt="img06" class="img-responsive">
                 <h4>Diana</h4>
                 <ul class="social-icons1">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -315,33 +310,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- /back to top -->
     <!-- js files -->
     <!-- js files -->
-    <script src="/web/js/jquery.min.js"></script>
-    <script src="/web/js/bootstrap.min.js"></script>
-    <script src="/web/js/smoothscroll.js"></script>
-    <script src="/web/js/jquery.easing.min.js"></script>
-    <script src="/web/js/grayscale.js"></script>
-    <script src='/web/js/aos.js'></script>
-    <script src="/web/js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/grayscale.js"></script>
+    <script src='js/aos.js'></script>
+    <script src="js/index.js"></script>
     <!-- js for back to top -->
-    <script src="/web/js/top.js"></script>
+    <script src="js/top.js"></script>
     <!-- /js for back to top -->
     <!-- js for about lightbox -->
-    <script src="/web/js/jQuery.lightninBox.js"></script>
+    <script src="js/jQuery.lightninBox.js"></script>
     <script type="text/javascript">
-	$(".lightninBox").lightninBox();
+        $(".lightninBox").lightninBox();
     </script>
     <!-- /js for about lightbox -->
     <!-- js for gallery -->
-    <script src="/web/js/jquery.picEyes.js"></script>
+    <script src="js/jquery.picEyes.js"></script>
     <script>
-$(function(){
-	//picturesEyes($('li'));
-	$('ul.demo li').picEyes();
-});
+        $(function () {
+            //picturesEyes($('li'));
+            $('ul.demo li').picEyes();
+        });
     </script>
     <!-- /js for gallery -->
     <!-- js for banner -->
-    <script src="/web/js/jquery.vide.js"></script>
+    <script src="js/jquery.vide.js"></script>
     <!-- /js for banner -->
     <!-- /js files -->
 </body>

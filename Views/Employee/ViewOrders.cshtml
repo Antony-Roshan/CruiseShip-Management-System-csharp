@@ -1,11 +1,11 @@
-﻿@model IEnumerable<CruiseshipApp.Models.Order>
+﻿@model IEnumerable<CruiseshipApp.Models.OrderStackBookingDetails>
 
 @*@{
         ViewBag.Title = "ViewOrders";
         Layout = "~/Views/Employee/Empoyee_LayoutPage.cshtml";
     }
 *@
-<h2>ViewOrders</h2>
+<h2>View Orders</h2>
 
 @if (TempData["AlertMessage"] != null)
 {
@@ -14,53 +14,68 @@
     </div>
 }
 
-
 <table class="table">
     <tr>
-        @*        <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Order_id)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Voyager_id)
             </th>*@
         <th>
-            @Html.DisplayNameFor(model => model.Total)
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        @*        <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            @*        <td>
-                    @Html.DisplayFor(modelItem => item.Order_id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Voyager_id)
-                </td>*@
+            @*            <td>
+            @Html.DisplayFor(modelItem => item.Order_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voyager_id)
+        </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Total)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            @*        <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>*@
             <td>
-                @Html.ActionLink("Order Details", "ItemOrderDetails", new { id = item.Order_id }) |
-                @Html.ActionLink("Deliver", "Deliver", new { id = item.Order_id })
-
-
+                @Html.DisplayFor(modelItem => item.Total)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                @Html.ActionLink("Order Details", "ItemOrderDetails", new { id = item.Order_id })
+            </td>
+            @if (item.Status == "Delivered")
+            {
+
+            }
+            else
+            {
+                <td>
+                    @Html.ActionLink("Deliver", "Deliver", new { id = item.Order_id })
+                </td>
+            }
+
         </tr>
     }
 
 </table>
+
 @Html.ActionLink("Home", "EItems"@*new { id = item.Order_id }*@)

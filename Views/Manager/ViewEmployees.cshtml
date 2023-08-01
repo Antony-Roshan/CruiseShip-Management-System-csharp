@@ -1,34 +1,41 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.ViewEmployeeDetails>
 
-@*@{
-        ViewBag.Title = "ViewEmployees";
-        Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
-    }
-*@
+@{
+    ViewBag.Title = "ViewEmployees";
+    Layout = "~/Views/Home/Manager_LayoutPage.cshtml";
+}
+
 
 
 <center>
-    <h2>View Employees</h2>
-    <div>
-        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" })
-        @Html.ActionLink("Manage Premium Voyagers", "AcceptPremiumVoyager", "Manager", new { area = "" }, new { @class = "nav-link" })
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h1>EMPLOYEES LIST</h1>
 </center>
 
-<p>
     @Html.ActionLink("Create New", "AddEmployee")
-</p>
+
 
 
 <table class="table">
     <tr>
-@*        <th>
-            @Html.DisplayNameFor(model => model.Employee_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Login_id)
-        </th>*@
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Employee_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Login_id)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -47,12 +54,12 @@
     @foreach (var item in Model)
     {
         <tr>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.Employee_id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login_id)
-            </td>*@
+            @*            <td>
+                    @Html.DisplayFor(modelItem => item.Employee_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login_id)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>

@@ -1,23 +1,34 @@
-﻿@*
+﻿
 @{
     ViewBag.Title = "ViewBookings";
-    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
+    Layout = "~/Views/Home/Manager_LayoutPage.cshtml";
 }
-*@
+
 
 
 <center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <style>
+        a {
+            height =50 px;
+            width =200 px;
+        }
+    </style>
 
-    <h2>View Boookings</h2>
-
-    @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-    @Html.ActionLink("Movie Booking Details", "ViewMovieBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-    @Html.ActionLink("Party Hall Booking Details", "ViewPartyBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-    @Html.ActionLink("Fitness Centre Details", "ViewFitnessBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-    @Html.ActionLink("Beauty Saloon Details", "ViewSaloonBookingDetails", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-@*    @Html.ActionLink("Back to List", "ViewBookings", "Manager", new { area = "" }, new { @class = "nav-link" }) *@
-    @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
+    <a href="ViewMovieBookingDetails" class="btn btn-success" style="width: 200px; height: 35px;">MOVIE TICKET</a><br /><br />
+    <a href="ViewPartyBookingDetails" style="width: 200px; height: 35px;" class="btn btn-success">PARTY HALL</a><br /><br />
+    <a href="ViewFitnessBookingDetails" style="width: 200px; height: 35px;" class="btn btn-success">FITNESS CENTRE</a><br /><br />
+    <a href="ViewSaloonBookingDetails" style="width: 200px; height: 35px;" class="btn btn-success">BEAUTY SALOON</a><br />  <br />
+    style="width: 200px; height: 35px;
 
 
-
-</center>
+</center>   

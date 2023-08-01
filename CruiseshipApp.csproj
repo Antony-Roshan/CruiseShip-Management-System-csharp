@@ -188,6 +188,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderBookingDetails.cs" />
+    <Compile Include="Models\OrderStackBookingDetails.cs" />
     <Compile Include="Models\Order_details.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -231,9 +232,61 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="cruise.mp4" />
+    <Content Include="css\aos.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\gallery.css" />
+    <Content Include="css\jQuery.lightninBox.css" />
+    <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\about-img.jpg" />
+    <Content Include="images\about-img2.jpg" />
+    <Content Include="images\anchor.png" />
+    <Content Include="images\baggage.png" />
+    <Content Include="images\bg.png" />
+    <Content Include="images\captain.png" />
+    <Content Include="images\cd-top-arrow.svg" />
+    <Content Include="images\close.png" />
+    <Content Include="images\close2.png" />
+    <Content Include="images\contact.jpg" />
+    <Content Include="images\cruise.jpg" />
+    <Content Include="images\divide.jpg" />
+    <Content Include="images\gallery-img.jpg" />
+    <Content Include="images\gallery-img1.jpg" />
+    <Content Include="images\gallery-img2.jpg" />
+    <Content Include="images\gallery-img3.jpg" />
+    <Content Include="images\gallery-img4.jpg" />
+    <Content Include="images\gallery-img5.jpg" />
+    <Content Include="images\gallery-img6.jpg" />
+    <Content Include="images\gallery-img7.jpg" />
+    <Content Include="images\gallery-img8.jpg" />
+    <Content Include="images\loader.gif" />
+    <Content Include="images\next.png" />
+    <Content Include="images\prev.png" />
+    <Content Include="images\ship.png" />
+    <Content Include="images\team-img1.jpg" />
+    <Content Include="images\team-img2.jpg" />
+    <Content Include="images\team-img3.jpg" />
+    <Content Include="images\team-img4.jpg" />
+    <Content Include="images\Tleft.png" />
+    <Content Include="images\Tright.png" />
+    <Content Include="js\aos.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\grayscale.js" />
+    <Content Include="js\index.js" />
+    <Content Include="js\jquery.easing.min.js" />
+    <Content Include="js\jQuery.lightninBox.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.picEyes.js" />
+    <Content Include="js\jquery.vide.js" />
+    <Content Include="js\modernizr.min.js" />
+    <Content Include="js\smoothscroll.js" />
+    <Content Include="js\SmoothScroll.min.js" />
+    <Content Include="js\top.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -253,6 +306,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Views\cruise.mp4" />
     <Content Include="web\css\aos.css" />
     <Content Include="web\css\bootstrap.min.css" />
     <Content Include="web\css\font-awesome.min.css" />
@@ -291,7 +345,6 @@
     <Content Include="web\images\team-img4.jpg" />
     <Content Include="web\images\Tleft.png" />
     <Content Include="web\images\Tright.png" />
-    <Content Include="web\index.html" />
     <Content Include="web\js\aos.js" />
     <Content Include="web\js\bootstrap.min.js" />
     <Content Include="web\js\grayscale.js" />
@@ -307,11 +360,19 @@
     <Content Include="web\js\top.js" />
     <Content Include="web\video\cruise.jpg" />
     <Content Include="web\video\cruise.mp4" />
-    <Content Include="web\w3layouts-License.txt" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome.eot" />
+    <Content Include="fonts\fontawesome.ttf" />
+    <Content Include="fonts\fontawesome.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -323,6 +384,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="video\cruise.jpg" />
+    <Content Include="video\cruise.mp4" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -413,6 +476,13 @@
     <Content Include="Views\Manager\ViewFitnessBookingDetails.cshtml" />
     <Content Include="Views\Manager\ViewPartyBookingDetails.cshtml" />
     <Content Include="Views\Manager\ViewBookings.cshtml" />
+    <Content Include="Views\Home\Voyager_LayoutPage.cshtml" />
+    <Content Include="Views\Home\Manager_LayoutPage.cshtml" />
+    <Content Include="Views\Home\Employee_LayoutPage.cshtml" />
+    <Content Include="Views\Employee\ViewOrders.cshtml" />
+    <Content Include="Views\Employee\ItemOrderDetails.cshtml" />
+    <Content Include="Views\Manager\ViewVoyagers.cshtml" />
+    <Content Include="Views\Home\Premium_LayoutPage.cshtml" />
     <Content Include="web\fonts\fontawesome-webfont.ttf" />
     <Content Include="web\fonts\fontawesome-webfont.woff" />
     <Content Include="web\fonts\fontawesome-webfont.woff2" />
@@ -422,13 +492,7 @@
     <Content Include="web\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="web\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="web\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Views\Home\Voyager_LayoutPage.cshtml" />
-    <Content Include="Views\Home\Manager_LayoutPage.cshtml" />
-    <Content Include="Views\Home\Employee_LayoutPage.cshtml" />
-    <Content Include="Views\Employee\ViewOrders.cshtml" />
-    <Content Include="Views\Employee\ItemOrderDetails.cshtml" />
-    <Content Include="Views\Manager\ViewVoyagers.cshtml" />
-    <Content Include="Views\Home\Premium_LayoutPage.cshtml" />
+    <Content Include="Views\Home\Sample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

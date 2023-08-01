@@ -1,17 +1,25 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Voyager>
 
-@*@{
+@{
     ViewBag.Title = "AcceptPremiumVoyager";
-    Layout = "~/Views/Manager/Manager_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Home/Manager_LayoutPage.cshtml";
+}
 
 <center>
-    <h2>Accept Premium Voyager</h2>
-    <div>
-        @Html.ActionLink("Home", "Manager", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-        @Html.ActionLink("Manage Employees", "ViewEmployees", "Manager", new { area = "" }, new { @class = "nav-link" }) 
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <h1>    PREMIUM VOYAGERS</h1>
+    <br />
+
 </center>
 
 @if (TempData["AlertMessage"] != null)
@@ -78,7 +86,8 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>*@
             <td>
-                @Html.ActionLink("Accept", "Accept", new { id = item.Voyager_id }) |
+                <a  href="Accept?id=@item.Voyager_id" class="btn btn-success"> Accept</a> 
+                @Html.ActionLink("Accept", "Accept", new { id = item.Voyager_id }) 
                 @Html.ActionLink("Reject", "Reject", new { id = item.Voyager_id })
             </td>
         </tr>

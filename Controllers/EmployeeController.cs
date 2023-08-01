@@ -33,7 +33,21 @@ namespace CruiseshipApp.Controllers
         CruiseshipDbEntities db = new CruiseshipDbEntities();
         public ActionResult ViewOrders()
         {
-            return View(db.Orders_Table.Where(x => x.Status == "Paid").ToList());
+            using (CruiseshipDbEntities dd = new CruiseshipDbEntities())
+            {
+                var result = (from od in dd.Orders_Table
+                              join vv in dd.Voyagers
+                              on od.Voyager_id equals vv.Voyager_id
+                              select new OrderStackBookingDetails
+                              {
+                                  Order_id = od.Order_id,
+                                  Name = vv.First_name + " " + vv.Last_name,
+                                  Date = od.Date,
+                                  Total = od.Total,
+                                  Status = od.Status,
+                              }).ToList();
+                return View(result);
+            }
         }
 
         public ActionResult ItemOrderDetails(int? id)

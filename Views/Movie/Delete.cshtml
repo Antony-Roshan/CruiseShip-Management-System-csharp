@@ -1,10 +1,9 @@
 ﻿@model CruiseshipApp.Models.Movie_ticket
 
-@*@{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}*@
-
+@{
+    ViewBag.Title = "book";
+    Layout = "~/Views/Hoome/Employee_LayoutPage.cshtml";
+}
 <h2>Delete</h2>
 
 <h3>Are you sure you want to delete this?</h3>
@@ -52,21 +51,22 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
 
-@*        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+        @*        <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>*@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> 
+            <input type="submit" value="Delete" class="btn btn-default" />
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

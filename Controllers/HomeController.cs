@@ -29,6 +29,7 @@ namespace CruiseshipApp.Controllers
                 else
                 {
                     Session["login_id"] = Ldetails.Login_id;
+
                     if (Ldetails.Usertype == "Manager")
                     {
                         return RedirectToAction("Manager", "Manager");
@@ -160,6 +161,12 @@ namespace CruiseshipApp.Controllers
 
         public ActionResult VoyagerHome()
         {
+            return View();
+        }
+
+        public ActionResult Sample()
+        {
+
             return View();
         }
     }

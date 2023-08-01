@@ -26,6 +26,7 @@ namespace CruiseshipApp.Controllers
 
                               select new ViewEmployeeDetails
                               {
+                                  Employee_id = xx.Employee_id,
                                   Name = xx.Employee_name,
                                   Phone = xx.Phone,
                                   Email = xx.Email,
