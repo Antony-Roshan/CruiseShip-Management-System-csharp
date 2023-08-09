@@ -39,7 +39,7 @@ namespace CruiseshipApp.Controllers
                 TempData["AlertMessage"] = "Items Added Successfully...!";
             }
             ModelState.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         public ActionResult Edit(int? id)
@@ -77,7 +77,7 @@ namespace CruiseshipApp.Controllers
             UpdateModel(item);
             db.SaveChanges();
             TempData["AlertMessage"] = "Items Updated Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
         public ActionResult Delete(int? id)
         {
@@ -99,7 +99,7 @@ namespace CruiseshipApp.Controllers
             db.Items_Table.Remove(item);
             db.SaveChanges();
             TempData["AlertMessage"] = "Items Deleted Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
 

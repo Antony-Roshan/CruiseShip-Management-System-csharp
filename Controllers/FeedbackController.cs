@@ -37,7 +37,7 @@ namespace CruiseshipApp.Controllers
             db.Feedbacks.Add(feedback1);
             db.SaveChanges();
             TempData["AlertMessage"] = "Feedbackk Added Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         public ActionResult Edit(int? id)
@@ -62,7 +62,7 @@ namespace CruiseshipApp.Controllers
             UpdateModel(feedback);
             db.SaveChanges();
             TempData["AlertMessage"] = "Feedback Updated Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
         public ActionResult Delete(int? id)
         {
@@ -84,7 +84,7 @@ namespace CruiseshipApp.Controllers
             db.Feedbacks.Remove(feedback);
             db.SaveChanges();
             TempData["AlertMessage"] = "Feedback Deleted Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         public ViewResult ViewFeedback()

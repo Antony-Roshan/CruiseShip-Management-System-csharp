@@ -1,74 +1,88 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Beauty_Saloon>
 
-@*@{
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
-}*@
-
-<center>
-    <h1>Manage Beauty Saloon</h1>
-
-    <div>
-        @Html.ActionLink("Home", "ESaloon", "Employee", new { area = "" }, new { @class = "nav-link" }) 
-        @Html.ActionLink("Manage Beauty Saloon", "Index", "Saloon", new { area = "" }, new { @class = "nav-link" }) 
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
-</center>
-
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
 }
 
-<p>
-    @Html.ActionLink("Add Beauty Saloon", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Saloon
-        </th>
-        <th>
-            Service
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-@*        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
-        <th></th>
-    </tr>
+<center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    @foreach (var item in Model)
+
+    <h1>MANAGE BEAUTY SALOON</h1>
+
+
+
+    @if (TempData["AlertMessage"] != null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Saloon_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.saloon_service)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Saloon_id }) |
-                @*@Html.ActionLink("Details", "Details", new { id = item.Saloon_id }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.Saloon_id })
-            </td>
-        </tr>
+        <div class="alert alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
     }
 
-</table>
+
+</center>
+    @* <p>
+            @Html.ActionLink("Add Beauty Saloon", "Create")
+        </p>*@
+    <a href="Create?" class="btn btn-success">ADD NEW BEAUTY SALOON</a><br /><br />
+
+    <table class="table">
+        <tr>
+            <th>
+                Saloon
+            </th>
+            <th>
+                Service
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            @*        <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Saloon_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.saloon_service)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                @*            <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>*@
+            <td>
+      @*          @Html.ActionLink("Edit", "Edit", new { id = item.Saloon_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Saloon_id })*@
+
+                <a href="Edit?id=@item.Saloon_id" class="btn btn-info">EDIT</a>
+           
+                <a href="Delete?id=@item.Saloon_id" class="btn btn-danger">DELETE</a>
+            </td>
+            </tr>
+        }
+
+    </table>
+

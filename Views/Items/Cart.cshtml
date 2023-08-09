@@ -1,69 +1,90 @@
 ﻿@model CruiseshipApp.Models.Item
 
-@*@{
+@{
     ViewBag.Title = "Cart";
-    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
+}
 
-<h2>Cart</h2>
+<center>
 
-<form method="post" action="/Items/Done">
-    <div>
-        <h4>Item</h4>
-        <hr />
-        <dl class="dl-horizontal">
-           @* <dt>
-                @Html.DisplayNameFor(model => model.Item_id)
-            </dt>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-            <dd>
-                @Html.DisplayFor(model => model.Item_id)
-            </dd>*@
 
-            <dt>
-                Item
-            </dt>
+    <h1>CART</h1>
 
-            <dd>
-                @Html.DisplayFor(model => model.Item_name)
-            </dd>
+    <form method="post" action="/Items/Done">
+        <div>
+    
+            <hr />
+            <dl style="width:400px" class="dl-horizontal">
+                @* <dt>
+                    @Html.DisplayNameFor(model => model.Item_id)
+                </dt>
 
-            <dt>
-                Image
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Item_id)
+                </dd>*@
 
-            <dd>
-                <img src="@Url.Content(Model.Image)" width="200" height="150" />            </dd>
+                <dt>
+                    Item<br /><br />
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Item_name)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
+                <dt>
+                    Image<br /><br />
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Type)
-            </dt>
+                <dd>
+                    <img src="@Url.Content(Model.Image)" width="200" height="150" /><br /><br />
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Type)
-            </dd>
-            <dt>
-                Quantity
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)<br /><br />
+                </dt>
 
-            <dd>
-                <input type="text" name="qn" />
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-        </dl>
-    </div>
-    <p>
-        <input type="submit" name="Done" value="Done" />
-@*        @Html.ActionLink("Done", "Done", new { /* id = Model.PrimaryKey */ })*@
-        @Html.ActionLink("Back to List", "ItemOrdereing")
-    </p>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Type)<br /><br />
+                </dt>
 
-</form>
+                <dd>
+                    @Html.DisplayFor(model => model.Type)
+                </dd>
+                <dt>
+                    Quantity<br /><br />
+                </dt>
+
+                <dd>
+                    <input type="text" name="qn" class="form-control" required />
+                </dd>
+
+            </dl>
+        </div>
+       
+            <input type="submit" name="Done" value="Done" />
+            @*        @Html.ActionLink("Done", "Done", new { /* id = Model.PrimaryKey */ })*@
+           @*@Html.ActionLink("Back to List", "ItemOrdereing")*@
+ 
+
+        @*<a href="Done?" class="btn btn-success">Done</a>*@
+        <a href="ItemOrdereing" class="btn btn-danger">Cancel</a>
+
+        <br /><br />
+
+    </form>
+    </center>

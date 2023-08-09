@@ -1,31 +1,32 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Item>
 
-@*@{
+@{
     ViewBag.Title = "ItemOrdereing";
-    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
+}
 
 <center>
 
-  @*  <h1>Welcome Voyager</h1>*@
-    <div>
-        @Html.ActionLink("Home", "VoyagerHome", "Home", new { area = "" }, new { @class = "nav-link" }) 
-       @* @Html.ActionLink("Book Movie Tickets", "MovieTicketBooking", "Movie", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Party Hall", "PartyHallBooking", "Party", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Fitness Centre", "FitnessCentreBooking", "Fitness", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Book Beauty Saloon", "BeautySaloonBooking", "Saloon", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Order Items", "ItemOrdereing", "Items", new { area = "" }, new { @class = "nav-link" }) |
-        @Html.ActionLink("Feedback", "Index", "Feedback", new { area = "" }, new { @class = "nav-link" }) |*@
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <h2>ItemOrdereing</h2>
+
+    <h1>ITEM ORDERING</h1>
+    <br />
 
 </center>
 
 @if (TempData["AlertMessage"] != null)
 {
-    <div class="alert-success">
+    <div class="alert alert-success">
         <strong>Success !</strong> @TempData["AlertMessage"]
     </div>
 }
@@ -69,7 +70,8 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.ActionLink("Add to Cart", "Cart", new { id = item.Item_id })
+              @*  @Html.ActionLink("Add to Cart", "Cart", new { id = item.Item_id })*@
+                <a href="Cart?id=@item.Item_id" class="btn btn-success"> Add to Cart</a>
             </td>
         </tr>
 
@@ -78,4 +80,7 @@
 
 </table>
 
-@Html.ActionLink("View Orders", "ViewOrders", new { /* id = Model.PrimaryKey */ })
+@*@Html.ActionLink("View Orders", "ViewOrders", new { /* id = Model.PrimaryKey */ })*@
+<center>
+    <a href="ViewOrders" class="btn btn-success"> View Orders</a>
+</center>

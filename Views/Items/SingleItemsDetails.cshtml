@@ -1,15 +1,28 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.OrderBookingDetails>
 
-@*@{
+@{
     ViewBag.Title = "SingleItemsDetails";
-    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
+}
 
-<h2>SingleItemsDetails</h2>
+<center>
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h1>SINGLE ITEM DETAILS</h1>
+    <br />
+
+</center>
 <table class="table">
     <tr>
            @*     <th>
@@ -69,4 +82,6 @@
     }
 
 </table>
-@Html.ActionLink("Back to List", "ViewOrders"@*, new { id = item.Movie_bookings_id }*@)
+<center>
+    <a href="ViewOrders" class="btn btn-success"> View Orders</a>
+</center>

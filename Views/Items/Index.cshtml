@@ -1,29 +1,41 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Item>
-@*
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
-}*@
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Items/Items_LayoutPage.cshtml";
+    }
 
 <center>
-    <h1>Manage Items</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <div>
-        @Html.ActionLink("Home", "EItems", "Employee", new { area = "" }, new { @class = "nav-link" }) 
-        @Html.ActionLink("Manage Items", "Index", "Items", new { area = "" }, new { @class = "nav-link" }) 
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
+    <h1>MANAGE ITEMS</h1>
+    <br />
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
+    }
+    @* <p>
+            @Html.ActionLink("Add new Items", "Create")
+        </p>*@
 </center>
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
-<p>
-    @Html.ActionLink("Add new Items", "Create")
-</p>
+
+<a href="Create" class="btn btn-success">ADD ITEMS</a>
+<br />
+<br />
+
 <table class="table">
     <tr>
         <th>
@@ -57,10 +69,15 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Item_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Item_id }) 
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Item_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Item_id })*@
+
+                <a href="Edit?id=@item.Item_id" class="btn btn-info">EDIT</a>
+                @* <a href="Details?id=@item.Item_id" class="btn btn-success">DETAILS</a>*@
+                <a href="Delete?id=@item.Item_id" class="btn btn-danger">DELETE</a>
             </td>
         </tr>
     }
 
+   
 </table>

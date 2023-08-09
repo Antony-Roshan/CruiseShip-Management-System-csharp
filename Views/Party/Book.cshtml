@@ -1,102 +1,117 @@
 ﻿@model CruiseshipApp.Models.Party_hall
 
-@*@{
+@{
     ViewBag.Title = "Book";
-    Layout = "~/Views/Party/Party_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
+}
 
-<h2>Book</h2>
+<center>
 
-<form method="Post" action="/Party/Confirm">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <div>
-        <h4>Party_hall</h4>
-        <hr />
-        <dl class="dl-horizontal">
-@*            <dt>
-                @Html.DisplayNameFor(model => model.Hall_id)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Hall_id)
-            </dd>*@
+    <h1>BOOK PARTY HALL</h1>
 
-            <dt>
-                Hall Name
-            </dt>
+    <form method="Post" action="/Party/Confirm">
 
-            <dd>
-                @Html.DisplayFor(model => model.Hall_name)
-            </dd>
+        <div>
+            <hr />
+            <dl style="width:400px" class="dl-horizontal">
+                @*            <dt>
+                    @Html.DisplayNameFor(model => model.Hall_id)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Time)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Hall_id)
+                </dd>*@
 
-            <dd>
-                @Html.DisplayFor(model => model.Time)
-            </dd>
+                <dt>
+                    Hall Name<br /><br />
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Occasion)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Hall_name)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Occasion)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)<br /><br />
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Image)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
 
-            <dd>
-                <img src="@Url.Content(Model.Image)" width="200" height="150" />
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Occasion)<br /><br />
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Occasion)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
+                <dt>
+                    Image<br /><br />
+                </dt>
 
-            <dt>
-                Date
-            </dt>
+                <dd>
+                    <img src="@Url.Content(Model.Image)" width="200" height="150" />
+                </dd>
+                <br />
+                <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)<br /><br />
+                </dt>
 
-            <dd>
-                <label for="date">Select a Date:</label>
-                <input type="date" name="dt" min="2023-01-02" required>
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
 
-            <dt>
-                Time
-            </dt>
+                <dt>
+                    Date
+                </dt>
 
-            <dd>
-                <label for="tm">Select a time:</label>
-                <select name="tm" required>
-                    <option value="9:00">9:00 AM</option>
-                    <option value="16:00">4:00 PM</option>
-                    <option value="22:00">10:00 PM</option>
-                </select>
-            </dd>
+                <dd>
 
-            @*            <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+                    <input type="date" name="dt" min="2023-01-02" class="form-control" required><br /><br />
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+                <dt>
+                    Time
+                </dt>
 
-        </dl>
-    </div>
-    <p>
-        <input type="submit" name="Confirm" value="Confirm" />
-        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-        @Html.ActionLink("Back to List", "PartyHallBooking")
-    </p>
+                <dd>
+                    <select name="tm" class="form-control" required>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="22:00">10:00 PM</option>
+                    </select><br /><br />
+                </dd>
 
-</form>
+                @*            <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+            </dl>
+        </div>
+
+
+@*        <a href="Confirm" class="btn btn-success">Submit</a>
+*@        <input type="submit" name="Confirm" value="Confirm" class="btn btn-success"/>
+        <a href="PartyHallBooking" class="btn btn-danger">Cancel</a>
+
+        <br /><br />
+    </form>
+</center>

@@ -47,7 +47,7 @@ namespace CruiseshipApp.Controllers
             db.Movie_ticket_Table.Add(movie_Ticket);
             db.SaveChanges();
             TempData["AlertMessage"] = "Movie Added Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         public ActionResult Edit(int? id)
@@ -72,7 +72,7 @@ namespace CruiseshipApp.Controllers
             UpdateModel(movie_Ticket);
             db.SaveChanges();
             TempData["AlertMessage"] = "Movie Updated Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
         public ActionResult Delete(int? id)
         {
@@ -94,7 +94,7 @@ namespace CruiseshipApp.Controllers
             db.Movie_ticket_Table.Remove(movie_Ticket);
             db.SaveChanges();
             TempData["AlertMessage"] = "Movie Deleted Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
 

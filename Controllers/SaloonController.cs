@@ -40,7 +40,7 @@ namespace CruiseshipApp.Controllers
             db.Beauty_Saloon_Table.Add(beauty_Saloon);
             db.SaveChanges();
             TempData["AlertMessage"] = "Beauty Saloon Added Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
         public ActionResult Edit(int? id)
         {
@@ -62,7 +62,7 @@ namespace CruiseshipApp.Controllers
             UpdateModel(beauty_saloon);
             db.SaveChanges();
             TempData["AlertMessage"] = "Beauty Saloon Updated Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
         public ActionResult Delete(int? id)
         {
@@ -84,7 +84,7 @@ namespace CruiseshipApp.Controllers
             db.Beauty_Saloon_Table.Remove(beauty_Saloon);
             db.SaveChanges();
             TempData["AlertMessage"] = "Beauty Saloon Deleted Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
 

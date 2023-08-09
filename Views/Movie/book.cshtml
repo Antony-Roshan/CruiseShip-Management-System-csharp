@@ -2,88 +2,101 @@
 
 @{
     ViewBag.Title = "book";
-    Layout = "~/Views/Hoome/Employee_LayoutPage.cshtml";
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
 }
 
-<h2>book</h2>
 
-<form method="Post" action="/Movie/Confirm">
-    <div>
-        <h4>Movie Ticket</h4>
-        <hr />
-        <dl class="dl-horizontal">
-@*            <dt>
-                @Html.DisplayNameFor(model => model.Movie_id)
-            </dt>
+<center>
 
-            <dd>
-                @Html.DisplayFor(model => model.Movie_id)
-            </dd>*@
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-            <dt>
-                Movie
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Movie_name)
-            </dd>
+    <h1>BOOK MOVIE TICKET</h1>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Screen)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Screen)
-            </dd>
+    <form method="Post" action="/Movie/Confirm">
+        <div>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Genre)
-            </dt>
+            <hr />
+            <style>
+            </style>
+            <dl style="width:400px" class="dl-horizontal">
 
-            <dd>
-                @Html.DisplayFor(model => model.Genre)
-            </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Time)
-            </dt>
+                <dt>
+                    Movie<br /><br />
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Time)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Movie_name)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Price)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Screen)<br /><br />
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Price)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Screen)
+                </dd>
 
-            <dt>
-                Date
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Genre)<br /><br />
+                </dt>
 
-            <dd>
-                <label for="date">Select a Date:</label>
-                <input type="date" name="dt" min="2023-01-02" required>
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Genre)
+                </dd>
 
-            <dt>
-                Seat
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)<br /><br />
+                </dt>
 
-            <dd>
-                <label for="st">Select number of seats:</label>
-                <input type="number" name="st" required/>
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>
 
-        </dl>
-    </div>
-    <p>
-        <input type="submit" name="Confirm" value="Confirm" />
-        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-        @Html.ActionLink("Back to List", "MovieTicketBooking")
-    </p>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)<br /><br />
+                </dt>
 
-</form>
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                    <br /><br />
+                </dd>
+
+                <dt>
+                    Date
+                </dt>
+
+                <dd>
+                    @*                <label for="date">Select a Date:</label>*@
+                    <input type="date" name="dt" min="2023-01-02" class="form-control" required><br />
+                </dd>
+
+                <dt>
+                    Seat
+                </dt>
+
+                <dd>
+                    @*        <label for="st">Select number of seats:</label>*@
+                    <input type="number" name="st" class="form-control" required /><br />
+                </dd>
+
+            </dl>
+        </div>
+
+        <input type="submit" name="Confirm" value="Confirm" class="btn btn-success" />
+
+        <a href="MovieTicketBooking" class="btn btn-danger">Cancel</a>
+
+    </form>
+</center>

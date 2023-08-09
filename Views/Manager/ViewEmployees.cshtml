@@ -23,9 +23,12 @@
 
     <h1>EMPLOYEES LIST</h1>
 </center>
+<a href="AddEmployee" style="width: 200px; height: 35px;" class="btn btn-success"> Add Employee</a>
+<br>
+<br />
 
-    @Html.ActionLink("Create New", "AddEmployee")
-
+@*    @Html.ActionLink("Create New", "AddEmployee")
+*@
 
 
 <table class="table">
@@ -73,8 +76,9 @@
                 @Html.DisplayFor(modelItem => item.UserType)
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.Employee_id })
-            </td>
+                <a href="DeleteEmployee?id=@item.Employee_id" class="btn btn-danger"> Delete</a>
+@*                @Html.ActionLink("Delete", "DeleteEmployee", new { id = item.Employee_id })
+*@            </td>
         </tr>
     }
 

@@ -19,10 +19,16 @@
     @if (ViewBag.Message != null)
     {
         <div class="alert alert-danger">
-            <strong>Error!</strong> @ViewBag.Message
+            <strong>Error !</strong> @ViewBag.Message
         </div>
     }
 
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert alert-success ">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
+    }
 
     <h1>LOGIN</h1>
     <br />
@@ -38,8 +44,27 @@
                 <td><input type="password" class="form-control" name="pwd" value="" /><br /></td>
             </tr>
             <tr>
-                <td><input type="submit" name="sub" class="btn btn-success" value="submit" /></td>
+                <td>
+                <input type="submit" name="sub" class="btn btn-success" value="submit" />
+                </td>
             </tr>
         </table>
     </form>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
 </center>

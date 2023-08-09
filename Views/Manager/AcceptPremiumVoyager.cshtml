@@ -20,15 +20,16 @@
     <h1>    PREMIUM VOYAGERS</h1>
     <br />
 
+
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
+    }
+
 </center>
-
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
-
 <table class="table">
     <tr>
         @*        <th>
@@ -85,11 +86,11 @@
             @*        <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>*@
-            <td>
-                <a  href="Accept?id=@item.Voyager_id" class="btn btn-success"> Accept</a> 
-                @Html.ActionLink("Accept", "Accept", new { id = item.Voyager_id }) 
-                @Html.ActionLink("Reject", "Reject", new { id = item.Voyager_id })
-            </td>
+        <td>
+            <a href="Accept?id=@item.Voyager_id" class="btn btn-success"> Accept</a>
+               <a href="Reject?id=@item.Voyager_id" class="btn btn-danger"> Reject</a>
+
+        </td>
         </tr>
     }
 

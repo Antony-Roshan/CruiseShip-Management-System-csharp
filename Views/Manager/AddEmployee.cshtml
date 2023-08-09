@@ -22,45 +22,46 @@
     <br />
 
     <form method="post">
-        <table>
+        <table style="width:500px">
             <tr>
                 <th>EMPLOYEE NAME </th>
-                <td><input type="text" name="en" value="" /></td>
+                <td><input type="text" name="en" value="" class="form-control" required/><br /></td>
             </tr>
             <tr>
                 <th>EMAIL </th>
-                <td><input type="text" name="em" value="" /></td>
+                <td><input type="email" name="em" value="" class="form-control" required/><br /></td>
             </tr>
             <tr>
 
                 <th>PHONE </th>
-                <td><input type="text" name="ph" value="" /></td>
+                <td><input type="tel" name="ph" value="" class="form-control" pattern="[0-9]{10}" required/><br /></td>
             </tr>
             <tr>
                 <th>USER NAME </th>
-                <td><input type="text" name="un" value="" /></td>
+                <td><input type="text" name="un" value="" class="form-control" required/><br /></td>
             </tr>
             <tr>
                 <th>PASSWORD </th>
-                <td><input type="text" name="pwd" value="" /></td>
+                <td><input type="text" name="pwd" value="" class="form-control" required/><br /></td>
             </tr>
             <tr>
                 <th>EMPLOYEE DEPARTMENT </th>
                 <td>
-                    <select name="ut">
+                    <select name="ut" class="form-control" value="" required>
                         <option value="EMovie">EMovie</option>
                         <option value="EParty">EParty</option>
                         <option value="EFitness">EFitness</option>
                         <option value="ESaloon">ESaloon</option>
                         <option value="EItems">EItems</option>
                     </select>
+                    <br />
                 </td>
 
                 @* <td><input type="text" name="ut" value="" /></td>*@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" name="sub" value="REGISTER" /></td>
+                <td><input type="submit" name="sub" class="btn btn-success" value="REGISTER" /></td>
             </tr>
         </table>
     </form>

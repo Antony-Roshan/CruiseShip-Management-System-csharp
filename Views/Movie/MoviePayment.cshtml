@@ -1,47 +1,67 @@
 ﻿
-@*@{
+@{
     ViewBag.Title = "MoviePayment";
-    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
-}*@
-
-<h2>MoviePayment</h2>
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
+}
 
 
-<form method="Post" action="/Movie/ConfirmPayment">
-    <table>
-        <tr>
-            <td>
-                <label for="co">Card Owner</label><br>
-                <input type="text" id="co" name="co" required /><br>
-            </td>
-        </tr>
+<center>
 
-        <tr>
-            <td>
-                <label for="cn">Card Number</label><br>
-                <input type="text" id="cn" name="cn" required /><br>
-            </td>
-        </tr>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-        <tr>
-            <td>
-                <label for="mm">Expiry Date</label><br>
-                <input type="number" id="mm" value="MM" name="mm" min="1" max="12" required />
-                <input type="number" id="yy" value="YY" name="yy" min="20" max="99" required /><br>
-            </td>
-        </tr>
 
-        <tr>
-            <td>
-                <label for="cvv">CVV</label><br>
-                <input type="text" id="cvv" name="cvv" required /><br>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" name="ConfirmPayment" value="ConfirmPayment" />
-            </td>
-        </tr>
-    </table>
-</form>
-@Html.ActionLink("View Bookings", "ViewBookings", "Movie", new { area = "" }, new { @class = "nav-link" })
+    <h1>MOVIE PAYMENT</h1>
+
+    <br />
+
+    <form method="Post" action="/Movie/ConfirmPayment">
+        <table>
+            <tr>
+                <td>
+                    <label for="co">Card Owner</label><br>
+                    <input type="text" id="co" name="co" class="form-control" required /><br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="cn">Card Number</label><br>
+                    <input type="number" id="cn" name="cn" class="form-control" required /><br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>Expiry Date</label><br>
+                    <input type="number" id="mm" value="MM" name="mm" min="1" max="12" class="form-control" required /><br>
+                    <input type="number" id="yy" value="YY" name="yy" min="20" max="99" class="form-control" required /><br>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="cvv">CVV</label><br>
+                    <input type="text" id="cvv" name="cvv" class="form-control" required /><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" name="ConfirmPayment" class="btn btn-success" value="ConfirmPayment" />
+               
+                    <a href="ViewBookings" class="btn btn-danger">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+    
+    
+</center>

@@ -41,7 +41,7 @@ namespace CruiseshipApp.Controllers
             db.Fitness_centre_Table.Add(fitness_Centre);
             db.SaveChanges();
             TempData["AlertMessage"] = "Fitness Centre Added Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         public ActionResult Edit(int? id)
@@ -64,7 +64,7 @@ namespace CruiseshipApp.Controllers
             UpdateModel(fitness_Centre);
             db.SaveChanges();
             TempData["AlertMessage"] = "Fitness Centre Updated Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
         public ActionResult Delete(int? id)
         {
@@ -86,7 +86,7 @@ namespace CruiseshipApp.Controllers
             db.Fitness_centre_Table.Remove(fitness_Centre);
             db.SaveChanges();
             TempData["AlertMessage"] = "Fitness Centre Deleted Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
 

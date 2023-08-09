@@ -4709,12 +4709,12 @@ textarea.form-control-lg {
   color: #34383c;
 }
 
-.alert-success {
+.alert alert-success {
   --bs-alert-color: #0f5132;
   --bs-alert-bg: #d1e7dd;
   --bs-alert-border-color: #badbcc;
 }
-.alert-success .alert-link {
+.alert alert-success .alert-link {
   color: #0c4128;
 }
 

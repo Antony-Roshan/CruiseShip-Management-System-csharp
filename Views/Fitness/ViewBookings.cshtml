@@ -1,101 +1,119 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.FitnessBookingDetails>
 
-@*@{
+@{
     ViewBag.Title = "ViewBookings";
-    Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
-}
-*@
-<h2>ViewBookings</h2>
-
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
 }
 
-<table class="table">
-    <tr>
-        @* <th>
-            @Html.DisplayNameFor(model => model.Booking_details_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Booking_type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Booking_for_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Voyager_id)
-        </th>*@
-        <th>
-            Fitness
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Place)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        <th>
-            Payment Status
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>*@
+<center>
 
-        <th></th>
-    </tr>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    @foreach (var item in Model)
+
+    <h1>My Bookings</h1>
+    <br />
+
+    @if (TempData["AlertMessage"] != null)
     {
-        <tr>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Booking_details_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Booking_type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Booking_for_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Voyager_id)
-        </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Fitname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Place)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            @* <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>*@
-
-            @if (item.Status == "Payment Pending")
-            {
-                <td>
-                    @Html.ActionLink("Make Payment", "FitnessPayment", new { id = item.Booking_details_id })
-                </td>
-            }
-            else /*if (item.Status == "PremiumPaid")*/
-            {
-
-            }
-        </tr>
+        <div class="alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
     }
 
-</table>
-@Html.ActionLink("Back to List", "FitnessCentreBooking"@*, new { id = item.Movie_bookings_id }*@)
+    <table class="table">
+        <tr>
+            @* <th>
+                    @Html.DisplayNameFor(model => model.Booking_details_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking_type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking_for_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Voyager_id)
+                </th>*@
+            <th>
+                Fitness
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Place)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                Payment Status
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>*@
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Booking_details_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Booking_type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Booking_for_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Voyager_id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fitname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                @* <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>*@
+
+                @if (item.Status == "Payment Pending")
+                {
+                    <td>
+                        <a href="FitnessPayment?id=@item.Booking_details_id" class="btn btn-success"> Payment</a>
+
+                    </td>
+                }
+                else /*if (item.Status == "PremiumPaid")*/
+                {
+
+                }
+            </tr>
+        }
+
+    </table>
+    <a href="FitnessCentreBooking?" class="btn btn-info">Back to List</a>
+    </center>
+

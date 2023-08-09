@@ -1,18 +1,31 @@
 ﻿@model CruiseshipApp.Models.Fitness_centre
 
-@*@{
+@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
-}*@
+}
 
-<h2>Details</h2>
+<center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h1>DETAILS</h1>
+
 
 <div>
-    <h4>Fitness centre</h4>
+
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="width:400px">
         <dt>
-            Fitness
+            Fitness <br /><br />
         </dt>
 
         <dd>
@@ -20,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.Time)<br /><br />
         </dt>
 
         <dd>
@@ -28,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Place)
+            @Html.DisplayNameFor(model => model.Place)<br /><br />
         </dt>
 
         <dd>
@@ -36,7 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Phone)
+            @Html.DisplayNameFor(model => model.Phone)<br /><br />
         </dt>
 
         <dd>
@@ -44,24 +57,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Email)<br /><br />
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
 
-@*        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+        @*        <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>*@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Fitness_id }) 
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+</center>

@@ -38,7 +38,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <i class="fa fa-ship" aria-hidden="true"></i>
                 </h1>
             </a>
-            <div class="top-agileits">
+            @*<div class="top-agileits">
                 <div class="top-w3l1">
                     <span class="glyphicon glyphicon-phone-alt"></span>
                     <p class="agile1">+1 515 151515</p>
@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p class="agileits2">Chicago, USA</p>
                 </div>
                 <div class="clearfix"></div>
-            </div>
+            </div>*@
         </div>
     </div>
     <!-- /topbar -->
@@ -71,12 +71,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav cl-effect-7">
                             @*<li class="active"><a href="Manager" class="page-scroll">Home</a></li>*@
-                            <li><a href="/Manager/ViewVoyagers" class="page-scroll">Voyagers</a></li>
-                            <li><a href="/Manager/ViewEmployees" class="page-scroll">Employees</a></li>
-                            <li><a href="/Manager/AcceptPremiumVoyager" class="page-scroll">Premium</a></li>
-                            <li><a href="/Manager/ViewBookings" class="page-scroll">Bookings</a></li>
-                            <li><a href="/Feedback/ViewFeedback" class="page-scroll">Feedback</a></li>
-                            <li><a href="/Home/Index" class="page-scroll">Logout</a></li>
+                            <li><a href="/Manager/ViewVoyagers" class="page-scroll">VOYAGERS</a></li>
+                            <li><a href="/Manager/ViewEmployees" class="page-scroll">EMPLOYEES</a></li>
+                            <li><a href="/Manager/AcceptPremiumVoyager" class="page-scroll">PREMIUM</a></li>
+                            <li><a href="/Manager/ViewBookings" class="page-scroll">BOOKINGS</a></li>
+                            <li><a href="/Feedback/ViewFeedback" class="page-scroll">FEEDBACK</a></li>
+                            <li><a href="/" class="page-scroll">LOGOUT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -90,18 +90,47 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="overlay">
                 <style>
                     h1 {
-                        color: orangered;
-                        /*align-content:center;*/
+                        font-size: 50px;
+                        font-weight: 600;
+                        background-image: linear-gradient(45deg, #fc5c7d, #6a82fb);
+                        color: transparent;
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                    }
+
+                    dl {
+                        display: block;
+                        margin-top: 1em;
+                        margin-bottom: 1em;
+                        margin-right: 60px;
+                        padding: 30px;
+                        width: 300px;
                     }
 
                     th {
                         color: white;
-                        /*align-content:center;*/
+                        background: #000;
                     }
 
-                    td {
+                    td, dt, dd, hr {
                         color: white;
                     }
+
+                    .btn {
+                        border: 2px solid orangered;
+                        border-radius: 4px;
+                        background-color: white;
+                        color: black;
+                        padding: 10px 25px;
+                        font-size: 10px;
+                        cursor: pointer;
+                        font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+                        font-size: 10px;
+                        font-weight: 700;
+                        line-height: 14px;
+                        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+                    }
+
                 </style>
                 @RenderBody()
             </div>

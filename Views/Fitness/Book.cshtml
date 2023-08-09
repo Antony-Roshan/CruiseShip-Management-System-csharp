@@ -1,103 +1,118 @@
 ﻿@model CruiseshipApp.Models.Fitness_centre
 
-@*@{
+@{
     ViewBag.Title = "Book";
-    Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
+}
 
-<h2>Book</h2>
-<form method="Post" action="/Fitness/Confirm">
-    <div>
-        <h4>Fitness_centre</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            @*        <dt>
-            @Html.DisplayNameFor(model => model.Fitness_id)
-        </dt>
+<center>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fitness_id)
-        </dd>*@
-
-            <dt>
-                Fitness
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Fitness_name)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Place)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Place)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Phone)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Phone)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-
-            <dt>
-                Date
-            </dt>
-
-            <dd>
-                <label for="dt">Select a Date:</label>
-                <input type="date" name="dt" min="2023-01-02" required>
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Time)
-            </dt>
-
-            <dd>
-                <label for="tm">Select a time:</label>
-                <select name="tm">
-                    <option value="7:00">7:00 AM</option>
-                    <option value="8:00">8:00 AM</option>
-                    <option value="9:00">9:00 AM</option>
-                    <option value="10:00">10:00 AM</option>
-                    <option value="11:00">11:00 AM</option>
-                    <option value="12:00">12:00 PM</option>
-                    <option value="13:00">1:00 PM</option>
-                    <option value="14:00">2:00 PM</option>
-                    <option value="15:00">3:00 PM</option>
-                    <option value="16:00">4:00 PM</option>
-                    <option value="17:00">5:00 PM</option>
-                    <option value="18:00">6:00 PM</option>
-                </select>
-            </dd>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
 
+    <h1>BOOK PARTY HALL</h1>
+    <form method="Post" action="/Fitness/Confirm">
+        <div>
 
-            @*        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <hr />
+            <dl style="width:400px" class="dl-horizontal">
+                @*        <dt>
+                    @Html.DisplayNameFor(model => model.Fitness_id)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.Fitness_id)
+                </dd>*@
 
-        </dl>
-    </div>
-    <p>
+                <dt>
+                    Fitness<br /><br />
+                </dt>
 
-        <input type="submit" name="Confirm" value="Confirm" />
-        @Html.ActionLink("Back to List", "FitnessCentreBooking")
-        @*@Html.ActionLink("Confirm", "Confirm", new { id = Model.Fitness_id })*@
-    </p>
-</form>
+                <dd>
+                    @Html.DisplayFor(model => model.Fitness_name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Place)<br /><br />
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Place)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)<br /><br />
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)<br /><br />
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    Date<br /><br />
+                </dt>
+
+                <dd>
+
+                    <input type="date" name="dt" min="2023-01-02" class="form-control" required>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Time)<br /><br />
+                </dt>
+
+                <dd>
+
+                    <select name="tm" class="form-control" required>
+                        <option value="7:00">7:00 AM</option>
+                        <option value="8:00">8:00 AM</option>
+                        <option value="9:00">9:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="15:00">3:00 PM</option>
+                        <option value="16:00">4:00 PM</option>
+                        <option value="17:00">5:00 PM</option>
+                        <option value="18:00">6:00 PM</option>
+                    </select><br /><br />
+                </dd>
+
+
+
+                @*        <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+            </dl>
+        </div>
+
+
+    @*    <a href="Confirm?" class="btn btn-success">Submit</a>*@
+        <input type="submit" name="Confirm" value="Confirm" class="btn btn-success" />
+
+        <a href="FitnessCentreBooking" class="btn btn-success">Back to List</a>
+    </form>
+    </center>

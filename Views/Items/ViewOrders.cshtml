@@ -1,15 +1,32 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Order>
 
-@*@{
+@{
     ViewBag.Title = "ViewOrders";
-    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
 }
-*@
-<h2>ViewOrders</h2>
+
+<center>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h1>VIEW ORDERS</h1>
+    <br />
+
+</center>
 
 @if (TempData["AlertMessage"] != null)
 {
-    <div class="alert-success">
+    <div class="alert alert-success">
         <strong>Success !</strong> @TempData["AlertMessage"]
     </div>
 }
@@ -56,7 +73,7 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.ActionLink("Items Details", "SingleItemsDetails", new { id = item.Order_id })
+               @* @Html.ActionLink("Items Details", "SingleItemsDetails", new { id = item.Order_id })*@
                @* @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })*@
             </td>
 
@@ -65,7 +82,8 @@
             @if (item.Status == "Payment Pending")
             {
                 <td>
-                    @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })
+                   @* @Html.ActionLink("Make Payment", "OrderPayment", new { id = item.Order_id })*@
+                    <a href="OrderPayment?id=@item.Order_id" class="btn btn-success"> Payment</a>
                 </td>
             }
             else
@@ -78,4 +96,8 @@
     }
 
 </table>
-@Html.ActionLink("Back to List", "ItemOrdereing", new { /* id=item.PrimaryKey */ })
+@*@Html.ActionLink("Back to List", "ItemOrdereing", new { /* id=item.PrimaryKey */ })*@
+
+<center>
+    <a href="ItemOrdereing" class="btn btn-success"> Back to List</a>
+</center>

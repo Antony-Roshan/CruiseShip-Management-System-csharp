@@ -232,7 +232,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="cruise.mp4" />
     <Content Include="css\aos.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.min.css" />
@@ -306,7 +305,6 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Views\cruise.mp4" />
     <Content Include="web\css\aos.css" />
     <Content Include="web\css\bootstrap.min.css" />
     <Content Include="web\css\font-awesome.min.css" />
@@ -397,9 +395,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Manager\Manager_LayoutPage.cshtml" />
     <Content Include="Views\Manager\Manager.cshtml" />
-    <Content Include="Views\Employee\Empoyee_LayoutPage.cshtml" />
     <Content Include="Views\Home\Home_LayoutPage.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -441,7 +437,6 @@
     <Content Include="Views\Home\Voyager.cshtml" />
     <Content Include="Views\Movie\MovieTicketBooking.cshtml" />
     <Content Include="Views\Party\PartyHallBooking.cshtml" />
-    <Content Include="Views\Feedback\Feedback_LayoutPage.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Feedback\Create.cshtml" />
     <Content Include="Views\Feedback\Edit.cshtml" />
@@ -478,11 +473,9 @@
     <Content Include="Views\Manager\ViewBookings.cshtml" />
     <Content Include="Views\Home\Voyager_LayoutPage.cshtml" />
     <Content Include="Views\Home\Manager_LayoutPage.cshtml" />
-    <Content Include="Views\Home\Employee_LayoutPage.cshtml" />
     <Content Include="Views\Employee\ViewOrders.cshtml" />
     <Content Include="Views\Employee\ItemOrderDetails.cshtml" />
     <Content Include="Views\Manager\ViewVoyagers.cshtml" />
-    <Content Include="Views\Home\Premium_LayoutPage.cshtml" />
     <Content Include="web\fonts\fontawesome-webfont.ttf" />
     <Content Include="web\fonts\fontawesome-webfont.woff" />
     <Content Include="web\fonts\fontawesome-webfont.woff2" />

@@ -2,78 +2,84 @@
 
 @{
     ViewBag.Title = "book";
-    Layout = "~/Views/Hoome/Employee_LayoutPage.cshtml";
+    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
 }
-
 
 <center>
-    <h2>Manage Movie</h2>
-    <div>
-        @Html.ActionLink("Home", "EMovie", "Employee", new { area = "" }, new { @class = "nav-link" })
-        @Html.ActionLink("Manage Movie", "Index", "Movie", new { area = "" }, new { @class = "nav-link" })
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
-</center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
-<p>
-    @Html.ActionLink("Add Movie", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Movie
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Screen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Time)
-        </th>
-        @*        <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>*@
-        <th></th>
-    </tr>
+    <h1>MANAGE MOVIE</h1>
+    <br />
 
-    @foreach (var item in Model)
+    @if (TempData["AlertMessage"] != null)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Movie_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Screen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Time)
-            </td>
-            @*            <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Status)
-                </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Movie_id })
-                @*@Html.ActionLink("Details", "Details", new { id = item.Movie_id }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.Movie_id })
-            </td>
-        </tr>
+        <div class="alert alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
     }
 
-</table>
+</center>
+
+
+  
+  <a href="Create" class="btn btn-success">ADD MOVIE</a><br /><br />
+    <table class="table">
+        <tr>
+            <th>
+                Movie
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Screen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+              <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+        
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Movie_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Screen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                            <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+
+            <td>
+            @*    @Html.ActionLink("Edit", "Edit", new { id = item.Movie_id })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Movie_id })*@
+
+                <a href="Edit?id=@item.Movie_id" class="btn btn-info">EDIT</a>
+                <a href="Delete?id=@item.Movie_id" class="btn btn-danger">DELETE</a>
+            </td>
+            </tr>
+        }
+
+    </table>

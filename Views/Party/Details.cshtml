@@ -1,67 +1,77 @@
 ﻿@model CruiseshipApp.Models.Party_hall
 
-@*@{
+@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Party/Party_LayoutPage.cshtml";
-}*@
+}
 
-<h2>Details</h2>
+<center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<div>
-    <h4>Party_hall</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Hall_name)
-        </dt>
+    <h1>DETAILS</h1><br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Hall_name)
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
+        <hr />
+        <dl class="dl-horizontal" style="width:400px">
+            <dt>
+                @Html.DisplayNameFor(model => model.Hall_name)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Hall_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Occasion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Occasion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Occasion)<br /><br />
+            </dt>
 
-        <dd>
-            <img src="@Url.Content(Model.Image)" width="350" height="250" />
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Occasion)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                <img src="@Url.Content(Model.Image)" width="350" height="250" /><br /><br />
+            </dd>
 
-@*        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Hall_id }) 
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            @*        <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+        </dl>
+    </div>
+
+</center>

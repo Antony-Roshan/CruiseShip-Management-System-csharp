@@ -1,59 +1,71 @@
 ﻿@model CruiseshipApp.Models.Beauty_Saloon
 
-@*@{
+@{
     ViewBag.Title = "Details";
     Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
-}*@
+}
 
-<h2>Details</h2>
+<center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<div>
-    <h4>Beauty_Saloon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Saloon
-        </dt>
+    <h1>DETAILS</h1><br />
 
-        <dd>
-            Service
-        </dd>
+    <div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.saloon_service)
-        </dt>
+        <dl class="dl-horizontal" style="width=400px">
+            <dt>
+                Saloon<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.saloon_service)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Saloon_name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.saloon_service)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.saloon_service)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
 
-@*        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)<br /><br />
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Saloon_id }) 
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            @*        <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+        </dl>
+    </div>
+@*    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Saloon_id })
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+*@

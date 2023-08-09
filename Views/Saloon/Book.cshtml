@@ -1,18 +1,32 @@
 ﻿@model CruiseshipApp.Models.Beauty_Saloon
 
-@*@{
+@{
     ViewBag.Title = "Book";
-    Layout = "~/Views/Saloon/Saloon_LayoutPage.cshtml";
-}*@
-
-<h2>Book</h2>
-
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
+    Layout = "~/Views/Home/Voyager_LayoutPage.cshtml";
 }
+
+<center>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h1>BOOK PARTY HALL</h1>
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
+    }
 
 <form method="post" action="/Saloon/Confirm">
     <div>
@@ -20,15 +34,15 @@
         <hr />
         <dl class="dl-horizontal">
             @*            <dt>
-            @Html.DisplayNameFor(model => model.Saloon_id)
-        </dt>
+                    @Html.DisplayNameFor(model => model.Saloon_id)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Saloon_id)
-        </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.Saloon_id)
+                </dd>*@
 
             <dt>
-                Saloom
+                Saloom<br /><br />
             </dt>
 
             <dd>
@@ -36,7 +50,7 @@
             </dd>
 
             <dt>
-                Service
+                Service<br /><br />
             </dt>
 
             <dd>
@@ -46,23 +60,23 @@
 
 
             <dt>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.Price)<br /><br />
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.Price)
             </dd>
 
-           @* <dt>
-                @Html.DisplayNameFor(model => model.Time)
-            </dt>
+            @* <dt>
+                    @Html.DisplayNameFor(model => model.Time)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Time)
-            </dd>*@
+                <dd>
+                    @Html.DisplayFor(model => model.Time)
+                </dd>*@
 
             <dt>
-                Date
+                Date<br /><br />
             </dt>
 
             <dd>
@@ -71,7 +85,7 @@
             </dd>
 
             <dt>
-                Time
+                Time<br /><br />
             </dt>
 
             <dd>
@@ -85,18 +99,19 @@
                     <option value="15:00">3:00 PM</option>
                     <option value="16:00">4:00 PM</option>
                     <option value="17:00">5:00 PM</option>
-                </select>
+                </select><br /><br />
             </dd>
 
 
         </dl>
     </div>
-    <p>
-        <input type="submit" name="Confirm" value="Confirm" />
-        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-        @Html.ActionLink("Back to List", "BeautySaloonBooking")
 
+    @* <a href="Confirm?" class="btn btn-success">Submit</a>*@
+    <input type="submit" name="Confirm" value="Confirm" class="btn btn-success" />
 
-    </p>
+    <a href="BeautySaloonBooking" class="btn btn-danger">Cancel</a>
+
+    <br /><br />
 
 </form>
+</center>

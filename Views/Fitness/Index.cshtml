@@ -1,29 +1,36 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.Fitness_centre>
 
-@*@{
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Fitness/Fitness_LayoutPage.cshtml";
-}*@
+}
 
 <center>
-    <h1>Manage Fitness Centre</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-    <div>
-        @Html.ActionLink("Home", "EFitness", "Employee", new { area = "" }, new { @class = "nav-link" }) 
-        @Html.ActionLink("Manage Fitness Centre", "Index", "Fitness", new { area = "" }, new { @class = "nav-link" }) 
-        @*@Html.ActionLink("Logout", "Index", "Home", new { area = "" }, new { @class = "nav-link" })*@
-    </div>
+    <h1>MANAGE FITNESS CENTRE</h1>
+    <br />
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert alert-success">
+            <strong>Success !</strong> @TempData["AlertMessage"]
+        </div>
+    }
 </center>
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
-<p>
-    @Html.ActionLink("Add Fitness Centre", "Create")
-</p>
+<a href="Create" class="btn btn-success">ADD FITNESS CENTRE</a>
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
@@ -36,14 +43,14 @@
             @Html.DisplayNameFor(model => model.Place)
         </th>
         @*<th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
         <th></th>
     </tr>
 
@@ -60,19 +67,23 @@
                 @Html.DisplayFor(modelItem => item.Place)
             </td>
             @* <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>*@
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Fitness_id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Fitness_id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Fitness_id })
-            </td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>*@
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Fitness_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Fitness_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Fitness_id })*@
+
+            <a href="Edit?id=@item.Fitness_id" class="btn btn-info">EDIT</a>
+            <a href="Details?id=@item.Fitness_id" class="btn btn-info">DETAILS</a>
+            <a href="Delete?id=@item.Fitness_id" class="btn btn-danger">DELETE</a>
+        </td>
         </tr>
     }
 

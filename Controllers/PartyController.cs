@@ -61,7 +61,7 @@ namespace CruiseshipApp.Controllers
                 TempData["AlertMessage"] = "Party Hall Added Successfully...!";
             }
             ModelState.Clear();
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
         public ActionResult Edit(int? id)
@@ -99,7 +99,7 @@ namespace CruiseshipApp.Controllers
             UpdateModel(party_Hall);
             db.SaveChanges();
             TempData["AlertMessage"] = "Party Hall Updated Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
 
         }
         public ActionResult Delete(int? id)
@@ -122,7 +122,7 @@ namespace CruiseshipApp.Controllers
             db.Party_hall_Table.Remove(party_Hall);
             db.SaveChanges();
             TempData["AlertMessage"] = "Party Hall Deleted Successfully...!";
-            return RedirectToAction("Index");
+            return RedirectToAction("/Index");
         }
 
 

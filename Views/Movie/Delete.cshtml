@@ -2,72 +2,83 @@
 
 @{
     ViewBag.Title = "book";
-    Layout = "~/Views/Hoome/Employee_LayoutPage.cshtml";
+    Layout = "~/Views/Movie/Movie_LayoutPage.cshtml";
 }
-<h2>Delete</h2>
+<center>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Movie ticket</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Movie
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Movie_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Screen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Screen)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Time)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Time)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        @*        <dt>
-                @Html.DisplayNameFor(model => model.Status)
+    <h1>Are you sure you want to delete this?</h1>
+    <div>
+        <hr />
+        <dl class="dl-horizontal" style="width:400px">
+            <dt>
+                Movie
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.Status)
-            </dd>*@
+                @Html.DisplayFor(model => model.Movie_name)<br /><br />
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Screen)
+            </dt>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.Screen)<br /><br />
+            </dd>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" />
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
-</div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Genre)<br /><br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Time)<br /><br />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            @*        <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>*@
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger"/>
+                @* @Html.ActionLink("Back to List", "Index")*@
+                <a href="Index?" class="btn btn-default">Cancel </a>
+            </div>
+        }
+    </div>
+</center>
