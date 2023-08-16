@@ -6,7 +6,6 @@
 }
 
 <center>
-
     <br />
     <br />
     <br />
@@ -23,95 +22,73 @@
 
     <form method="Post" action="/Party/Confirm">
 
-        <div>
-            <hr />
-            <dl style="width:400px" class="dl-horizontal">
-                @*            <dt>
-                    @Html.DisplayNameFor(model => model.Hall_id)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Hall_id)
-                </dd>*@
+         
+        <dl style="width:400px" class="dl-horizontal">
+            <dt>
+                Hall Name<br /><br />
+            </dt>
 
-                <dt>
-                    Hall Name<br /><br />
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Hall_name)
+            </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Hall_name)
-                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)<br /><br />
+            </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Time)<br /><br />
-                </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+            </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Time)
-                </dd>
+            @*    <dt>
+            @Html.DisplayNameFor(model => model.Occasion)<br /><br />
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.Occasion)<br /><br />
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Occasion)
-                </dd>
-
-                <dt>
-                    Image<br /><br />
-                </dt>
-
-                <dd>
-                    <img src="@Url.Content(Model.Image)" width="200" height="150" />
-                </dd>
-                <br />
-                <br />
-                <dt>
-                    @Html.DisplayNameFor(model => model.Price)<br /><br />
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
-
-                <dt>
-                    Date
-                </dt>
-
-                <dd>
-
-                    <input type="date" name="dt" min="2023-01-02" class="form-control" required><br /><br />
-                </dd>
-
-                <dt>
-                    Time
-                </dt>
-
-                <dd>
-                    <select name="tm" class="form-control" required>
-                        <option value="9:00">9:00 AM</option>
-                        <option value="16:00">4:00 PM</option>
-                        <option value="22:00">10:00 PM</option>
-                    </select><br /><br />
-                </dd>
-
-                @*            <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>*@
-
-            </dl>
-        </div>
+        <dd>
+            @Html.DisplayFor(model => model.Occasion)
+        </dd>*@
 
 
-@*        <a href="Confirm" class="btn btn-success">Submit</a>
-*@        <input type="submit" name="Confirm" value="Confirm" class="btn btn-success"/>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)<br /><br />
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                Image<br /><br />
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.Image)" width="300" height="170" /><br /><br>
+            </dd>
+            
+            <dt>
+                Date
+            </dt>
+
+            <dd>
+
+                <input type="date" name="dt" min="2023-08-20" class="form-control" required><br />
+            </dd>
+
+            <dt>
+                Time
+            </dt>
+
+            <dd>
+                <select name="tm" class="form-control" required>
+                    <option value="9:00">9:00 AM</option>
+                    <option value="16:00">4:00 PM</option>
+                    <option value="22:00">10:00 PM</option>
+                </select>
+            </dd>
+
+        </dl>
+        <input type="submit" name="Confirm" value="Confirm" class="btn btn-success" />
         <a href="PartyHallBooking" class="btn btn-danger">Cancel</a>
-
-        <br /><br />
     </form>
 </center>

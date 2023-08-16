@@ -265,8 +265,8 @@ namespace CruiseshipApp.Controllers
             /*int ssid = Convert.ToInt32(Session["login_id"]);
             var newss = db.Voyagers.Where(x => x.Login_id == ssid).FirstOrDefault();*/
             /*var iids = Session["iid"];*/
-            
-            
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+
             int biid = Convert.ToInt32(Session["bid"]);
 
             var ids = db.Booking_details_Table.Where(y => y.Booking_details_id == biid).FirstOrDefault();
@@ -286,6 +286,12 @@ namespace CruiseshipApp.Controllers
 
             ids.Status = "Paid";
             db.Entry(ids).State = EntityState.Modified;
+
+            var pid = db.Payments.Where(y => y.Booking_details_id == biid).FirstOrDefault();
+
+            pid.Date = currentDate1;
+            db.Entry(ids).State = EntityState.Modified;
+
             db.SaveChanges();
 
             return RedirectToAction("ViewBookings");

@@ -23,14 +23,20 @@
     <br />
 
 
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-info ">
+            <strong>@TempData["AlertMessage"]</strong> 
+        </div>
+    }
+
 </center>
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
+<a href="ViewBookings" class="btn btn-info"> My Bookings</a>
+<br />
+<br />
+
+
 
 <table class="table">
     <tr>
@@ -76,17 +82,14 @@
             @*        <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>*@
-        <td>
+            <td>
 
-       @*     @Html.ActionLink("Book", "Book", new { id = item.Movie_id })*@
+                @*     @Html.ActionLink("Book", "Book", new { id = item.Movie_id })*@
 
-            <a href="Book?id=@item.Movie_id" class="btn btn-success"> Book</a>
+                <a href="Book?id=@item.Movie_id" class="btn btn-success"> Book</a>
 
-        </td>
+            </td>
         </tr>
     }
 
 </table>
-<center>
-    <a href="ViewBookings" class="btn btn-info"> My Bookings</a>
-</center>

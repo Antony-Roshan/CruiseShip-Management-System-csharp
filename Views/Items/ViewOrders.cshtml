@@ -26,8 +26,8 @@
 
 @if (TempData["AlertMessage"] != null)
 {
-    <div class="alert alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
+    <div class="alert alert-info ">
+        <strong>@TempData["AlertMessage"]</strong> 
     </div>
 }
 
@@ -99,5 +99,5 @@
 @*@Html.ActionLink("Back to List", "ItemOrdereing", new { /* id=item.PrimaryKey */ })*@
 
 <center>
-    <a href="ItemOrdereing" class="btn btn-success"> Back to List</a>
+    <a href="ItemOrdereing" class="btn btn-info"> Back to List</a>
 </center>

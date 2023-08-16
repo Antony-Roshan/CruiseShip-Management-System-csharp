@@ -244,6 +244,8 @@ namespace CruiseshipApp.Controllers
             Fitness_centre fitness= db.Fitness_centre_Table.Find(iids);*/
             int biid = Convert.ToInt32(Session["bid"]);
 
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
+
             var ids = db.Booking_details_Table.Where(y => y.Booking_details_id == biid).FirstOrDefault();
 
             /*var amtid = Session["amts"];
@@ -258,6 +260,12 @@ namespace CruiseshipApp.Controllers
 
             ids.Status = "Paid";
             db.Entry(ids).State = EntityState.Modified;
+
+            var pid = db.Payments.Where(y => y.Booking_details_id == biid).FirstOrDefault();
+
+            pid.Date = currentDate1;
+            db.Entry(ids).State = EntityState.Modified;
+
             db.SaveChanges();
 
             return RedirectToAction("ViewBookings");

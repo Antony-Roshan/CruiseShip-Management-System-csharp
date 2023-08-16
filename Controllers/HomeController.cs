@@ -98,26 +98,36 @@ namespace CruiseshipApp.Controllers
         {
             using (CruiseshipDbEntities db = new CruiseshipDbEntities())
             {
-                Login l = new Login();
-                l.Username = un;
-                l.Password = pwd;
-                l.Usertype = "Voyager";
-                db.Logins.Add(l);
-                db.SaveChanges();
+                var checkuname = db.Logins.Where(x => x.Username == un).FirstOrDefault();
+                if (checkuname != null)
+                {
+                    TempData["AlertMessagedanger"] = "Username is already taken...!";
+                    return RedirectToAction("Voyager", "Home");
+                }
+                else
+                {
+                    Login l = new Login();
+                    l.Username = un;
+                    l.Password = pwd;
+                    l.Usertype = "Voyager";
+                    db.Logins.Add(l);
+                    db.SaveChanges();
 
-                Voyager v = new Voyager();
-                var ids = db.Logins.OrderByDescending(y => y.Login_id).FirstOrDefault();
-                v.Login_id = ids.Login_id;
-                v.First_name = fn;
-                v.Last_name = ln;
-                v.Place = pl;
-                v.Gender = gn;
-                v.Phone = ph;
-                v.Email = em;
-                db.Voyagers.Add(v);
-                db.SaveChanges();
+                    Voyager v = new Voyager();
+                    var ids = db.Logins.OrderByDescending(y => y.Login_id).FirstOrDefault();
+                    v.Login_id = ids.Login_id;
+                    v.First_name = fn;
+                    v.Last_name = ln;
+                    v.Place = pl;
+                    v.Gender = gn;
+                    v.Phone = ph;
+                    v.Email = em;
+                    db.Voyagers.Add(v);
+                    db.SaveChanges();
+                    return RedirectToAction("Login", "Home");
+                }                
             }
-            return RedirectToAction("Login", "Home");
+            
         }
 
         public ActionResult Premium()
@@ -129,29 +139,38 @@ namespace CruiseshipApp.Controllers
         {
             using (CruiseshipDbEntities db = new CruiseshipDbEntities())
             {
-                Login l = new Login();
-                l.Username = un;
-                l.Password = pwd;
-                l.Usertype = "Pending";
-                db.Logins.Add(l);
-                db.SaveChanges();
+                var checkuname = db.Logins.Where(x => x.Username == un).FirstOrDefault();
+                if (checkuname != null)
+                {
+                    TempData["AlertMessagedanger"] = "Username is already taken...!";
+                    return RedirectToAction("Voyager", "Home");
+                }
+                else
+                {
+                    Login l = new Login();
+                    l.Username = un;
+                    l.Password = pwd;
+                    l.Usertype = "Pending";
+                    db.Logins.Add(l);
+                    db.SaveChanges();
 
-                Voyager v = new Voyager();
-                var ids = db.Logins.OrderByDescending(y => y.Login_id).FirstOrDefault();
-                v.Login_id = ids.Login_id;
-                v.First_name = fn;
-                v.Last_name = ln;
-                v.Place = pl;
-                v.Gender = gn;
-                v.Phone = ph;
-                v.Email = em;
-                v.Status = "PremiumPending";
-                db.Voyagers.Add(v);
-                db.SaveChanges();
-                TempData["AlertMessage"] = "Please wait 2 hours for premium verification...!";
-
+                    Voyager v = new Voyager();
+                    var ids = db.Logins.OrderByDescending(y => y.Login_id).FirstOrDefault();
+                    v.Login_id = ids.Login_id;
+                    v.First_name = fn;
+                    v.Last_name = ln;
+                    v.Place = pl;
+                    v.Gender = gn;
+                    v.Phone = ph;
+                    v.Email = em;
+                    v.Status = "PremiumPending";
+                    db.Voyagers.Add(v);
+                    db.SaveChanges();
+                    TempData["AlertMessage"] = "Please wait 2 hours for premium verification...!";
+                    
+                }
             }
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("Premium", "Home");
         }
 
         public ActionResult VoyagerHome()

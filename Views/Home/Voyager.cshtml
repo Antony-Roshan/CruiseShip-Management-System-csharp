@@ -18,12 +18,27 @@
     <br />
 
 
+    @if (TempData["AlertMessage"] != null)
+        {
+            <div class="alert alert-info ">
+                <strong>Success !</strong> @TempData["AlertMessage"]
+            </div>
+        }
 
+    @if (TempData["AlertMessagedanger"] != null)
+        {
+            <div class="alert alert-danger ">
+                <strong>danger !</strong> @TempData["AlertMessagedanger"]
+            </div>
+        }
 
     <h1>REGISTRATION</h1><br />
     <br />
+
+
     <form method="post">
-        <table style="width:500px">
+
+        <table style="width:500px;">
             <tr>
                 <th>FIRST NAME </th>
                 <td><input type="text" name="fn" class="form-control" value="" required /><br /></td>
@@ -72,34 +87,6 @@
             </tr>
         </table>
     </form>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
 </center>
 
 

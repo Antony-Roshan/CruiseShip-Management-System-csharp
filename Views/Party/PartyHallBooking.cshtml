@@ -22,14 +22,20 @@
     <h1>PARTY HALL BOOKING</h1>
     <br />
 
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-info ">
+            <strong>@TempData["AlertMessage"]</strong> 
+        </div>
+    }
+
 </center>
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
+<a href="ViewBookings" class="btn btn-info"> My Bookings</a>
+<br />
+<br />
+
+
 
 
 <table class="table">
@@ -49,9 +55,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-      @*  <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>*@
+        @*  <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>*@
         <th></th>
     </tr>
 
@@ -73,17 +79,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-         @*   <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>*@
+            @*   <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>*@
             <td>
-               
-                    <a href="Book?id=@item.Hall_id" class="btn btn-success"> Book</a>
+
+                <a href="Book?id=@item.Hall_id" class="btn btn-success"> Book</a>
             </td>
         </tr>
     }
 
 </table>
-<center>
-    <a href="ViewBookings" class="btn btn-info"> My Bookings</a>
-</center>

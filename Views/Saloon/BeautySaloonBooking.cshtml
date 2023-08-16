@@ -22,20 +22,26 @@
     <h1>BEAUTY SALOON BOOKING</h1>
     <br />
 
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-info ">
+            <strong>@TempData["AlertMessage"]</strong> 
+        </div>
+    }
+
+
 </center>
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
+<a href="ViewBookings" class="btn btn-info"> My Bookings</a>
+<br />
+<br />
+
 
 <table class="table">
     <tr>
-@*        <th>
-            @Html.DisplayNameFor(model => model.Saloon_id)
-        </th>*@
+        @*        <th>
+                @Html.DisplayNameFor(model => model.Saloon_id)
+            </th>*@
         <th>
             Saloon
         </th>
@@ -57,9 +63,9 @@
     @foreach (var item in Model)
     {
         <tr>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.Saloon_id)
-            </td>*@
+            @*            <td>
+                    @Html.DisplayFor(modelItem => item.Saloon_id)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Saloon_name)
             </td>
@@ -75,15 +81,12 @@
             @*        <td>
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>*@
-        <td>
-            @Html.ActionLink("Book", "Book", new { id = item.Saloon_id })
-            <a href="Book?id=@item.Saloon_id" class="btn btn-success"> Book</a>
-            @*@Html.ActionLink("Make Payment", "SaloonPayment")*@
-        </td>
+            <td>
+                @Html.ActionLink("Book", "Book", new { id = item.Saloon_id })
+                <a href="Book?id=@item.Saloon_id" class="btn btn-success"> Book</a>
+                @*@Html.ActionLink("Make Payment", "SaloonPayment")*@
+            </td>
         </tr>
     }
 
 </table>
-<center>
-    <a href="ViewBookings" class="btn btn-info"> My Bookings</a>
-</center>

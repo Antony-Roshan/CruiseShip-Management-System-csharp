@@ -22,20 +22,25 @@
     <h1>ITEM ORDERING</h1>
     <br />
 
+
+
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-info ">
+            <strong>@TempData["AlertMessage"]</strong> 
+        </div>
+    }
 </center>
 
-@if (TempData["AlertMessage"] != null)
-{
-    <div class="alert alert-success">
-        <strong>Success !</strong> @TempData["AlertMessage"]
-    </div>
-}
+<a href="ViewOrders" class="btn btn-success"> View Orders</a>
+<br />
+<br />
 
 <table class="table">
     <tr>
         @*<th>
-            @Html.DisplayNameFor(model => model.Item_id)
-        </th>*@
+                @Html.DisplayNameFor(model => model.Item_id)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Item_name)
         </th>
@@ -55,8 +60,8 @@
     {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Item_id)
-            </td>*@
+                    @Html.DisplayFor(modelItem => item.Item_id)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Item_name)
             </td>
@@ -70,7 +75,7 @@
                 @Html.DisplayFor(modelItem => item.Type)
             </td>
             <td>
-              @*  @Html.ActionLink("Add to Cart", "Cart", new { id = item.Item_id })*@
+                @*  @Html.ActionLink("Add to Cart", "Cart", new { id = item.Item_id })*@
                 <a href="Cart?id=@item.Item_id" class="btn btn-success"> Add to Cart</a>
             </td>
         </tr>
@@ -81,6 +86,3 @@
 </table>
 
 @*@Html.ActionLink("View Orders", "ViewOrders", new { /* id = Model.PrimaryKey */ })*@
-<center>
-    <a href="ViewOrders" class="btn btn-success"> View Orders</a>
-</center>

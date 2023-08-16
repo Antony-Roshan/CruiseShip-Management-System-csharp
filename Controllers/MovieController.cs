@@ -237,19 +237,16 @@ namespace CruiseshipApp.Controllers
             string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
 
             var ids = db.Movie_bookings.Where(y => y.Movie_bookings_id == biid).FirstOrDefault();
-
-            /*var amtid = Session["amts"];
-            Payment payment = new Payment();
-            payment.Booking_details_id = biid;
-            payment.Booking_for = "Movie Ticket";
-            payment.Amount = ids.Total; 
-            payment.Date = currentDate1;
-            db.Payments.Add(payment);
-            db.SaveChanges();*/
-
+           
 
             ids.Status = "Paid";
             db.Entry(ids).State = EntityState.Modified;
+
+            var pid = db.Payments.Where(y => y.Booking_details_id == biid).FirstOrDefault();
+
+            pid.Date = currentDate1;
+            db.Entry(ids).State = EntityState.Modified;
+
             db.SaveChanges();
 
             TempData["AlertMessage"] = "Payment Succesfully...!";

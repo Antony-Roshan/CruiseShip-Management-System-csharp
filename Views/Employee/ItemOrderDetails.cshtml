@@ -1,15 +1,29 @@
 ﻿@model IEnumerable<CruiseshipApp.Models.OrderBookingDetails>
 
-@*@{
+@{
     ViewBag.Title = "ItemOrderDetails";
-    Layout = "~/Views/Employee/Empoyee_LayoutPage.cshtml";
-}*@
+    Layout = "~/Views/Items/Items_LayoutPage.cshtml";
+}
 
-<h2>ItemOrderDetails</h2>
+<center>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <h1>ITEM ORDER DETAILS</h1>
+    <br />
+
+</center>
+
 <table class="table">
     <tr>
 @*        <th>
@@ -65,4 +79,7 @@
     }
 
 </table>
-@Html.ActionLink("Back to list", "ViewOrders", new { /* id=item.PrimaryKey */ })
+
+<center>
+    <a href="ViewOrders" class="btn btn-info"> View Orders</a>
+</center>

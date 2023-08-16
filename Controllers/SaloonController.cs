@@ -233,6 +233,9 @@ namespace CruiseshipApp.Controllers
 
             /*var slb = db.Saloon_bookings.Find(biid);
             var ids = db.Beauty_Saloon_Table.Where(y => y.Saloon_id == slb.Saloon_id).FirstOrDefault();*/
+
+
+            string currentDate1 = DateTime.Now.ToString("MM/dd/yyyy hh mm tt");
             int biid = Convert.ToInt32(Session["bid"]);
             var sbids = db.Saloon_bookings.Where(y => y.Saloon_booking_id == biid).FirstOrDefault();
 
@@ -249,6 +252,11 @@ namespace CruiseshipApp.Controllers
 
             sbids.Status = "Paid";
             db.Entry(sbids).State = EntityState.Modified;
+
+            var pid = db.Payments.Where(y => y.Booking_details_id == biid).FirstOrDefault();
+            pid.Date = currentDate1;
+            db.Entry(sbids).State = EntityState.Modified;
+
             db.SaveChanges();
 
             return RedirectToAction("ViewBookings");

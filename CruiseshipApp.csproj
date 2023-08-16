@@ -358,6 +358,8 @@
     <Content Include="web\js\top.js" />
     <Content Include="web\video\cruise.jpg" />
     <Content Include="web\video\cruise.mp4" />
+    <Content Include="web\video\cruise1.jpg" />
+    <Content Include="web\video\cruise2.jpg" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

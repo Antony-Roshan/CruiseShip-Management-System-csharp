@@ -47,7 +47,7 @@
                 </dt>
 
                 <dd>
-                    <img src="@Url.Content(Model.Image)" width="200" height="150" /><br /><br />
+                    <img src="@Url.Content(Model.Image)" width="280" height="170" /><br /><br />
                 </dd>
 
                 <dt>
@@ -66,7 +66,7 @@
                     @Html.DisplayFor(model => model.Type)
                 </dd>
                 <dt>
-                    Quantity<br /><br />
+                    Quantity
                 </dt>
 
                 <dd>
@@ -75,8 +75,8 @@
 
             </dl>
         </div>
-       
-            <input type="submit" name="Done" value="Done" />
+         
+            <input type="submit" name="Done" class="btn btn-success" value="Done" />
             @*        @Html.ActionLink("Done", "Done", new { /* id = Model.PrimaryKey */ })*@
            @*@Html.ActionLink("Back to List", "ItemOrdereing")*@
  
@@ -84,7 +84,6 @@
         @*<a href="Done?" class="btn btn-success">Done</a>*@
         <a href="ItemOrdereing" class="btn btn-danger">Cancel</a>
 
-        <br /><br />
-
+  
     </form>
     </center>
