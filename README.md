@@ -1,6 +1,8 @@
 # CruiseshipApp
 
 Model1 context.cs
+
+
 public virtual DbSet<Beauty_Saloon> Beauty_Saloon_Table { get; set; }
         public virtual DbSet<Booking_details> Booking_details_Table { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
